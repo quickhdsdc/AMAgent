@@ -234,3 +234,4 @@ data/material_Ti-6Al-4V_m_partial_llm_fill.csv
 
 # Environment
 .env/
+.idea/
