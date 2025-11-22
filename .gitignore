@@ -205,3 +205,32 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+###### Project specific ignores
+
+# Project-specific folders
+archiv/
+assets/
+basyx/
+logs/
+ml_models/
+poppler-25.07.0/
+results_AM/
+
+# Specific files inside config or data etc.
+config/config.toml
+
+corpus_AM/Corpus_warpage.docx
+corpus_AM/Review LPBF.pdf
+corpus_AM/doc_vecs.pkl
+
+data/archiv_Li/
+data/Original Data/
+data/material_IN718_m_partial_llm_fill.csv
+data/ReadMe.txt
+data/material_SS17-4PH_m_partial_llm_fill.csv
+data/material_SS316L_m_partial_llm_fill.csv
+data/material_Ti-6Al-4V_m_partial_llm_fill.csv
+
+# Environment
+.env/
