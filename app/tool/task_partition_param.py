@@ -178,11 +178,6 @@ class TaskPartitionParam(BaseTool):
                 azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
                 api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
             )
-            # client = AzureOpenAI(
-            #     api_key="e78fb0af217940948b13612ce9732393",
-            #     azure_endpoint="https://fhgenie-api-ipa-genai4aas.openai.azure.com/",
-            #     api_version="2023-05-15",
-            # )
 
             resp = client.chat.completions.create(
                 model="gpt-5-2025-08-07",
