@@ -8,16 +8,8 @@ from sklearn.metrics import f1_score, accuracy_score
 from openai import OpenAI, AzureOpenAI
 from app.config import config, LLMSettings
 
-# ----------------------------------------------------
-# Constants / Labels
-# ----------------------------------------------------
-
-LABEL_ORDER = ["none", "lof", "balling", "keyhole"]  # 0,1,2,3
+LABEL_ORDER = ["none", "lof", "balling", "keyhole"] 
 VALID_LABELS = set(LABEL_ORDER)
-
-# ----------------------------------------------------
-# LLM config helpers
-# ----------------------------------------------------
 
 def get_llm_settings(profile: Optional[str] = None) -> LLMSettings:
     profiles = config.llm
@@ -56,7 +48,6 @@ def make_chat_client(profile: Optional[str] = "default") -> tuple[Any, str, dict
         return client, model, default_kwargs
 
     elif api_type.lower() == "google":
-        # Google GenAI
         try:
             from google import genai
             from google.genai import types
@@ -82,14 +73,10 @@ def make_chat_client(profile: Optional[str] = "default") -> tuple[Any, str, dict
     else:
         raise ValueError(f"Unsupported api_type: {llm.api_type!r}")
 
-# ----------------------------------------------------
-# Experiment Config
-# ----------------------------------------------------
-
 EXP_DIR = "data_exp"
 LABEL_COL = "defect_label"
 META_COL = "material"
-LLM_PROFILE = "gpt5" # or whatever user prefers, using gpt5 as default/placeholder based on past scripts
+LLM_PROFILE = "gpt5" 
 
 EXPERIMENTS = [
     "Exp_ID_1",
@@ -101,10 +88,6 @@ EXPERIMENTS = [
     "Exp_ID_4",
     "Exp_OOD_4",
 ]
-
-# ----------------------------------------------------
-# Utilities
-# ----------------------------------------------------
 
 def _load_exp_split(stem: str) -> pd.DataFrame:
     test_path = os.path.join(EXP_DIR, f"{stem}_test.csv")
@@ -163,10 +146,6 @@ def _extract_think_block(text: str) -> str:
         return m.group(1).strip()
     return ""
 
-# ----------------------------------------------------
-# Zero-Shot Prompt
-# ----------------------------------------------------
-
 def _build_zs_prompt(row: pd.Series) -> str:
     material = row[META_COL] if META_COL in row and pd.notnull(row[META_COL]) else "unknown material"
     power_str           = _get_val_with_unit(row, "Power",            "W")
@@ -187,19 +166,13 @@ def _build_zs_prompt(row: pd.Series) -> str:
     )
     return prompt
 
-# ----------------------------------------------------
-# LLM Call
-# ----------------------------------------------------
-
 def _call_llm(prompt: str, profile: Optional[str] = "default") -> str:
     client, model, default_kwargs = make_chat_client(profile=profile)
     system_msg = "You are an LPBF process analysis assistant."
     
-    # Remove 'model' from kwargs if present
     if "model" in default_kwargs:
         default_kwargs.pop("model")
 
-    # Detect Google
     is_google = False
     try:
         from google import genai
@@ -222,7 +195,6 @@ def _call_llm(prompt: str, profile: Optional[str] = "default") -> str:
                     final_text.append(part.text)
         return "".join(final_text).strip()
 
-    # OpenAI/Azure
     resp = client.chat.completions.create(
         model=model,
         messages=[
@@ -234,10 +206,6 @@ def _call_llm(prompt: str, profile: Optional[str] = "default") -> str:
     )
     return resp.choices[0].message.content.strip()
 
-# ----------------------------------------------------
-# Results Persistence
-# ----------------------------------------------------
-
 def _get_output_path(stem: str) -> str:
     base_dir = f"./results_AM/AMagent_ZS_{LLM_PROFILE}"
     os.makedirs(base_dir, exist_ok=True)
@@ -248,7 +216,6 @@ def _append_result(stem: str, row_dict: dict) -> None:
     fieldnames = ["row_idx", "material", "Power", "Velocity", "zs_response", "zs_label", "zs_think", "gt_label"]
     
     write_header = not os.path.exists(out_path)
-    # Check if header matches if exists? Simplified here.
     
     with open(out_path, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -256,15 +223,10 @@ def _append_result(stem: str, row_dict: dict) -> None:
             writer.writeheader()
         writer.writerow(row_dict)
 
-# ----------------------------------------------------
-# Main Loop
-# ----------------------------------------------------
-
 def run_experiment(stem: str):
     print(f"\n--- Running Zero-Shot for {stem} ---")
     df_test = _load_exp_split(stem)
     
-    # Check for existing partial results
     out_path = _get_output_path(stem)
     processed_indices = set()
     if os.path.exists(out_path):
@@ -279,9 +241,6 @@ def run_experiment(stem: str):
     total_count = 0
     
     for idx, row in df_test.iterrows():
-        # Using original index from dataframe or separate ID?
-        # Assuming the CSV row index is sufficient or if 'row_idx' exists in df_test use it
-        # But df_test usually doesn't have 'row_idx' unless added. We'll use the pandas index.
         row_id = idx 
         if "row_idx" in row:
              row_id = int(row["row_idx"])
@@ -292,10 +251,8 @@ def run_experiment(stem: str):
         gt_raw = row.get(LABEL_COL, "unknown")
         gt_norm = _normalize_ground_truth_label(gt_raw)
         
-        # Build Prompt
         prompt = _build_zs_prompt(row)
         
-        # Call LLM
         try:
             resp = _call_llm(prompt, profile=LLM_PROFILE)
             lbl = _extract_label_from_response(resp)
@@ -306,7 +263,6 @@ def run_experiment(stem: str):
             lbl = "error"
             think = ""
             
-        # Save Result
         res_dict = {
             "row_idx": row_id,
             "material": row.get(META_COL, ""),
@@ -319,7 +275,6 @@ def run_experiment(stem: str):
         }
         _append_result(stem, res_dict)
         
-        # Stats
         if lbl == gt_norm and gt_norm != "unknown":
             correct_count += 1
         total_count += 1
@@ -334,7 +289,6 @@ def main():
     for stem in EXPERIMENTS:
         run_experiment(stem)
     
-    # --- Generate Summary ---
     print("\n--- Generating Metrics Summary ---")
     
     SEARCH_PATTERN = f"./results_AM/AMagent_ZS_{LLM_PROFILE}/ZS_{LLM_PROFILE}_preds_*.csv"
@@ -345,7 +299,6 @@ def main():
     
     for f in sorted(files):
         basename = os.path.basename(f)
-        # Extract stem (e.g. ZS_gpt5_preds_Exp_ID_1.csv -> Exp_ID_1)
         prefix = f"ZS_{LLM_PROFILE}_preds_"
         if basename.startswith(prefix):
             exp_name = os.path.splitext(basename)[0].replace(prefix, "")
@@ -380,7 +333,6 @@ def main():
         
     if summary_rows:
         df_summary = pd.DataFrame(summary_rows)
-        # Sort cols
         cols = ["experiment", "n_samples", "zs_acc", "zs_f1_macro", "zs_f1_weighted"]
         df_summary = df_summary[cols]
         

@@ -50,7 +50,7 @@ def collect_runs(base_dir: Path, exp_prefix: str, model_key: str):
         steps, losses = load_train_loss_from_trainer_state(trainer_state)
         runs.append(
             {
-                "exp_name": exp_dir.name,   # e.g., Exp_ID_1
+                "exp_name": exp_dir.name, 
                 "steps": steps,
                 "losses": losses,
                 "ckpt": latest_ckpt.name,
@@ -66,7 +66,6 @@ def plot_runs(runs, title: str, out_path: Path):
 
     plt.figure(figsize=(7.5, 4.5))
     for r in runs:
-        # label includes exp name (and optionally latest checkpoint)
         plt.plot(r["steps"], r["losses"], label=f"{r['exp_name']} ({r['ckpt']})")
 
     plt.xlabel("Training step")
@@ -98,8 +97,6 @@ def plot_id_ood_for_model(base_dir: str, model_key: str, out_dir: str = None):
     )
 
 
-# ======= USAGE =======
-# Point this to the folder that contains Exp_ID_*, Exp_OOD_* (your screenshot shows: AM/)
 BASE = "./results/AM"
-MODEL_KEY = "Qwen2.5_sc_lora-r32-a32"  # change to llama-13B-Chat_lora-r64-a64, etc.
-plot_id_ood_for_model(BASE, MODEL_KEY, out_dir="./AM")  # saves two PNGs into ./AM
+MODEL_KEY = "Qwen2.5_sc_lora-r32-a32" 
+plot_id_ood_for_model(BASE, MODEL_KEY, out_dir="./AM")

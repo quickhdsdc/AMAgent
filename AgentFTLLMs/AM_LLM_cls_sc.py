@@ -1,12 +1,10 @@
 import os, gc, torch, csv
 from pathlib import Path
 import shutil
-import shutil
 from accelerate import Accelerator
 os.environ["HF_HUB_OFFLINE"] = "1"
 os.environ["TRANSFORMERS_OFFLINE"] = "1"
 os.environ["WANDB_DISABLED"] = "true"
-
 
 from tasks.AM_defect_classification.task_data_loader import TaskDataLoader
 from tasks.AM_defect_classification.model_loader_sc import ModelLoader as ModelLoaderSeqCls
@@ -14,7 +12,9 @@ from tasks.AM_defect_classification.data_preprocessor_sc import DataPreprocessor
 from tasks.AM_defect_classification.model_finetuner_sc import ModelFinetuner
 from tasks.AM_defect_classification.evaluater_sc import EvaluatorSeqCls
 from typing import Dict
-# -------------------- CONFIG --------------------
+import re
+import json
+
 EXPERIMENTS = [
     "Exp_ID_1", "Exp_OOD_1",
     "Exp_ID_2", "Exp_OOD_2",
@@ -22,24 +22,22 @@ EXPERIMENTS = [
     "Exp_ID_4", "Exp_OOD_4",
 ]
 
-MODEL_KEY = "llama3.1-8b"   # choose: "llama3.1-8b", "llama3.1-8b-Instruct", "llama2-13b-chat", "llama2-13b"
-
+MODEL_KEY = "llama3.1-8b"
 USE_4BIT = True
 
-# LoRA / training
 LORA_R = 32
 LORA_ALPHA = 32
 LORA_DROPOUT = 0.1
 BIAS = "none"
-TASK_TYPE = "SEQ_CLS"     # sequence classification
+TASK_TYPE = "SEQ_CLS"    
 LR = 2e-4
 BATCH_SIZE = 2
 EPOCHS = 16
 TARGET_MODULES = "all-linear"
 
 MAX_LEN = 256
-RESET_DIR = True          # True = wipe experiment dir before training
-EVAL_BEST_OF_CHECKPOINTS = False  # seq-cls often keeps only final; set True to scan checkpoints
+RESET_DIR = True         
+EVAL_BEST_OF_CHECKPOINTS = False 
 
 BASE_RESULTS = Path("./results/AM")
 
@@ -57,19 +55,14 @@ MODEL_NAME_VERSION = {
         "model_root_path": "Qwen/Qwen2.5-14B",
     },
 }
-# ------------------------------------------------
-
-import re, gc  # make sure these are imported
 
 def _ckpt_sort_key(p):
     """
     Sort checkpoints numerically if there's a step number in the name
     (e.g., 'checkpoint-10' < 'checkpoint-100'). Falls back to name.
     """
-    m = re.search(r'(\d+)(?!.*\d)', p.name)  # last number in the name
+    m = re.search(r'(\d+)(?!.*\d)', p.name) 
     return (0, int(m.group())) if m else (1, p.name.lower())
-
-
 
 def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> float:
     if accelerator.is_main_process:
@@ -77,14 +70,12 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
         print(f" [SC] Running {experiment_name}")
         print(f"==============================")
 
-    # 1) Data
     loader = TaskDataLoader(experiment_name=experiment_name)
     train_ds = loader.load_train()
     val_ds   = loader.load_val()
     test_ds  = loader.load_test()
-    labels, label2id, id2label = loader.get_labels()  # ["none","lof","balling","keyhole"]
+    labels, label2id, id2label = loader.get_labels()
 
-    # 2) Model
     cfg = MODEL_NAME_VERSION[MODEL_KEY]
     model_loader = ModelLoaderSeqCls(use_4bit=USE_4BIT, accelerator=accelerator)
     model, tokenizer = model_loader.load_model_from_path_name_version(
@@ -96,15 +87,11 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
         label_order=labels,
     )
 
-    # 3) Preprocess (plain string inputs + label ints)
     prep = DataPreprocessorSeqCls()
-    # Ensure shuffle is consistent or handled; for training usually shuffle is fine to differ, 
-    # but distributed sampler handles splitting.
     train_fmt = prep.preprocess_data(tokenizer, train_ds, max_length=MAX_LEN, shuffle=True)
     val_fmt   = prep.preprocess_data(tokenizer, val_ds,   max_length=MAX_LEN, shuffle=False)
     test_fmt  = prep.preprocess_data(tokenizer, test_ds,  max_length=MAX_LEN, shuffle=False)
 
-    # 4) Output dirs
     exp_dir = BASE_RESULTS / experiment_name
     model_tag = MODEL_KEY.split('-')[0] + "_sc" + f"_lora-r{LORA_R}-a{LORA_ALPHA}"
     out_dir = exp_dir / model_tag
@@ -117,7 +104,6 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
     
     accelerator.wait_for_everyone()
 
-    # 5) Train
     finetuner = ModelFinetuner()
     finetuner.fine_tune(
         model, tokenizer, train_fmt, val_fmt,
@@ -127,16 +113,11 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
         accelerator=accelerator
     )
 
-    # free train objects
     del model; del finetuner
     torch.cuda.empty_cache(); gc.collect()
     
     accelerator.wait_for_everyone()
 
-    # 6) Evaluate
-    # Run evaluation ONLY on the main process to avoid distributed hangs
-    # Other ranks will wait at the barrier after this block.
-    
     best_f1 = float("-inf")
     best_acc = 0.0
     best_ckpt = None
@@ -144,24 +125,19 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
     if accelerator.is_main_process:
         print(f"[Rank 0] Starting Single-Process Evaluation...")
         
-        # Instantiate evaluator WITH accelerator but FORCE SINGLE PROCESS
-        # This ensures we get the correct device map but NO split logic.
         evaluator = EvaluatorSeqCls(accelerator=accelerator, batch_size=BATCH_SIZE, force_single_process=True)
 
-        # Build checkpoint list
         ckpt_dirs = [
             d for d in out_dir.iterdir()
             if d.is_dir() and d.name.lower().startswith("checkpoint")
         ]
         ckpt_dirs = sorted(set(ckpt_dirs), key=_ckpt_sort_key)
-        ckpt_dirs = ckpt_dirs[len(ckpt_dirs)//2:]  # Skip first half
+        ckpt_dirs = ckpt_dirs[len(ckpt_dirs)//2:]  
 
         print(f"Found {len(ckpt_dirs)} checkpoint dirs under {out_dir}:")
         for d in ckpt_dirs:
             print(" -", d.name)
         
-        import json
-
         for d in ckpt_dirs:
             metric_file = d / f"eval_metrics_{experiment_name}.json"
             
@@ -169,7 +145,6 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
             if metric_file.exists():
                 should_skip = True
                 print(f"Skipping {d.name}, found {metric_file.name}")
-                # Try load existing
                 try:
                     with open(metric_file, "r") as f:
                         data = json.load(f)
@@ -195,7 +170,6 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
             torch.cuda.empty_cache()
             gc.collect()
 
-        # Fallback if no checkpoints
         if (not ckpt_dirs) and out_dir.exists():
             print("No checkpoints found; evaluating base finetuned dir...")
             acc, macro_f1 = evaluator.run_full_eval(
@@ -208,12 +182,8 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
             best_ckpt = out_dir.name
             best_acc = acc
 
-    # -------------------------------------------------------
-    # CRITICAL BARRIER: Ensure all ranks wait for Rank 0 to finish eval
-    # -------------------------------------------------------
     accelerator.wait_for_everyone()
 
-    # 7) Append summary row
     if accelerator.is_main_process:
         with open(SUMMARY_CSV, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -224,8 +194,6 @@ def run_one_experiment_sc(experiment_name: str, accelerator: Accelerator) -> flo
         print(f"\n{experiment_name} DONE. Best macro-F1={best_f1:.4f} @ {best_ckpt}\n")
     
     return best_f1, best_acc
-
-
 
 def _fmt_num(x):
     try:
@@ -243,12 +211,11 @@ def main():
 
     for stem in EXPERIMENTS:
         try:
-            best_f1, best_acc = run_one_experiment_sc(stem, accelerator)  # now returns (f1, acc)
+            best_f1, best_acc = run_one_experiment_sc(stem, accelerator) 
             all_scores[stem] = {"macro_f1": best_f1, "accuracy": best_acc}
         except Exception as e:
             if accelerator.is_main_process:
                 print(f"[ERROR] {stem} failed: {e}")
-                # write a failure row to the summary with both metrics as NaN
                 with open(SUMMARY_CSV, "a", newline="", encoding="utf-8") as f:
                     writer = csv.writer(f)
                     if f.tell() == 0:
@@ -262,7 +229,6 @@ def main():
         print("\n=== FINAL SUMMARY ===")
         for k, vals in all_scores.items():
             print(f"{k}: macro-F1={_fmt_num(vals['macro_f1'])}, acc={_fmt_num(vals['accuracy'])}")
-
 
 if __name__ == "__main__":
     main()

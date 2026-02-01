@@ -5,7 +5,6 @@ import json
 import re
 from typing import Dict, Optional, Tuple, List, Any
 
-# Constants matching benchmark
 LABEL_ORDER = ["none", "lof", "balling", "keyhole"]
 
 def _calculate_entropy(probs: Dict[str, float], classes=None) -> float:
@@ -20,7 +19,7 @@ def _calculate_entropy(probs: Dict[str, float], classes=None) -> float:
     s = values.sum()
     if s <= 0:
         return 0.0
-    values = values / s  # ensure normalized
+    values = values / s  
 
     values = values[values > 0]
     return float(-np.sum(values * np.log2(values)))
@@ -35,7 +34,7 @@ def _ml_reliability_from_probs(ml_probs: Dict[str, float], is_ood: bool,
 
     entropy = _calculate_entropy(ml_probs, classes=classes)
     K = len(classes)
-    h_norm = entropy / np.log2(K) if K > 1 else 0.0  # 0..1
+    h_norm = entropy / np.log2(K) if K > 1 else 0.0  
 
     p_sorted = np.sort(values)[::-1]
     margin = float(p_sorted[0] - p_sorted[1]) if len(p_sorted) >= 2 else 1.0
@@ -85,7 +84,7 @@ def _deterministic_fusion(ml_probs_raw: Dict[str, float],
     
     rag_belief = _extract_json_block(rag_resp, "BELIEF") or default_belief
     rag_rel = _extract_float_block(rag_resp, "RELIABILITY")
-    if rag_rel is None: rag_rel = 0.3 # default lower for RAG
+    if rag_rel is None: rag_rel = 0.3 
     
     for b in [ml_belief, rag_belief]:
         total = sum(b.get(k, 0) for k in LABEL_ORDER)
@@ -125,11 +124,10 @@ def _build_supervisor_prompt(process_params: Dict[str, Any],
     material = process_params.get("material", "unknown material")
     power = process_params.get("Power", "unknown")
     velocity = process_params.get("Velocity", "unknown")
-    beam_d = process_params.get("beam_D", "unknown") # Normalized spelling
+    beam_d = process_params.get("beam_D", "unknown") 
     layer_t = process_params.get("layer_thickness", "unknown")
     hatch = process_params.get("hatch_spacing", "unknown")
 
-    # Helper to check if unit is already there
     def fmt(val, unit):
         s = str(val)
         return s if unit in s else f"{s} {unit}"
@@ -140,10 +138,8 @@ def _build_supervisor_prompt(process_params: Dict[str, Any],
     layer_thickness_str = fmt(layer_t, "µm")
     hatch_str = fmt(hatch, "µm")
 
-    # Format belief for prompt
     f_belief_str = ", ".join([f'"{k}": {v:.2f}' for k,v in fused_belief.items()])
 
-    # ML Output String
     none_p = ml_probs.get("none", 0.0)
     lof_p = ml_probs.get("lof", 0.0)
     ball_p = ml_probs.get("balling", 0.0)
@@ -189,9 +185,13 @@ def _build_supervisor_prompt(process_params: Dict[str, Any],
     return prompt
 
 class PerformFusionStrategy(BaseTool):
+    """
+    Performs deterministic fusion of ML probabilities and Knowledge-Driven predictions from the tool knowledge_retrieve_literature()
+    Returns the fused belief, suggested label, logic, and the fully constructed prompt 
+    """
     name: str = "perform_fusion_strategy"
     description: str = (
-        "Performs deterministic fusion of ML probabilities and Knowledge-Driven predictions from the tool knowledge_retrieve_literature()"
+        "Performs deterministic fusion of ML probabilities and Knowledge-Driven predictions from the tool knowledge_retrieve_literature() "
         "Returns the fused belief, suggested label, logic, and the fully constructed prompt "
     )
     parameters: dict = {
@@ -220,29 +220,23 @@ class PerformFusionStrategy(BaseTool):
 
     async def execute(self, process_params: Dict[str, Any], ml_probs: Any, rag_response: str, is_ood: bool = False) -> ToolResult:
         try:
-            # Clean/Parse parameters
             if isinstance(ml_probs, str):
                 try:
                     ml_probs = json.loads(ml_probs)
                 except:
                     return ToolResult(error="Invalid JSON string for ml_probs.")
 
-            # Normalize parameter keys if needed
-            # e.g. "beam D" vs "beam_D"
             norm_params = {}
             for k, v in process_params.items():
                 norm_params[k] = v
                 if k == "beam D": norm_params["beam_D"] = v
-                if k == "beam_D": norm_params["beam_D"] = v # ensure preference
+                if k == "beam_D": norm_params["beam_D"] = v 
             
-            # Calculate ML Stats
             exp_type = "out-of-distribution" if is_ood else "in-distribution"
             
             ml_entropy = _calculate_entropy(ml_probs, classes=tuple(LABEL_ORDER))
-            # Note: passing is_ood to reliability calculation as per benchmark logic
             ml_reliability = _ml_reliability_from_probs(ml_probs, is_ood, classes=tuple(LABEL_ORDER))
 
-            # Perform Fusion
             fused_belief, fused_label = _deterministic_fusion(
                 ml_probs_raw=ml_probs,
                 ml_reliability=ml_reliability,
@@ -250,7 +244,6 @@ class PerformFusionStrategy(BaseTool):
                 is_ood=is_ood
             )
 
-            # Build Prompt
             prompt_sup = _build_supervisor_prompt(
                 process_params=norm_params,
                 ml_probs=ml_probs,

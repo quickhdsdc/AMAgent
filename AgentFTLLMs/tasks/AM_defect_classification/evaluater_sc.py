@@ -9,16 +9,9 @@ from transformers import AutoTokenizer, BitsAndBytesConfig
 from peft import AutoPeftModelForSequenceClassification
 from sklearn.metrics import f1_score, accuracy_score, classification_report, confusion_matrix
 from accelerate import Accelerator
-from accelerate.utils import gather_object
 
 LABEL_ORDER = ["none", "lof", "balling", "keyhole"]
 _NUM_LABELS = len(LABEL_ORDER)
-
-
-def _maps():
-    label2id = {lbl: i for i, lbl in enumerate(LABEL_ORDER)}
-    id2label = {i: lbl for i, lbl in enumerate(LABEL_ORDER)}
-    return label2id, id2label
 
 
 def gpu_supports_bf16() -> bool:
@@ -37,44 +30,27 @@ class EvaluatorSeqCls:
 
         tokenizer = AutoTokenizer.from_pretrained(str(finetuned_model_dir))
         if tokenizer.pad_token is None:
-            # for Llama/ChatGLM-style tokenizers
             tokenizer.pad_token = tokenizer.eos_token
         tokenizer.padding_side = "right"
 
-        # Store (optional reference)
-        self.bnb_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_use_double_quant=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.bfloat16,
-        )
-
-        # ---- 4-bit config that actually gets used ----
         compute_dtype = torch.bfloat16 if gpu_supports_bf16() else torch.float16
         
-        # Determine device map for DDP
         device_map = None
         if self.accelerator:
              device_map = {"": self.accelerator.process_index}
         else:
              device_map = "auto"
              
-        # FORCE DEVICE IF single process requested but accelerator is present
-        # (This is implicitly handled by device_map logic above if accelerator is passed)
-        
         bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_use_double_quant=True,
             bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=compute_dtype,  # avoid bf16 if unsupported
+            bnb_4bit_compute_dtype=compute_dtype, 
         )
 
         if self.accelerator:
             print(f"[Rank {self.accelerator.process_index}] Loading model from {finetuned_model_dir}...")
         
-        # IMPORTANT:
-        # - Do NOT pass torch_dtype=torch.float32 here (it defeats quantization).
-        # - Use device_map="auto" to shard/offload if needed.
         model = AutoPeftModelForSequenceClassification.from_pretrained(
             str(finetuned_model_dir),
             quantization_config=bnb_config,
@@ -88,7 +64,6 @@ class EvaluatorSeqCls:
         if tokenizer.pad_token_id is not None:
             model.config.pad_token_id = tokenizer.pad_token_id
 
-        # label maps (optional but nice to have)
         label2id = {l: i for i, l in enumerate(LABEL_ORDER)}
         id2label = {i: l for l, i in label2id.items()}
         model.config.num_labels = len(label2id)
@@ -111,9 +86,7 @@ class EvaluatorSeqCls:
     ) -> pd.DataFrame:
         output_dir = Path(output_dir)
         
-        # Prepare context for splitting
         if not isinstance(test_ds, list):
-             # Try to convert to list if possible
              try:
                  all_items = [test_ds[i] for i in range(len(test_ds))]
              except:
@@ -121,40 +94,27 @@ class EvaluatorSeqCls:
         else:
              all_items = test_ds
         
-        local_results = []
-        
-        # SPLIT LOGIC
         if self.accelerator and not self.force_single_process:
              context = self.accelerator.split_between_processes(all_items)
              rank = self.accelerator.process_index
         else:
              from contextlib import nullcontext
              context = nullcontext(all_items)
-             # If accelerator is present but forced single process, use its rank, otherwise 0
              rank = self.accelerator.process_index if self.accelerator else 0
 
-        # Temp file for this rank
         output_dir.mkdir(parents=True, exist_ok=True)
         temp_file = output_dir / f"temp_pred_sc_{experiment_name}_rank_{rank}.csv"
-        # Always clean temp file on start if forced single process (treating as fresh run)
         if temp_file.exists():
              try:
                  temp_file.unlink()
              except:
                  pass
-
-        # We will write in chunks
              
         with context as batch_ds_list:
-             # Process this shard
-             # Batch the shard locally
              bs = self.batch_size
              n = len(batch_ds_list)
              if self.accelerator:
                  print(f"[Rank {self.accelerator.process_index}] Starting predict loop for {n} items...")
-             
-             # if temp file exists and we want to resume, we'd need global indices. 
-             # For now, let's just process.
              
              for start in tqdm(range(0, n, bs), desc=f"Eval Rank {rank}", disable=not (not self.accelerator or self.accelerator.is_local_main_process)):
                 end = min(start + bs, n)
@@ -173,7 +133,6 @@ class EvaluatorSeqCls:
                     return_tensors="pt",
                 )
                 
-                # Move to correct device
                 device = model.device
                 for k in enc:
                     enc[k] = enc[k].to(device)
@@ -191,7 +150,6 @@ class EvaluatorSeqCls:
                     gt_lbl = LABEL_ORDER[gt_int] if 0 <= gt_int < _NUM_LABELS else "none"
                     pred_lbl = LABEL_ORDER[preds[i]]
                     chunk_rows.append({
-                        # "row_idx": ??? hard to get global idx easily without passed-in info
                         "material": mats[i],
                         "text": texts[i],
                         "gt_int": gt_int,
@@ -202,21 +160,15 @@ class EvaluatorSeqCls:
 
                 del enc, outputs, logits
                 
-                # Append to temp file
                 df_chunk = pd.DataFrame(chunk_rows)
-                # header only if file didn't exist (or we just started and cleaned it? No, if we append, checks file)
-                # To be safe, let's say if start==0 and not resumption, we write header.
-                # Actually, simpler: check if file exists.
                 write_header = not temp_file.exists()
                 df_chunk.to_csv(temp_file, mode='a', header=write_header, index=False)
              
-        # Wait for all
         if self.accelerator and not self.force_single_process:
              print(f"[Rank {self.accelerator.process_index}] Waiting for everyone after shard processing...")
              self.accelerator.wait_for_everyone()
              print(f"[Rank {self.accelerator.process_index}] Passed wait_for_everyone.")
              
-        # Merge
         final_df = pd.DataFrame()
         if not self.accelerator or self.accelerator.is_main_process:
 
@@ -235,8 +187,6 @@ class EvaluatorSeqCls:
                 out_csv = output_dir / f"eval_pred_{experiment_name}.csv"
                 final_df.to_csv(out_csv, index=False)
 
-                
-                # Cleanup
                 for f in saved_temps:
                     f.unlink()
                 pass
@@ -250,20 +200,16 @@ class EvaluatorSeqCls:
         experiment_name: str
     ) -> Tuple[float, float]:
         
-        # Run only on main process
         if self.accelerator and not self.accelerator.is_main_process:
              return 0.0, 0.0
              
-        # guard against missing/NaN
         y_true = [int(x) if pd.notna(x) else -1 for x in df["gt_int"].tolist()]
         y_pred = [int(x) if pd.notna(x) else -1 for x in df["pred_int"].tolist()]
 
-        # filter to valid classes 0..3 (should already be)
         mask = [(0 <= yt < _NUM_LABELS) and (0 <= yp < _NUM_LABELS) for yt, yp in zip(y_true, y_pred)]
         y_true = [yt for yt, m in zip(y_true, mask) if m]
         y_pred = [yp for yp, m in zip(y_pred, mask) if m]
 
-        # metrics
         acc = accuracy_score(y_true, y_pred) if len(y_true) else float("nan")
         macro_f1 = f1_score(y_true, y_pred, average="macro") if len(y_true) else float("nan")
 
@@ -291,7 +237,7 @@ class EvaluatorSeqCls:
                 {
                     "accuracy": float(acc),
                     "macro_f1": float(macro_f1),
-                    "report": report,  # note: sklearn's report also contains an "accuracy" field
+                    "report": report, 
                 },
                 indent=2,
             ),
@@ -318,13 +264,12 @@ class EvaluatorSeqCls:
              output_dir.mkdir(parents=True, exist_ok=True)
              
         if self.accelerator:
-             self.accelerator.wait_for_everyone()
+            self.accelerator.wait_for_everyone()
         
         model, tokenizer, _, _ = self.load_model(finetuned_model_dir)
         df_pred = self.predict(test_ds, model, tokenizer, output_dir, experiment_name)
         acc, macro_f1 = self.compute_metrics_and_save(df_pred, output_dir, experiment_name)
         
-        # Cleanup
         del model
         del tokenizer
         import gc
@@ -332,8 +277,3 @@ class EvaluatorSeqCls:
         gc.collect()
         
         return acc, macro_f1
-
-
-
-
-

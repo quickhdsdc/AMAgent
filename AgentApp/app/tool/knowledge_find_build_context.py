@@ -16,9 +16,6 @@ import faiss
 from langchain_openai import AzureOpenAIEmbeddings
 
 
-# ----------------------------
-# Helpers
-# ----------------------------
 def _strip_fences(s: str) -> str:
     s = s.strip()
     s = re.sub(r"^```(?:json)?\s*", "", s, flags=re.IGNORECASE)
@@ -37,9 +34,7 @@ def _as_obj(text: str) -> Any:
     i = 0
     n = len(s)
 
-    # scan to the first plausible JSON start
     while i < n:
-        # skip whitespace
         while i < n and s[i].isspace():
             i += 1
         if i >= n:
@@ -49,7 +44,6 @@ def _as_obj(text: str) -> Any:
                 obj, end = decoder.raw_decode(s, i)
                 return obj
             except json.JSONDecodeError:
-                # not a complete JSON at this position; advance one char
                 i += 1
                 continue
         i += 1
@@ -59,7 +53,6 @@ _EXCLUDED_TYPES = {"SubmodelElementCollection", "AssetAdministrationShell", "Sub
 _EXCLUDED_TYPES_L = {t.lower() for t in _EXCLUDED_TYPES}
 def _filter_entities_type(entities: list[dict]) -> list[dict]:
     def get_type(e: dict) -> str:
-        # common places where type shows up
         t = e.get("type") or e.get("modelType") or (e.get("modelType", {}) or {}).get("name")
         return str(t or "").strip().lower()
     out = [e for e in entities if get_type(e) not in _EXCLUDED_TYPES_L]
@@ -110,8 +103,6 @@ def _semantic_path(row: pd.Series) -> str:
     sp = _norm(str(row.get("semantic_path", "")))
     if sp:
         return sp
-    # Minimal fallback if not present: try stitching idShorts (if columns exist)
-    # This keeps behavior predictable even with sparse CSVs.
     chain = [str(row.get("submodel", "")).strip(), str(row.get("collection", "")).strip(), str(row.get("idShort", "")).strip()]
     chain = [c for c in chain if c]
     return "/".join(chain)
@@ -123,8 +114,6 @@ def _api_path(row: pd.Series) -> str:
     api = _norm(str(row.get("API_path", "")))
     if api:
         return api
-    # Conservative fallback: many parsers export 'API_path'; if missing, we can't reliably compose.
-    # Return empty to signal we couldn't build a path; the caller will skip reading.
     return ""
 
 async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[str]) -> Optional[pd.DataFrame]:
@@ -132,7 +121,6 @@ async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[s
     Parse and cache to ./temp/<idShort or b64(id)>.csv; reuse cache if present.
     """
     Path("./results_AM").mkdir(exist_ok=True)
-    # Choose a stable cache stem
     cache_stem = aas_idShort if aas_idShort else _b64(aas_id)
     cache_csv = os.path.join("./results_AM", f"{cache_stem}.csv")
 
@@ -142,7 +130,6 @@ async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[s
         except Exception:
             pass
 
-    # Try AASX
     aasx_filepath = None
     try:
         aasx_filepath = await aas_loader.get_aasx(endpoint=endpoint, aas_id=aas_id, base_dir="results_AM")
@@ -157,7 +144,6 @@ async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[s
             pass
         return df
 
-    # Try JSON
     try:
         aas_json_filepath = await aas_loader.get_json(endpoint=endpoint, aas_id=aas_id, base_dir="temp")
     except Exception:
@@ -174,8 +160,6 @@ async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[s
     return None
 
 def _embedder():
-    # Use Azure OpenAI embeddings; rely on env creds.
-    # Model/deployment can be adjusted here centrally.
     return AzureOpenAIEmbeddings(
         model=os.getenv("AZURE_EMBEDDINGS_MODEL", "text-embedding-3-large"),
         azure_deployment=os.getenv("AZURE_EMBEDDINGS_DEPLOYMENT", "text-embedding-3-large-1"),
@@ -186,10 +170,10 @@ def _embedder():
 
 def _entity_retrieval(
     keywords: Dict[str, List[str]],
-    attr_texts: List[str],   # e.g., [e["attr_str"], ...]
+    attr_texts: List[str],  
     top_m: int,
     *,
-    per_term_cap: int = 64,  # cap individual term embeddings for efficiency
+    per_term_cap: int = 64, 
 ) -> Tuple[List[int], List[float]]:
     """
     Hybrid multi-vector retrieval:
@@ -198,22 +182,19 @@ def _entity_retrieval(
     """
     if not attr_texts:
         return [], []
-    # 1) Embed entity texts
     emb = _embedder()
     vecs = emb.embed_documents(attr_texts)
     if not vecs:
         return [], []
     V = np.array(vecs, dtype="float32")
-    Vn = V / (np.linalg.norm(V, axis=1, keepdims=True) + 1e-12)  # normalize for cosine
+    Vn = V / (np.linalg.norm(V, axis=1, keepdims=True) + 1e-12) 
 
-    # 2) Build 4 bucket queries
     def _join(xs): return " | ".join([x for x in (xs or []) if x])
     b_proc = _join(keywords.get("process_terms", []))
     b_mat  = _join(keywords.get("material_terms", []))
     b_par  = _join(keywords.get("parameter_terms", []))
     b_obj  = _join(keywords.get("objective_terms", []))
 
-    # Use labeled prompts to anchor semantics a bit better
     bucket_texts = [
         f"Process: {b_proc}" if b_proc else "",
         f"Material: {b_mat}" if b_mat else "",
@@ -227,13 +208,10 @@ def _entity_retrieval(
         qv = np.array(emb.embed_query(t), dtype="float32")
         qv /= (np.linalg.norm(qv) + 1e-12)
         bucket_vecs.append(qv)
-    # Weighted bucket blend (tuneable)
-    # Map weights in the same order we added bucket_texts
-    # Rebalanced per user request to better find "records" (less bias to parameters)
     w_map = {"Process:":0.25, "Material:":0.25, "Parameters:":0.25, "Objectives:":0.25}
     bucket_weights = []
     for t in bucket_texts:
-        key = t.split(":")[0] + ":"  # "Process:" etc.
+        key = t.split(":")[0] + ":" 
         bucket_weights.append(w_map.get(key, 0.0))
     if bucket_weights:
         w = np.array(bucket_weights, dtype="float32")
@@ -241,7 +219,6 @@ def _entity_retrieval(
     else:
         w = np.zeros((0,), dtype="float32")
 
-    # 3) Per-term queries (dedupe + cap)
     all_terms = []
     for k in ("process_terms", "material_terms", "parameter_terms", "objective_terms"):
         all_terms.extend(keywords.get(k, []))
@@ -262,8 +239,6 @@ def _entity_retrieval(
         qv /= (np.linalg.norm(qv) + 1e-12)
         term_vecs.append(qv)
 
-    # 4) Compute similarities in vectorized form
-    # Bucket sims: for each bucket q, sim = Vn @ q
     if bucket_vecs:
         B = np.stack(bucket_vecs, axis=1)             # [D, B]
         bucket_sims = Vn @ B                           # [N, B]
@@ -271,7 +246,6 @@ def _entity_retrieval(
     else:
         bucket_weighted = np.zeros((Vn.shape[0],), dtype="float32")
 
-    # Per-term max sim
     if term_vecs:
         T = np.stack(term_vecs, axis=1)   # [D, T]
         term_sims = Vn @ T                # [N, T]
@@ -279,23 +253,17 @@ def _entity_retrieval(
     else:
         max_per_term = np.zeros((Vn.shape[0],), dtype="float32")
 
-    # 5) Lexical boost (cheap)
-    # Count literal hits across all terms with small saturation
     lowers = [t.lower() for t in uniq_terms]
     boosts = np.zeros((len(attr_texts),), dtype="float32")
     for i, text in enumerate(attr_texts):
         hay = (text or "").lower()
         hits = sum(1 for t in lowers if t and t in hay)
-        # cap boost; tuneables: 0.02 per hit, cap 0.10
         boosts[i] = min(0.10, 0.02 * hits)
 
-    # 6) Final score blend (tune as needed)
     final = 0.6 * bucket_weighted + 0.3 * max_per_term + 0.1 * boosts
 
-    # 7) Top-k
     k = min(top_m, len(attr_texts))
     idxs = np.argpartition(-final, kth=k-1)[:k]
-    # sort by score desc
     idxs = idxs[np.argsort(-final[idxs])]
     scores = final[idxs].astype(float).tolist()
     return idxs.tolist(), scores
@@ -317,7 +285,7 @@ async def _aas_explore(endpoint: str):
         submodel_infos = []
         for ref in submodel_refs:
             submodel_id = ref["keys"][0]["value"]
-            submodel_name = submodel_id.strip("/").split("/")[-1]  # "TechnicalData"
+            submodel_name = submodel_id.strip("/").split("/")[-1] 
             submodel_infos.append({
                 "name": submodel_name,
                 "id": submodel_id,
@@ -342,7 +310,6 @@ async def _parse_entities(endpoint: str, shells: List[Dict[str, Any]]) -> List[D
         df = await _load_or_parse_aas(endpoint, aas_id, aas_idShort)
         if df is None or df.empty:
             continue
-        # Expect columns: idShort, description, semantic_path, API_path (others are tolerated)
         for _, row in df.iterrows():
             id_short = _norm(str(row.get("idShort", "")))
             desc = _norm(str(row.get("description", "")))
@@ -393,12 +360,10 @@ def _build_evidence_pack(
     read_successes: List[Dict[str, Any]],
     read_errors: List[Dict[str, Any]],
 ) -> Dict[str, Any]:
-    # Map selected by index to entities
     selected_items = []
     for rank, (idx, score) in enumerate(zip(selected_indices, selected_scores), start=1):
         if 0 <= idx < len(candidate_entities):
             ent = candidate_entities[idx]
-            # find read result if any
             value = None
             for s in read_successes:
                 if s.get("api_path") == ent.get("api_path"):
@@ -429,15 +394,15 @@ def _build_evidence_pack(
             "num_entities_considered": len(candidate_entities),
             "selected": selected_items,
         },
-        "errors": read_errors,  # include read failures or missing API paths
+        "errors": read_errors, 
     }
 
 
-# ----------------------------
-# MCP Tool
-# ----------------------------
-
 class KnowledgeFindBuildContext(BaseTool):
+    """
+    Given a keyword set K and an AAS endpoint S, discover AAS, parse entities, retrieve top-m relevant 
+    properties by semantic similarity, read their values, and return an evidence pack E_a.
+    """
     name: str = "knowledge_find_build_context"
     description: str = (
         "Given a keyword set K and an AAS endpoint S, discover AAS, parse entities, retrieve top-m relevant "
@@ -466,26 +431,20 @@ class KnowledgeFindBuildContext(BaseTool):
     }
 
     async def execute(self, keywords: str, endpoint: str = "http://localhost:8081", top_m: int = 20, **kwargs) -> ToolResult:
-        # keywords = '{"process_terms": ["LPBF", "Laser Powder Bed Fusion", "Selective Laser Melting", "Powder Bed Fusion", "SLM"], "material_terms": ["IN625", "Inconel 625", "Alloy 625"], "parameter_terms": ["laser power", "power", "scan velocity", "scan speed", "beam diameter", "spot size", "laser spot size", "layer thickness", "powder layer thickness", "hatch spacing", "hatch distance"], "objective_terms": ["keyhole", "lack of fusion", "porosity", "melt pool depth", "melt pool width", "melt pool length"]}'
-        # endpoint = "http://localhost:8081"
-        # top_m = 20
-        data = _as_obj(keywords)  # dict with 4 arrays
+        data = _as_obj(keywords)  
         process_terms = data.get("process_terms", [])
         material_terms = data.get("material_terms", [])
         parameter_terms = data.get("parameter_terms", [])
         objective_terms = data.get("objective_terms", [])
 
         try:
-            # Discover
             shells = await _aas_explore(endpoint)
             if not shells:
                 return ToolResult(error="No AAS shells found at endpoint.")
 
-            # Parse AAS and build per-entity strings/paths
             entities = await _parse_entities(endpoint, shells)
             entities = _filter_entities_type(entities)
             
-            # --- DEBUG: Save parsed entities ---
             try:
                 debug_path = Path("./results_AM/debug_aas_entities.json")
                 debug_path.parent.mkdir(parents=True, exist_ok=True)
@@ -493,7 +452,6 @@ class KnowledgeFindBuildContext(BaseTool):
                     json.dump(entities, f, ensure_ascii=False, indent=2)
             except Exception as e:
                 print(f"[WARN] Failed to save debug entities: {e}")
-            # -----------------------------------
 
             rows_for_embed = [(e["attr_str"]) for e in entities]
             sel_idx, sel_scores = _entity_retrieval(
@@ -509,10 +467,8 @@ class KnowledgeFindBuildContext(BaseTool):
             )
             selected_entities = [entities[i] for i in sel_idx]
 
-            # 6) Read values for selected
             read_successes, read_errors = await _read_values(endpoint, selected_entities)
 
-            # 7) Build evidence pack
             evidence = _build_evidence_pack(
                 endpoint=endpoint,
                 keywords=keywords,
@@ -526,7 +482,6 @@ class KnowledgeFindBuildContext(BaseTool):
             )
             _save_evidence(evidence)
 
-            # 7) Return ONLY selected info in the requested shape
             selected = evidence.get("retrieval", {}).get("selected", [])
             summarized = []
             for s in selected:
@@ -544,8 +499,3 @@ class KnowledgeFindBuildContext(BaseTool):
 
         except Exception as e:
             return ToolResult(error=f"knowledge_find_build_context failed: {str(e)}")
-
-
-
-
-

@@ -4,10 +4,8 @@ import pandas as pd
 import numpy as np
 import json
 import re
-# Ensure we can import from the current directory
 sys.path.append(os.getcwd())
 
-# Import from benchmark script (NO PHYSICS variant)
 try:
     from benchmark_cls_AMagent import (
         EXPERIMENTS, EXP_DIR, VALID_LABELS, LABEL_ORDER, LABEL_COL,
@@ -21,9 +19,8 @@ except ImportError as e:
     print(f"Error importing from benchmark_cls_AMagent: {e}")
     sys.exit(1)
 
-# Configuration
-SUPERVISOR_PROFILE = "gpt5"      # Matches benchmark main()
-SUB_AGENT_PROFILE = "gemini"     # Matches benchmark main()
+SUPERVISOR_PROFILE = "gpt5"      
+SUB_AGENT_PROFILE = "gemini"     
 
 def _extract_json_block(text: str, tag: str):
     """Extracts a JSON dict from within [TAG]...[/TAG]."""
@@ -32,7 +29,6 @@ def _extract_json_block(text: str, tag: str):
     if not m:
         return None
     try:
-        # cleanup likely json issues (e.g. single quotes)
         content = m.group(1).replace("'", '"')
         return json.loads(content)
     except Exception:
@@ -65,7 +61,6 @@ def _build_supervisor_prompt_wofusion(row: pd.Series,
     layer_thickness_str = _get_val_with_unit(row, "layer thickness",  "µm")
     hatch_str           = _get_val_with_unit(row, "Hatch spacing",    "µm")
 
-    # Extract RAG parts
     rag_belief = _extract_json_block(rag_response, "BELIEF")
     rag_label = _extract_label_from_response(rag_response)
     rag_think = _extract_think_block(rag_response)
@@ -87,7 +82,7 @@ def _build_supervisor_prompt_wofusion(row: pd.Series,
         f"[LABEL] {rag_label} [/LABEL]\n\n"
         "Task:\n"
         "Synthesize the inputs from both agents. Make a final label prediction.\n"
-        f"{reliance_instruction}\n" # Insert custom instruction
+        f"{reliance_instruction}\n" 
         "Return ONLY the schema below:\n"
         "[THINK] {reasoning for final decision} [/THINK]\n"
         "[LABEL] {one of \"none\", \"lof\", \"balling\", \"keyhole\"} [/LABEL]"
@@ -97,7 +92,6 @@ def _build_supervisor_prompt_wofusion(row: pd.Series,
 def aug_results_rerun_for_stem(stem: str):
     print(f"\n--- Running Ablation (No Fusion) for {stem} ---")
     
-    # Paths
     base_dir = f"./results_AM/AMagent_{SUPERVISOR_PROFILE}"
     fname = f"{SUPERVISOR_PROFILE}_raw_preds_{stem}.csv"
     res_path = os.path.join(base_dir, fname)
@@ -106,10 +100,8 @@ def aug_results_rerun_for_stem(stem: str):
         print(f"Skipping {stem}: Result file not found at {res_path}")
         return
 
-    # Load Result Data
     df_results = pd.read_csv(res_path)
     
-    # Load Test Data to get context if needed
     df_test = _load_exp_split(stem)
     
     modified_count = 0
@@ -123,14 +115,12 @@ def aug_results_rerun_for_stem(stem: str):
              print(f"  [WARN] Row {row_idx} not found in test set. Skipping.")
              continue
 
-        # 1. Get Agent Responses
         resp_rag = str(df_results.at[idx, "agent_rag_response"]).replace("\n", " ")
         ml_pred_label = str(row.get("ml_pred_label", "unknown"))
         if ml_pred_label == "nan" or ml_pred_label == "":
              ml_pred_label = "unknown"
 
         try:
-            # 2. Build New Supervisor Prompt (No Fusion)
             is_ood = "OOD" in stem
             prompt_sup = _build_supervisor_prompt_wofusion(
                 test_row, 
@@ -139,35 +129,27 @@ def aug_results_rerun_for_stem(stem: str):
                 is_ood=is_ood
             )
             
-            # 3. Call LLM
             resp_sup = _call_llm(prompt_sup, profile=SUPERVISOR_PROFILE)
             new_sup_lbl = _extract_label_from_response(resp_sup)
             
-            # 4. Update Result
             df_results.at[idx, "supervisor_raw_response"] = resp_sup.replace("\n", " ")
             df_results.at[idx, "supervisor_label"] = new_sup_lbl
             
-            # Save strictly every 10 rows or at end? 
-            # Original script saved every row. Let's stick to that to be safe against crashes.
             print(f"    [Row {row_idx}] Updated Supervisor (Label: {new_sup_lbl})")
             df_results.to_csv(res_path, index=False)
             modified_count += 1
             
         except Exception as e:
             print(f"    [FATAL] Error running Supervisor for row {row_idx}: {e}")
-            # Continue or exit? Original exited.
-            # sys.exit(1)
             continue
             
     print(f"  Completed {stem}. Modified {modified_count} rows.")
 
 def main():
     print("Starting Ablation Study (No Fusion) Rerun...")
-    # Iterate all experiments
     for stem in EXPERIMENTS:
         aug_results_rerun_for_stem(stem)
     print("Done.")
 
 if __name__ == "__main__":
     main()
-

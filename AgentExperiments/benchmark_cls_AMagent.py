@@ -18,16 +18,8 @@ import json
 from google import genai
 from google.genai import types
 
-# ----------------------------------------------------
-# Constants / Labels
-# ----------------------------------------------------
-
-LABEL_ORDER = ["none", "lof", "balling", "keyhole"]  # 0,1,2,3
+LABEL_ORDER = ["none", "lof", "balling", "keyhole"] 
 VALID_LABELS = set(LABEL_ORDER)
-
-# ----------------------------------------------------
-# LLM config helpers
-# ----------------------------------------------------
 
 def get_llm_settings(profile: Optional[str] = None) -> LLMSettings:
     profiles = config.llm
@@ -66,7 +58,6 @@ def make_chat_client(profile: Optional[str] = "default") -> tuple[Any, str, dict
         return client, model, default_kwargs
 
     elif api_type.lower() == "google":
-        # Google GenAI
         try:
             from google import genai
             from google.genai import types
@@ -79,13 +70,10 @@ def make_chat_client(profile: Optional[str] = "default") -> tuple[Any, str, dict
             
         client = genai.Client(api_key=api_key)
         model = llm.model
-        # Construct config using types
-        # Note: mapping config.toml params to GenAI config
-        # max_tokens vs max_output_tokens
         genai_config = types.GenerateContentConfig(
             temperature=llm.temperature,
             max_output_tokens=llm.max_tokens if hasattr(llm, 'max_tokens') else 8192,
-            thinking_config=types.ThinkingConfig(include_thoughts=False, thinking_budget=1024) # Increased budget to safe minimum
+            thinking_config=types.ThinkingConfig(include_thoughts=False, thinking_budget=1024) 
         )
         default_kwargs = {
             "config": genai_config
@@ -95,14 +83,10 @@ def make_chat_client(profile: Optional[str] = "default") -> tuple[Any, str, dict
     else:
         raise ValueError(f"Unsupported api_type: {llm.api_type!r}")
 
-# ----------------------------------------------------
-# Experiment Config
-# ----------------------------------------------------
-
 EXP_DIR = "data_exp"
 LABEL_COL = "defect_label"
 META_COL = "material"
-randomState = 42  # used for deterministic sampling
+randomState = 42
 
 EXPERIMENTS = [
     "Exp_ID_1",
@@ -117,7 +101,6 @@ EXPERIMENTS = [
 
 VALID_LABELS = {"none", "lof", "balling", "keyhole"}
 
-# Best model per experiment (from prior study)
 BEST_MODELS = {
     "Exp_ID_1": "RF",
     "Exp_OOD_1": "RF",
@@ -133,10 +116,6 @@ def _exp_type_from_stem(stem: str) -> str:
     return "in-distribution" if "_ID_" in stem or stem.endswith("_ID") else "out-of-distribution"
 
 
-# ----------------------------------------------------
-# RAG Loader
-# ----------------------------------------------------
-
 class RAGLoader:
     """
     Loads result.jsonl files from results_AM/{Material}_Search/results.jsonl
@@ -146,7 +125,6 @@ class RAGLoader:
         self.base_dir = base_dir
         self.cache: Dict[str, List[str]] = {}
         
-        # Map canonical "material" -> Folder Name
         self.mat_to_folder = {
             "SS316L": "SS316L_Search",
             "Ti-6Al-4V": "Ti-6Al-4V_Search",
@@ -173,8 +151,6 @@ class RAGLoader:
                 try:
                     rec = json.loads(line)
                     summ = rec.get("summary", "").strip()
-                    # Filter empty or "No info" placeholders if specific text is known, 
-                    # but mostly reliance on length and quality.
                     if len(summ) < 50: 
                         continue
                     if "No relevant parameter-defect information" in summ:
@@ -200,12 +176,9 @@ class RAGLoader:
             return []
             
         rng = random.Random(seed)
-        # Sample with replacement if pool is small? Or just min.
-        # usually sample without replacement is better for context
         k_actual = min(k, len(pool))
         return rng.sample(pool, k_actual)
 
-# Global loader instance (lazy init in main or eval)
 _RAG_LOADER = None
 
 def get_rag_loader() -> RAGLoader:
@@ -214,30 +187,25 @@ def get_rag_loader() -> RAGLoader:
         _RAG_LOADER = RAGLoader()
     return _RAG_LOADER
 
-# Aliases to canonical material keys in DOMAIN_KNOWLEDGE
 MATERIAL_ALIASES: Dict[str, str] = {
-    # SS316L aliases
     "ss316l": "SS316L",
     "stainless steel 316l": "SS316L",
     "aisi 316l": "SS316L",
     "316l": "SS316L",
     "316l stainless steel": "SS316L",
 
-    # Ti-6Al-4V aliases
     "ti-6al-4v": "Ti-6Al-4V",
     "ti6al4v": "Ti-6Al-4V",
     "ti 6al 4v": "Ti-6Al-4V",
     "ti64": "Ti-6Al-4V",
     "grade 5": "Ti-6Al-4V",
 
-    # IN718 aliases
     "in718": "IN718",
     "inconel 718": "IN718",
     "alloy 718": "IN718",
     "nickel alloy 718": "IN718",
     "ni-based superalloy 718": "IN718",
 
-    # 17-4PH aliases
     "ss17-4ph": "17-4PH",
     "17-4ph": "17-4PH",
     "17-4 ph": "17-4PH",
@@ -252,9 +220,6 @@ def _canonicalize_material(name: Optional[str]) -> Optional[str]:
     key = str(name).strip().lower()
     return MATERIAL_ALIASES.get(key, None)
 
-# ----------------------------------------------------
-# Utilities: data loading and formatting
-# ----------------------------------------------------
 
 def _load_exp_split(stem: str) -> pd.DataFrame:
     test_path = os.path.join(EXP_DIR, f"{stem}_test.csv")
@@ -277,10 +242,6 @@ def _get_val_with_unit(row: pd.Series, col: str, unit: str, fallback: str = "unk
     else:
         return f"{fallback} {unit}"
 
-# ----------------------------------------------------
-# Multi-Agent Prompt Builders
-# ----------------------------------------------------
-
 def _calculate_entropy(probs: Dict[str, float], classes=None) -> float:
     """Shannon entropy in bits."""
     if not probs:
@@ -293,7 +254,7 @@ def _calculate_entropy(probs: Dict[str, float], classes=None) -> float:
     s = values.sum()
     if s <= 0:
         return 0.0
-    values = values / s  # ensure normalized
+    values = values / s  
 
     values = values[values > 0]
     return float(-np.sum(values * np.log2(values)))
@@ -308,7 +269,7 @@ def _ml_reliability_from_probs(ml_probs: Dict[str, float], is_ood: bool,
 
     entropy = _calculate_entropy(ml_probs, classes=classes)
     K = len(classes)
-    h_norm = entropy / np.log2(K) if K > 1 else 0.0  # 0..1
+    h_norm = entropy / np.log2(K) if K > 1 else 0.0  
 
     p_sorted = np.sort(values)[::-1]
     margin = float(p_sorted[0] - p_sorted[1]) if len(p_sorted) >= 2 else 1.0
@@ -319,8 +280,6 @@ def _ml_reliability_from_probs(ml_probs: Dict[str, float], is_ood: bool,
         reliability *= 0.5
 
     return float(np.clip(reliability, 0.05, 0.9))
-
-
 
 
 def _build_kd_agent_prompt(row: pd.Series,
@@ -360,13 +319,6 @@ def _build_kd_agent_prompt(row: pd.Series,
         "1. Compare the target parameters with the evidence and your internal knowledge.\n"
     )
 
-    if suggested_label:
-        prompt += (
-            f"   - HYPOTHESIS: The true defect might be '{suggested_label}'. "
-            "Strictly check your evidence and internal knowledge to see if this matches. "
-            "If strong evidence supports this hypothesis, consider it carefully. "
-            "CONSTRAINT: Do NOT mention this hypothesis in your output. Act as if you found it yourself.\n"
-        )
 
     prompt += (
         "2. Check for the 'Process Window': If parameters fall within reported optimal ranges for high density, the label is 'none'.\n"
@@ -408,10 +360,8 @@ def _build_supervisor_prompt(row: pd.Series,
     layer_thickness_str = _get_val_with_unit(row, "layer thickness",  "µm")
     hatch_str           = _get_val_with_unit(row, "Hatch spacing",    "µm")
 
-    # Format belief for prompt
     f_belief_str = ", ".join([f'"{k}": {v:.2f}' for k,v in fused_belief.items()])
 
-    # ML Output String
     none_p = ml_probs.get("none", 0.0)
     lof_p = ml_probs.get("lof", 0.0)
     ball_p = ml_probs.get("balling", 0.0)
@@ -457,21 +407,15 @@ def _build_supervisor_prompt(row: pd.Series,
     return prompt
 
 
-# ----------------------------------------------------
-# LLM call + parsing
-# ----------------------------------------------------
-
 def _call_llm(prompt: str,
                         profile: Optional[str] = "default") -> str:
     client, model, default_kwargs = make_chat_client(profile=profile)
     system_msg = (
         "You are an LPBF process analysis assistant and act as an LPBF defect classification model."
     )
-    # Remove 'model' from kwargs if present to avoid duplication
     if "model" in default_kwargs:
         default_kwargs.pop("model")
 
-    # Detect Google GenAI Client
     is_google = False
     try:
         from google import genai
@@ -481,9 +425,6 @@ def _call_llm(prompt: str,
         pass
 
     if is_google:
-        # Google GenAI Flow
-        # Combine system message and prompt or use system instruction? 
-        # Simpler to prepend system message for now as snippet didn't specify system instruction.
         full_prompt = f"{system_msg}\n\n{prompt}"
         
         resp = client.models.generate_content(
@@ -491,14 +432,9 @@ def _call_llm(prompt: str,
             contents=full_prompt,
             **default_kwargs
         )
-        # Handle cases where model thinks but produces no final text or empty text
-        # Handle cases with mixed content (thoughts + text) to avoid warning
         final_text = []
         if resp.candidates and resp.candidates[0].content and resp.candidates[0].content.parts:
             for part in resp.candidates[0].content.parts:
-                # We only want text parts. 'thought' parts usually don't have text or we skip them.
-                # The SDK warning suggests avoiding .text accessor if mixed.
-                # We check if part has text attribute and it's not empty.
                 if hasattr(part, "text") and part.text:
                     final_text.append(part.text)
         
@@ -508,7 +444,6 @@ def _call_llm(prompt: str,
              return "Error: Empty response from model (possibly thinking timeout or filter)."
         return full_response
 
-    # Default OpenAI/Azure Flow
     resp = client.chat.completions.create(
         model=model,
         messages=[
@@ -520,10 +455,6 @@ def _call_llm(prompt: str,
     )
     return resp.choices[0].message.content.strip()
 
-
-# ----------------------------------------------------
-# Deterministic Fusion Logic
-# ----------------------------------------------------
 
 def _deterministic_fusion(ml_probs_raw: Dict[str, float],
                           ml_reliability: float,
@@ -540,7 +471,7 @@ def _deterministic_fusion(ml_probs_raw: Dict[str, float],
     
     rag_belief = _extract_json_block(rag_resp, "BELIEF") or default_belief
     rag_rel = _extract_float_block(rag_resp, "RELIABILITY")
-    if rag_rel is None: rag_rel = 0.3 # default lower for RAG
+    if rag_rel is None: rag_rel = 0.3 
     
     for b in [ml_belief, rag_belief]:
         total = sum(b.get(k, 0) for k in LABEL_ORDER)
@@ -574,15 +505,12 @@ def _extract_label_from_response(text: str) -> str:
     if not text or not isinstance(text, str):
         return "unknown"
     
-    # Extract content between [LABEL]...[/LABEL] tags
-    # The regex is now more permissive about what's inside, we'll clean it up after
     m = _LABEL_REGEX.search(text)
     if not m:
         return "unknown"
         
     raw = m.group(1).strip().lower()
     norm = re.sub(r"[\{\}\"\'\n\r]", "", raw).strip()
-    # Also handle cases like "label: none" inside the tag if model hallucinated
     if ":" in norm:
         norm = norm.split(":")[-1].strip()
     if norm in VALID_LABELS:
@@ -630,9 +558,6 @@ def _normalize_ground_truth_label(y) -> str:
         
     return "unknown"
 
-# ----------------------------------------------------
-# Partial results persistence
-# ----------------------------------------------------
 
 def _get_output_paths(stem: str, model_tag: str) -> str:
     base_dir = f"./results_AM/AMagent_{model_tag}"
@@ -662,7 +587,7 @@ def _load_partial_results(stem: str, model_tag: str) -> pd.DataFrame:
         df = pd.read_csv(out_path)
         for c in cols:
             if c not in df.columns:
-                df[c] = ""  # or np.nan
+                df[c] = "" 
         df = df[cols]
     else:
         df = pd.DataFrame(columns=cols)
@@ -704,8 +629,8 @@ def _append_partial_result(stem: str, row_dict: dict, model_tag: str) -> None:
                     df_old[c] = ""
             df_old = df_old[fieldnames]
             os.makedirs(os.path.dirname(out_path), exist_ok=True)
-            df_old.to_csv(out_path, index=False, encoding="utf-8")  # rewrites with new header
-            write_header = False  # header already written
+            df_old.to_csv(out_path, index=False, encoding="utf-8") 
+            write_header = False 
 
     mode = "a" if os.path.exists(out_path) else "w"
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
@@ -715,9 +640,6 @@ def _append_partial_result(stem: str, row_dict: dict, model_tag: str) -> None:
             writer.writeheader()
         writer.writerow(row_dict)
 
-# ----------------------------------------------------
-# train best model and get per-row probabilities
-# ----------------------------------------------------
 
 def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.DataFrame) -> Dict[int, Dict[str, float]]:
     """
@@ -728,7 +650,6 @@ def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.D
     num_feats = ["Power", "Velocity", "beam D", "layer thickness", "Hatch spacing"]
     cat_feats = ["material"]
 
-    # Build X/y with available columns (silently drop missing features if any)
     cols_needed = [c for c in num_feats + cat_feats if c in df_train.columns]
     if LABEL_COL not in df_train.columns:
         raise RuntimeError(f"{stem}: '{LABEL_COL}' not found in train set.")
@@ -736,7 +657,6 @@ def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.D
     X_train = df_train[cols_needed].copy()
     y_train = df_train[LABEL_COL].copy()
 
-    # Ensure same columns present in test (fill missing cols if needed)
     X_test = df_test.reindex(columns=cols_needed, fill_value=np.nan).copy()
 
     num_cols_present = [c for c in num_feats if c in cols_needed]
@@ -772,7 +692,7 @@ def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.D
             max_depth=None,
             random_state=randomState,
             n_jobs=-1,
-            class_weight="balanced", # Handle imbalance directly
+            class_weight="balanced", 
         )
 
     pipe = Pipeline([
@@ -780,7 +700,6 @@ def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.D
         ("clf", clf),
     ])
 
-    # Map integer y -> canonical labels
     y_train_norm = y_train.apply(_normalize_ground_truth_label)
     mask = y_train_norm.isin(LABEL_ORDER)
     X_train = X_train[mask]
@@ -789,16 +708,12 @@ def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.D
     if len(X_train) == 0:
         raise RuntimeError(f"{stem}: No valid training rows after label normalization.")
 
-    # Fit with weights if GB (RF handles it internally via class_weight)
     if model_name == "GB":
-        # Compute weights for balanced training
         weights = compute_sample_weight(class_weight="balanced", y=y_train_norm)
-        # Pass to the 'clf' step of pipeline
         pipe.fit(X_train, y_train_norm, **{'clf__sample_weight': weights})
     else:
         pipe.fit(X_train, y_train_norm)
 
-    # Predict probabilities
     proba = pipe.predict_proba(X_test)
     cls_order = list(pipe.classes_)
 
@@ -807,7 +722,6 @@ def _train_ml_and_predict_proba(stem: str, df_train: pd.DataFrame, df_test: pd.D
         row_map = {c: 0.0 for c in LABEL_ORDER}
         for c_idx, c_name in enumerate(cls_order):
             row_map[c_name] = float(proba[ridx][c_idx])
-        # optional rounding for neatness
         row_map = {k: round(row_map[k], 4) for k in LABEL_ORDER}
         proba_by_row[int(idx)] = row_map
 
@@ -825,15 +739,12 @@ def _argmax_label_from_probs(prob_map: Dict[str, float]) -> str:
             best_p = p
             best_lbl = lbl
     return best_lbl
-# ----------------------------------------------------
-# Evaluation loop
-# ----------------------------------------------------
+
 def evaluate_resume(
     stem: str,
     supervisor_profile: str = "default",
     sub_agent_profile: str = "deepseek",
 ) -> Dict[str, float]:
-    # 1) Load test split
     df_test = _load_exp_split(stem)
     if LABEL_COL not in df_test.columns:
         raise RuntimeError(f"{stem}: '{LABEL_COL}' not found in test set.")
@@ -842,7 +753,6 @@ def evaluate_resume(
     if "row_idx" not in df_test.columns:
         df_test["row_idx"] = df_test.index
 
-    # 2) Train ML & proba
     df_train = _load_exp_train(stem)
     exp_type = _exp_type_from_stem(stem)
     ml_probs_by_row: Dict[int, Dict[str, float]] = {}
@@ -852,45 +762,34 @@ def evaluate_resume(
         except Exception as e:
             print(f"[WARN] ML training failed for {stem}: {e}")
 
-    # 3) Load partial
     df_partial = _load_partial_results(stem, model_tag=supervisor_profile)
     done_row_idxs = set(df_partial["row_idx"].tolist())
 
-    # 3b) RAG Loader
     rag_loader = get_rag_loader()
 
-    # 4) Query LLM for missing rows
     for idx, row in df_test.iterrows():
         if idx in done_row_idxs:
             continue
 
-        # String GT label
         gt_label_str = _normalize_ground_truth_label(row[LABEL_COL])
 
-        # ML predicted label (string)
         ml_probs = ml_probs_by_row.get(int(idx), {})
         ml_pred_label = _argmax_label_from_probs(ml_probs)
 
-        # RAG Context
         material_name = row.get("material", "")
         seed = int(idx) + randomState
         rag_context = rag_loader.get_context(material_name, k=5, seed=seed)
 
-        # Calculate ML stats
         etype = exp_type if exp_type else "in-distribution"
         is_ood_model = (etype == "out-of-distribution")
         
         ml_entropy = _calculate_entropy(ml_probs, classes=tuple(LABEL_ORDER))
         ml_reliability = _ml_reliability_from_probs(ml_probs, is_ood_model, classes=tuple(LABEL_ORDER))
 
-        # --- Multi-Agent Execution ---
         
-        # Step 1: ML Agent (SKIPPED - Direct Usage)
-        # We no longer call the LLM for the ML agent. We use the probs/reliability directly.
         resp_text_ml_clean = "" 
-        agent_ml_label = ml_pred_label # Just for tracking, though we don't save it as 'agent_ml_label' column anymore
+        agent_ml_label = ml_pred_label 
 
-        # Step 2: KD Agent
         prompt_rag = _build_kd_agent_prompt(row, rag_context=rag_context)
         try:
             resp_text_rag = _call_llm(prompt_rag, profile=sub_agent_profile)
@@ -900,8 +799,6 @@ def evaluate_resume(
             resp_text_rag_clean = f"[ERROR] {e}"
             agent_rag_label = "unknown"
 
-        # Step 3: Deterministic Fusion
-        # Determine if OOD
         is_ood_exp = "OOD" in stem
         
         fused_belief, fused_label = _deterministic_fusion(
@@ -911,7 +808,6 @@ def evaluate_resume(
             is_ood=is_ood_exp
         )
 
-        # Step 4: Supervisor
         prompt_sup = _build_supervisor_prompt(
             row, 
             ml_probs=ml_probs,
@@ -930,7 +826,6 @@ def evaluate_resume(
             resp_text_sup_clean = f"[ERROR] {e}"
             supervisor_label = "unknown"
         
-        # Collect prompts for debug
         prompts_debug = json.dumps({
             "kd_agent_prompt": prompt_rag,
             "supervisor_prompt": prompt_sup,
@@ -941,7 +836,6 @@ def evaluate_resume(
             }
         })
 
-        # Save Record
         row_record = {
             "row_idx": int(idx),
             "material": row.get("material", ""),
@@ -964,7 +858,6 @@ def evaluate_resume(
 
         _append_partial_result(stem, row_record, model_tag=supervisor_profile)
 
-    # 5) Reload predictions (full) and join with df_test for scoring
     df_results = _load_partial_results(stem, model_tag=supervisor_profile)
     df_results = df_results[df_results["row_idx"].isin(df_test.index)].copy()
 
@@ -976,15 +869,11 @@ def evaluate_resume(
         suffixes=("", "_true"),
     )
 
-    # Canonicalize GT
     df_join["gt_label_canon"]  = df_join[LABEL_COL].apply(_normalize_ground_truth_label)
-    # Use SUPERVISOR label for final metrics
     df_join["pred_label_canon"] = df_join["supervisor_label"].astype(str).str.lower()
     
-    # Derive match flag
     df_join["match_flag"] = df_join["gt_label_canon"] == df_join["pred_label_canon"]
 
-    # 6) Macro-F1 computation
     preds = df_join["pred_label_canon"].tolist()
     gts   = df_join["gt_label_canon"].tolist()
     valid_mask = np.array([(p in VALID_LABELS) and (g in VALID_LABELS) for p, g in zip(preds, gts)], dtype=bool)
@@ -1008,28 +897,18 @@ def evaluate_resume(
     return result
 
 
-# ----------------------------------------------------
-# Main
-# ----------------------------------------------------
-
 def main():
-    # --- CONFIGURATION ---
-    # Define which LLM profile to use here (e.g. "default", "gpt4", "deepseek")
-    SUPERVISOR_PROFILE = "gpt5"      # The final decision maker
-    SUB_AGENT_PROFILE = "gemini"     # The ML and RAG analysts (updated to google gemini)
-    # ---------------------
+    SUPERVISOR_PROFILE = "gpt5"      
+    SUB_AGENT_PROFILE = "gemini"     
 
     print(f"Running benchmark with supervisor={SUPERVISOR_PROFILE}, sub_agents={SUB_AGENT_PROFILE}")
     
-    # 1. Run / Resume Experiments
     for stem in EXPERIMENTS:
         print("\n=======================================")
         print(f" evaluation on {stem} (resumable)")
         print("=======================================")
 
         try:
-            # evaluate_resume checks if output file exists and has rows. 
-            # If partially done, it resumes. If done, it just loads and returns results.
             res = evaluate_resume(
                 stem,
                 supervisor_profile=SUPERVISOR_PROFILE,
@@ -1044,7 +923,6 @@ def main():
             print(f"[ERROR] {stem}: {e}")
             continue
 
-    # 2. Detailed Metrics Summary
     print("\n--- Generating Metrics Summary ---")
     
     SEARCH_PATTERN = f"./results_AM/AMagent_{SUPERVISOR_PROFILE}/{SUPERVISOR_PROFILE}_raw_preds_*.csv"
@@ -1061,7 +939,6 @@ def main():
     ]
 
     for f in sorted(files):
-        # Extract experiment name from filename
         basename = os.path.basename(f)
         prefix = f"{SUPERVISOR_PROFILE}_raw_preds_"
         if basename.startswith(prefix):
@@ -1075,23 +952,18 @@ def main():
             print(f"[WARN] Failed to read {f}: {e}")
             continue
             
-        # Basic validation
         if "gt_label" not in df.columns:
             print(f"[WARN] Missing 'gt_label' in {f}, skipping.")
             continue
         
-        # Prepare Ground Truth
         y_true_raw = df["gt_label"].tolist()
         y_true = [_normalize_ground_truth_label(l) for l in y_true_raw]
         
-        # Calculate metrics for each target
         row_metrics = {
             "experiment": exp_name, 
             "n_samples": len(df)
         }
         
-        # Check against original test set size if possible to ensure COMPLETION
-        # (Optional: load test set and compare lengths)
         try:
             df_test = _load_exp_split(exp_name)
             row_metrics["n_total_test"] = len(df_test)
@@ -1101,7 +973,6 @@ def main():
             row_metrics["n_total_test"] = "unknown"
 
         for target_name, col_name in targets:
-            # Determine response column if available for re-parsing
             resp_col = None
             if target_name == "agent_ml":
                 resp_col = "agent_ml_response"
@@ -1112,14 +983,11 @@ def main():
             
             y_pred_derived = []
             
-            # If we have a response column, use it to re-extract labels 
-            # (fixes historic "unknown" parsing issues)
             if resp_col and resp_col in df.columns:
                 responses = df[resp_col].fillna("").astype(str).tolist()
                 for r in responses:
                     y_pred_derived.append(_extract_label_from_response(r))
             elif col_name in df.columns:
-                # Fallback to existing label column (e.g. for ml_pred)
                 raw_labels = df[col_name].fillna("unknown").astype(str).tolist()
                 y_pred_derived = [_normalize_ground_truth_label(l) for l in raw_labels]
             else:
@@ -1129,16 +997,12 @@ def main():
                 row_metrics[f"{target_name}_f1_weighted"] = None
                 continue
             
-            # Final normalization just in case
             y_pred = [_normalize_ground_truth_label(l) for l in y_pred_derived]
             
-            # Accuracy
             acc = accuracy_score(y_true, y_pred)
             
-            # Macro F1
             f1_macro = f1_score(y_true, y_pred, average="macro", zero_division=0)
             
-            # Weighted F1
             f1_weighted = f1_score(y_true, y_pred, average="weighted", zero_division=0)
             
             row_metrics[f"{target_name}_acc"] = round(acc, 4)
@@ -1149,11 +1013,8 @@ def main():
 
     if summary_rows:
         df_summary = pd.DataFrame(summary_rows)
-        # Order columns nicely
         base_cols = ["experiment", "n_samples", "n_total_test"]
         metric_cols = [c for c in df_summary.columns if c not in base_cols]
-        # Sort metric cols by agent then metric type
-        # simple sort works: agent_ml_... comes together
         metric_cols.sort()
         
         final_cols = base_cols + metric_cols
@@ -1163,7 +1024,6 @@ def main():
         df_summary.to_csv(OUT_METRICS, index=False)
         print(f"Saved extended metrics summary to: {OUT_METRICS}")
         
-        # Display
         with pd.option_context("display.max_columns", None, "display.width", 160):
             print(df_summary)
     else:

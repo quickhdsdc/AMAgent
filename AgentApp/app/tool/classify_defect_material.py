@@ -35,17 +35,16 @@ def _as_obj(text: Union[str, Dict[str, Any]]) -> Any:
         i += 1
     raise ValueError("No complete JSON object/array found in input.")
 
-_FEATURE_ORDER = ["velocity", "power", "beamDiameter", "layerThickness"]  # V, P, D, T
+_FEATURE_ORDER = ["velocity", "power", "beamDiameter", "layerThickness"] 
 
 _RANGES_USER_UNITS = {
-    "velocity":       (50.0, 3000.0),  # mm/s
-    "power":          (50.0, 1000.0),  # W
-    "beamDiameter":   (10.0, 200.0),   # µm
-    "layerThickness": (10.0, 100.0),   # µm
+    "velocity":       (50.0, 3000.0), 
+    "power":          (50.0, 1000.0), 
+    "beamDiameter":   (10.0, 200.0),  
+    "layerThickness": (10.0, 100.0),  
 }
 
-# >>> NEW ORDER & IDS <<<
-LABEL_ORDER = ["none", "LoF", "balling", "keyhole"]  # indices: 0,1,2,3
+LABEL_ORDER = ["none", "LoF", "balling", "keyhole"] 
 LABEL_TO_ID = {lbl: i for i, lbl in enumerate(LABEL_ORDER)}
 ID_TO_LABEL = {i: lbl for lbl, i in LABEL_TO_ID.items()}
 
@@ -111,7 +110,6 @@ def _normalize_label(lbl) -> str:
     if lbl is None:
         return "none"
     try:
-        # allow numeric-coded artifacts
         i = int(lbl)
         return ID_TO_LABEL.get(i, "none")
     except Exception:
@@ -149,7 +147,6 @@ def _predict_with_proba_robust(model, arr) -> Dict[str, Any]:
     """
     proba_named = {k: 0.0 for k in LABEL_ORDER}
 
-    # 1) predict_proba
     if hasattr(model, "predict_proba"):
         try:
             proba = model.predict_proba(arr)[0]
@@ -162,7 +159,6 @@ def _predict_with_proba_robust(model, arr) -> Dict[str, Any]:
         except Exception:
             pass
 
-    # 2) decision_function -> softmax
     if hasattr(model, "decision_function"):
         try:
             df = model.decision_function(arr)
@@ -176,7 +172,6 @@ def _predict_with_proba_robust(model, arr) -> Dict[str, Any]:
         except Exception:
             pass
 
-    # 3) One-vs-One vote
     if model.__class__.__name__ == "OneVsOneClassifier" and hasattr(model, "estimators_") and hasattr(model, "classes_"):
         try:
             classes = list(model.classes_)
@@ -208,7 +203,6 @@ def _predict_with_proba_robust(model, arr) -> Dict[str, Any]:
         except Exception:
             pass
 
-    # 4) predict()
     try:
         pred = model.predict(arr)
         lbl = _normalize_label(pred[0] if len(pred) else None)
@@ -219,6 +213,11 @@ def _predict_with_proba_robust(model, arr) -> Dict[str, Any]:
 
 
 class ClassifyDefect_Material(BaseTool):
+    """
+    Unified LPBF defect classifier for materials {Ti-6Al-4V, SS316L, SS17-4PH, IN718}.
+    Inputs: velocity [mm/s], power [W], beamDiameter [µm], layerThickness [µm].
+    Label IDs: 0=none, 1=LoF, 2=balling, 3=keyhole.
+    """
     name: str = "classify_defect_material"
     description: str = (
         "Unified LPBF defect classifier for materials {Ti-6Al-4V, SS316L, SS17-4PH, IN718}. "
@@ -245,19 +244,14 @@ class ClassifyDefect_Material(BaseTool):
 
     async def execute(self, wc_material: str, input_process_parameters: Union[str, Dict[str, Any]], **kwargs) -> ToolResult:
         try:
-            # 1. Parse Input
             x_raw = _as_obj(input_process_parameters)
             if not isinstance(x_raw, dict):
                 return ToolResult(error="input_process_parameters must be a JSON object.")
             
-            # 2. Normalize Material
             mat_key = _norm_material_name(wc_material)
             if not mat_key:
                 return ToolResult(error=f"Unsupported material '{wc_material}'. Supported: Ti-6Al-4V, SS316L, SS17-4PH, IN718.")
 
-            # 3. Construct Payload
-            # Force defaults if missing to avoid 422, though valid ranges check handles logic elsewhere
-            # We trust the ML service to handle basic type validation via Pydantic
             payload = {
                 "material": mat_key,
                 "velocity": float(x_raw.get("velocity", 0.0) or 0.0),
@@ -266,7 +260,6 @@ class ClassifyDefect_Material(BaseTool):
                 "layerThickness": float(x_raw.get("layerThickness", 0.0) or 0.0),
             }
 
-            # 4. Call ML Service
             import httpx
             async with httpx.AsyncClient() as client:
                 try:
@@ -274,13 +267,10 @@ class ClassifyDefect_Material(BaseTool):
                     resp.raise_for_status()
                     data = resp.json()
                 except httpx.RequestError:
-                     return ToolResult(error="ML Service unavailable (connection refused). Please ensure app/ml_service.py is running.")
+                    return ToolResult(error="ML Service unavailable (connection refused). Please ensure app/ml_service.py is running.")
                 except httpx.HTTPStatusError as e:
-                     return ToolResult(error=f"ML Service error: {e.response.text}")
+                    return ToolResult(error=f"ML Service error: {e.response.text}")
 
-            # 5. Calculate Reliability & Entropy (Client-side)
-            # Logic matches benchmark_cls_AMagent.py
-            
             def _calculate_entropy(probs: Dict[str, float]) -> float:
                 values = np.array(list(probs.values()), dtype=float)
                 s = values.sum()
@@ -307,14 +297,7 @@ class ClassifyDefect_Material(BaseTool):
                 if is_ood: reliability *= 0.5
                 return float(np.clip(reliability, 0.05, 0.9))
 
-            # Extract probs from ML Service response
-            # Expected format: {"label": "...", "proba_named": {"none": 0.1, ...}}
             proba_named = data.get("proba_named", {})
-            
-            # Check for OOD flags from validation step earlier (if we had them)
-            # For now, assume In-Distribution unless user flagged it elsewhere, 
-            # but the tool doesn't take is_ood param typically. 
-            # We will default is_ood=False here matching standard usage.
             
             entropy = _calculate_entropy(proba_named)
             reliability = _ml_reliability_from_probs(proba_named, is_ood=False)
@@ -322,7 +305,6 @@ class ClassifyDefect_Material(BaseTool):
             data["entropy"] = entropy
             data["reliability"] = reliability
 
-            # 6. Return Result
             return ToolResult(output=json.dumps(data, ensure_ascii=False))
 
         except Exception as e:

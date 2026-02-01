@@ -1,18 +1,15 @@
 import os, multiprocessing as mp
 
-# 1) Tame BLAS/numexpr threads (must be before numpy/sklearn import)
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
 os.environ.setdefault("VECLIB_MAXIMUM_THREADS", "1")
 os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
 
-# 2) Make joblib use threading by default (no nested process pools)
 os.environ.setdefault("JOBLIB_START_METHOD", "threading")
 os.environ.setdefault("JOBLIB_MULTIPROCESSING", "0")
 os.environ.setdefault("LOKY_MAX_CPU_COUNT", "1")
 
-# 3) Windows especially: use 'spawn' so children start cleanly
 if mp.get_start_method(allow_none=True) != "spawn":
     mp.set_start_method("spawn", force=True)
 
@@ -31,6 +28,9 @@ except Exception:
     DEFAULT_SERVER_URL = "http://127.0.0.1:8000/sse"
 
 class LiveSummary:
+    """
+    Parses live log streams to extract and format agent thoughts, tool usage, and completion status for UI display.
+    """
     def __init__(self):
         self.in_thoughts = False
         self.thoughts_lines: list[str] = []
@@ -38,7 +38,6 @@ class LiveSummary:
         self.completed_lines: list[str] = []
 
     def _is_end_marker(self, line: str) -> bool:
-        # be lenient about case/spacing
         low = line.lower()
         return (
             "🛠️" in line
@@ -55,13 +54,8 @@ class LiveSummary:
         updated = False
         s = line.strip()
 
-        # Start of thoughts
-        # Match "✨ <AgentName>'s thoughts:"
-        # We use a regex or simple substring check if we want to be generic
-        # Pattern: ... ✨ agentname's thoughts: ...
         if "'s thoughts:" in s and "✨" in s:
             self.in_thoughts = True
-            # chop everything before the colon
             parts = s.split("'s thoughts:", 1)
             if len(parts) > 1:
                 after = parts[1].strip()
@@ -70,25 +64,19 @@ class LiveSummary:
             updated = True
             return updated
 
-        # While inside thoughts, collect until an end marker
         if self.in_thoughts:
             if self._is_end_marker(s):
                 self.in_thoughts = False
-                # we will also process the marker below
             else:
-                # accumulate bullets / paragraphs (can be blank)
                 self.thoughts_lines.append(s)
                 updated = True
                 return updated
 
-        # Tool prepared
         if "🧰" in s and "Tools being prepared" in s:
-            # keep the whole tail after the colon
             tail = s.split("Tools being prepared:", 1)[1].strip() if "Tools being prepared:" in s else s
             self.prepared_line = tail or s
             updated = True
 
-        # Tool completed
         if "🎯" in s and "Tool" in s and "completed" in s:
             self.completed_lines.append(s)
             updated = True
@@ -98,7 +86,6 @@ class LiveSummary:
     def render(self) -> str:
         parts: list[str] = []
         if self.thoughts_lines:
-            # Normalize blank lines; join with \n
             body = "\n".join(self.thoughts_lines).strip()
             if body:
                 parts.append(f"{body}")
@@ -110,6 +97,9 @@ class LiveSummary:
 
 
 class MCPService:
+    """
+    Manages the lifecycle of the MCP Agent, handling initialization and message sending.
+    """
     def __init__(self):
         self.agent: MCPAgent | None = None
         self.initialized = False
@@ -177,12 +167,10 @@ class RequestLogCapture:
 def make_sink(q: asyncio.Queue[str]):
     """Return a Loguru sink function that pushes plain text lines into q."""
     def _sink(msg):
-        # msg may be a str or a loguru.Message
         try:
             text = msg if isinstance(msg, str) else getattr(msg, "message", str(msg))
         except Exception:
             text = str(msg)
-        # enqueue line-by-line so the parser sees bullets incrementally
         for line in str(text).splitlines():
             try:
                 asyncio.get_running_loop().call_soon_threadsafe(q.put_nowait, line)
@@ -192,6 +180,9 @@ def make_sink(q: asyncio.Queue[str]):
 
 
 async def on_send_stream(user_msg, chat_history, connection, server_url, verbosity):
+    """
+    Handles user message submission, streams logs and agent responses to the UI.
+    """
     await service.start(connection, server_url)
     if not user_msg.strip():
         yield gr.update(), chat_history, "```\nNo logs.\n```", chat_history
@@ -199,12 +190,10 @@ async def on_send_stream(user_msg, chat_history, connection, server_url, verbosi
 
     level = "INFO" if verbosity == "Verbose (INFO)" else "DEBUG" if verbosity == "Debug" else "WARNING"
 
-    # 1) append user + placeholder assistant
     chat_history = chat_history + [{"role": "user", "content": user_msg}]
     chat_history = chat_history + [{"role": "assistant", "content": "_working…_"}]
     yield gr.update(value=""), chat_history, "```\nStarting…\n```", chat_history
 
-    # 2) live logs via queue
     q: asyncio.Queue[str] = asyncio.Queue()
     stop = asyncio.Event()
     parser = LiveSummary()
@@ -222,7 +211,6 @@ async def on_send_stream(user_msg, chat_history, connection, server_url, verbosi
 
     task = asyncio.create_task(run_agent())
 
-    # simple throttle to avoid too many UI updates
     last_emit = 0.0
 
     try:
@@ -237,7 +225,6 @@ async def on_send_stream(user_msg, chat_history, connection, server_url, verbosi
                 buffer_lines.append(line)
                 changed = parser.feed(line)
 
-            # emit when summary changed or periodically while busy
             now = asyncio.get_running_loop().time()
             should_emit = changed or (now - last_emit > 0.5)
             if should_emit:
@@ -249,7 +236,6 @@ async def on_send_stream(user_msg, chat_history, connection, server_url, verbosi
             if stop.is_set() and q.empty():
                 break
 
-        # final emit
         full_log = "\n".join(buffer_lines)
         chat_history[-1] = {"role": "assistant", "content": parser.render()}
         logs_md = "```\n" + (full_log or "No logs.") + "\n```"
@@ -272,6 +258,9 @@ def on_clear():
 
 
 def make_app():
+    """
+    Constructs and configures the Gradio Blocks application.
+    """
     with gr.Blocks(title="MCP Agent") as demo:
         gr.Markdown("# MCP Agent\nTalk to your MCP server with a simple chat UI.")
 
@@ -335,19 +324,15 @@ if __name__ == "__main__":
     import time
     import atexit
 
-    # Start ML Service in background
-    print("[WebUI] Launching ML Service (app/ml_service.py)...")
     ml_proc = subprocess.Popen([sys.executable, "app/ml_service.py"])
     
     def _cleanup_ml():
         if ml_proc.poll() is None:
-            print("[WebUI] Terminating ML Service...")
             ml_proc.terminate()
             ml_proc.wait()
     
     atexit.register(_cleanup_ml)
     
-    # Give it a moment to initialize
     time.sleep(3)
 
     app = make_app()

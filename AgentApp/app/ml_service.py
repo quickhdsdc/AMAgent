@@ -59,13 +59,10 @@ loaded_models: Dict[str, Any] = {}
 # -------------------------------------------------------------------------
 
 def _find_reg_model_file(base_no_ext: str):
-    # Try .joblib
     if os.path.exists(base_no_ext + ".joblib"):
         return base_no_ext + ".joblib", "joblib"
-    # Try .json
     if os.path.exists(base_no_ext + ".json"):
         return base_no_ext + ".json", "xgb_json"
-    # Glob
     for pat, k in (("*.joblib", "joblib"), ("*.json", "xgb_json")):
         hits = glob.glob(base_no_ext + pat[1:])
         if hits:
@@ -102,12 +99,10 @@ def _predict_cls(model, arr: np.ndarray):
     """
     proba_named = {k: 0.0 for k in LABEL_ORDER}
     
-    # helper to update proba_named
     def update_probs(classes, probs):
         for c, p in zip(classes, probs):
             proba_named[_normalize_label(c)] += float(p)
 
-    # 1. predict_proba
     if hasattr(model, "predict_proba"):
         try:
             p = model.predict_proba(arr)[0]
@@ -115,7 +110,6 @@ def _predict_cls(model, arr: np.ndarray):
             return max(proba_named, key=proba_named.get), proba_named
         except: pass
 
-    # 2. decision_function
     if hasattr(model, "decision_function"):
         try:
             df = model.decision_function(arr)
@@ -125,7 +119,6 @@ def _predict_cls(model, arr: np.ndarray):
                 return max(proba_named, key=proba_named.get), proba_named
         except: pass
 
-    # 3. predict
     try:
         pred = model.predict(arr)[0]
         lbl = _normalize_label(pred)

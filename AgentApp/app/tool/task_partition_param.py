@@ -170,7 +170,6 @@ class TaskPartitionParam(BaseTool):
     }
 
     async def execute(self, query: str, **kwargs) -> ToolResult:
-        # query = "Given a part to be printed in IN625 (Cp=429J/kg·K, k=9.8W/m·K) using LPBF with laser power 120 W, scan velocity 500 mm/s, beam diameter 62 µm, and layer thickness 60 µm, please predict the expected quality."
 
         try:
             client = AzureOpenAI(
@@ -178,11 +177,6 @@ class TaskPartitionParam(BaseTool):
                 azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
                 api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
             )
-            # client = AzureOpenAI(
-            #     api_key="e78fb0af217940948b13612ce9732393",
-            #     azure_endpoint="https://fhgenie-api-ipa-genai4aas.openai.azure.com/",
-            #     api_version="2023-05-15",
-            # )
 
             resp = client.chat.completions.create(
                 model="gpt-5-2025-08-07",
@@ -202,6 +196,3 @@ class TaskPartitionParam(BaseTool):
                 hint = ("Check Azure OpenAI env vars: AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, "
                         "AZURE_OPENAI_API_VERSION.")
             return ToolResult(error=f"task_partition_param failed: {msg}" + (f" | {hint}" if hint else ""))
-
-
-

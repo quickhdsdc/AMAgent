@@ -6,10 +6,8 @@ import json
 import logging
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 
-# Ensure we can import modules from the current directory
 sys.path.append(os.getcwd())
 
-# Import necessary functions from benchmark_cls_AMagent
 try:
     from benchmark_cls_AMagent import _call_llm, _build_supervisor_prompt, _extract_label_from_response
     print("Successfully imported benchmark_cls_AMagent utilities.")
@@ -19,7 +17,6 @@ except ImportError as e:
 
 app = Flask(__name__, template_folder='templates', static_folder='assets')
 
-# Global variables to store data
 DATA_FILE = None
 CSV_DATA = []
 HEADER = []
@@ -51,11 +48,9 @@ def view_sample(row_idx):
     row = CSV_DATA[row_idx]
     total_rows = len(CSV_DATA)
     
-    # Calculate prev/next indices
     prev_idx = row_idx - 1 if row_idx > 0 else None
     next_idx = row_idx + 1 if row_idx < total_rows - 1 else None
 
-    # Parse JSON prompts_debug if it exists, to show what was sent
     prompts = {}
     if row.get('prompts_debug'):
         try:
@@ -88,7 +83,6 @@ def evaluate_response():
     if not response_text:
         return jsonify({"error": "No response text provided"}), 400
 
-    # prompt for evaluation
     eval_prompt = (
         f"You are an expert AM Process Engineer. Please evaluate the following {response_type}.\n"
         f"Ground Truth Label: {gt_label}\n\n"
@@ -102,10 +96,6 @@ def evaluate_response():
     )
 
     try:
-        # Using 'gpt5' or 'gemini' profile based on availability, 
-        # defaulting to what's likely available or configurable.
-        # For this tool, we'll try to use the 'supervisor' profile if possible, 
-        # or fall back to 'default'.
         eval_result = _call_llm(eval_prompt, profile="default")
         return jsonify({"evaluation": eval_result})
     except Exception as e:

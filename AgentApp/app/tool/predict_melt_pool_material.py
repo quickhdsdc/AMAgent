@@ -49,13 +49,7 @@ def _as_obj(text: Union[str, Dict[str, Any]]) -> Any:
 # Domain config
 # ----------------------------
 
-# IMPORTANT: This order must match how you trained your regressors.
-# You told me these models were trained on [Velocity, Power, beam D, layer thickness].
-FEATURE_ORDER = ["velocity", "power", "beamDiameter", "layerThickness"]  # V, P, D, T
-
 # Map canonical material names (our internal keys) to model *bases* for each target.
-# We'll try "<base>.joblib" first (since we're going joblib-only now),
-# and fall back to "<base>.json" if you happen to have an XGBoost JSON dump.
 REG_MODELS: Dict[str, Dict[str, str]] = {
     "ti-6al-4v": {
         "dep": "./ml_models/Reg/bestMAE_Ti6Al4V_NN_dep_V_P_D_T",
@@ -118,80 +112,6 @@ def _is_nan(x: Optional[float]) -> bool:
         x is None
         or (isinstance(x, float) and (math.isnan(x) or math.isinf(x)))
     )
-
-
-# ----------------------------
-# Model file resolution and loading (joblib-first)
-# ----------------------------
-
-def _find_model_file(base_no_ext: str) -> Tuple[Optional[str], str]:
-    """
-    Try to resolve the model file for a given base name.
-    Priority:
-      1. <base>.joblib   -> kind="joblib"
-      2. <base>.json     -> kind="xgb_json" (XGBoost Booster JSON)
-    If neither exists: return (None, "missing")
-    """
-    joblib_path = base_no_ext + ".joblib"
-    if os.path.exists(joblib_path):
-        return joblib_path, "joblib"
-
-    json_path = base_no_ext + ".json"
-    if os.path.exists(json_path):
-        return json_path, "xgb_json"
-
-    # last resort: glob in case of minor naming differences
-    for pattern, kind in (("*.joblib", "joblib"), ("*.json", "xgb_json")):
-        hits = glob.glob(base_no_ext + pattern[1:])
-        if hits:
-            return hits[0], kind
-
-    return None, "missing"
-
-
-def _load_model_sync(path: str, kind: str):
-    """
-    Blocking loader.
-    - kind="joblib": load sklearn-like estimators with joblib.load
-    - kind="xgb_json": load XGBoostRegressor saved with Booster.save_model("...json")
-    """
-    if kind == "joblib":
-        import joblib
-        return joblib.load(path)
-
-    if kind == "xgb_json":
-        import xgboost as xgb
-        model = xgb.XGBRegressor()
-        model.load_model(path)
-        return model
-
-    raise RuntimeError(f"Unsupported model kind '{kind}'")
-
-
-async def _load_model(path: str, kind: str):
-    """
-    Async wrapper: run _load_model_sync in a worker thread so we don't block
-    the event loop. This still uses joblib.load directly (no subprocess),
-    because you've decided to trust that in your environment.
-    """
-    return await asyncio.to_thread(_load_model_sync, path, kind)
-
-
-def _predict_scalar(model, arr_2d: np.ndarray) -> Optional[float]:
-    """
-    Given a loaded regressor (sklearn-like or XGBRegressor) and
-    a 2D array [[vel, power, D, T]], return a single float.
-    """
-    try:
-        y = model.predict(arr_2d)
-        if y is None:
-            return None
-        y = np.ravel(y)
-        if y.size == 0:
-            return None
-        return float(y[0])
-    except Exception:
-        return None
 
 
 # ----------------------------

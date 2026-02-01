@@ -15,8 +15,8 @@ from tasks.AM_defect_classification.model_finetuner import ModelFinetuner
 from tasks.AM_defect_classification.evaluater import Evaluator
 import csv
 from typing import Dict
+import re
 
-# -------- CONFIG --------
 EXPERIMENTS = [
     "Exp_ID_1",  "Exp_OOD_1",
     "Exp_ID_2",  "Exp_OOD_2",
@@ -26,9 +26,8 @@ EXPERIMENTS = [
 
 MODEL_KEY = "Llama-3.3-70B-Instruct"
 DO_FINE_TUNE = False
-LOAD_IN_4BIT = True  # Set to False to use bfloat16 (requires MP with --num_processes 1 for large models)
+LOAD_IN_4BIT = True 
 
-# LoRA & train config
 LORA_R = 128
 LORA_ALPHA = 128
 LORA_DROPOUT = 0.1
@@ -42,7 +41,6 @@ TARGET_MODULES = "all-linear"
 RESET_DIR = True
 
 BASE_RESULTS = Path("./results/AM")
-# Directory creation moved to run_one_experiment or main with check
 
 MODEL_NAME_VERSION = {
     "llama3.1-8b-Instruct": {
@@ -68,15 +66,13 @@ MODEL_NAME_VERSION = {
 }
 
 SUMMARY_CSV = BASE_RESULTS / "all_experiments_summary.csv"
-# ------------------------
-import re, gc  # make sure these are imported
 
 def _ckpt_sort_key(p):
     """
     Sort checkpoints numerically if there's a step number in the name
     (e.g., 'checkpoint-10' < 'checkpoint-100'). Falls back to name.
     """
-    m = re.search(r'(\d+)(?!.*\d)', p.name)  # last number in the name
+    m = re.search(r'(\d+)(?!.*\d)', p.name) 
     return (0, int(m.group())) if m else (1, p.name.lower())
 
 
@@ -86,27 +82,21 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
         print(f" Running {experiment_name}")
         print(f"==============================")
     
-    # Sync all processes before starting a new experiment
     accelerator.wait_for_everyone()
 
-    # 1) Load data
     loader = TaskDataLoader(experiment_name=experiment_name)
     train_ds = loader.load_train()
     val_ds   = loader.load_val()
     test_ds  = loader.load_test()
     labels, label2id, id2label = loader.get_labels()
 
-    # 2) Load base model/tokenizer
     m = MODEL_NAME_VERSION[MODEL_KEY]
     model_loader = ModelLoader(accelerator=accelerator, load_in_4bit=LOAD_IN_4BIT)
     model, tokenizer = model_loader.load_model_from_path_name_version(
         m["model_root_path"], m["model_name"], m["model_version"]
     )
 
-    # 3) Preprocess
     prep = DataPreprocessor()
-    # Preprocess on all processes? Yes, usually dataset processing is fast or can be cached.
-    # With 'accelerate', it's often safer to let all processes have the data.
     train_fmt = prep.preprocess_data(tokenizer, train_ds, is_train=True,  max_length=512)
     val_fmt   = prep.preprocess_data(tokenizer, val_ds,   is_train=True,  max_length=512)
     test_fmt  = prep.preprocess_data(
@@ -117,7 +107,6 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
         enforce_structured_output=(not DO_FINE_TUNE)
     )
 
-    # 4) Output dir for this experiment
     exp_dir = BASE_RESULTS / experiment_name
     
     if DO_FINE_TUNE:
@@ -135,7 +124,6 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
     
     accelerator.wait_for_everyone()
 
-    # 5) Fine-tune (LoRA)
     best_f1 = float("-inf")
     best_acc = 0.0
     best_ckpt = None
@@ -154,15 +142,11 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
         
         accelerator.wait_for_everyone()
         
-        # CLEANUP: Free memory from training before evaluation
         del model
         del finetuner
         torch.cuda.empty_cache()
         gc.collect()
 
-        # 6) Evaluate every checkpoint; keep best macro-F1
-        
-        # Build a static list first (don’t iterate a live generator)
         ckpt_dirs = []
         if accelerator.is_main_process:
             ckpt_dirs = [
@@ -177,7 +161,7 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
             if d.is_dir() and d.name.lower().startswith("checkpoint")
         ]
         ckpt_dirs = sorted(set(ckpt_dirs), key=_ckpt_sort_key)
-        ckpt_dirs = ckpt_dirs[len(ckpt_dirs)//2:]  # Skip first half (under-trained)
+        ckpt_dirs = ckpt_dirs[len(ckpt_dirs)//2:]  
 
         if accelerator.is_main_process:
             print(f"Found {len(ckpt_dirs)} checkpoint dirs under {out_dir}:")
@@ -189,7 +173,6 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
                 print(f"Evaluating {d}")
             
             try:
-                # Synchronize before eval
                 accelerator.wait_for_everyone()
                 
                 acc, macro_f1 = evaluator.run_full_eval(
@@ -210,11 +193,9 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
                 best_ckpt = d.name
                 best_acc = acc
 
-            # free between checkpoints
             torch.cuda.empty_cache()
             gc.collect()
 
-        # fallback if no checkpoints
         if (not ckpt_dirs) and out_dir.exists():
             if accelerator.is_main_process:
                 print("No checkpoints found; evaluating base finetuned dir...")
@@ -231,13 +212,11 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
             best_acc = acc
             
     else:
-        # No Fine-tuning: Evaluate base model directly
         if accelerator.is_main_process:
             print("Skipping fine-tuning. Evaluating base model...")
         
         accelerator.wait_for_everyone()
         
-        # We pass the already loaded model/tokenizer. 
         acc, macro_f1 = evaluator.run_full_eval(
              experiment_name=experiment_name,
              finetuned_model_dir=None, 
@@ -250,7 +229,6 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
         best_acc = acc
         best_ckpt = "base_model"
 
-    # 7) Append summary row
     if accelerator.is_main_process:
         with open(SUMMARY_CSV, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -263,7 +241,6 @@ def run_one_experiment(experiment_name: str, accelerator: Accelerator) -> float:
     return best_f1, best_acc
 
 
-
 def _fmt_num(x):
     try:
         return f"{float(x):.4f}"
@@ -271,11 +248,9 @@ def _fmt_num(x):
         return "nan"
 
 def main():
-    # Set timeout to 1 hour to handle long evaluation times if needed
     kwargs = InitProcessGroupKwargs(timeout=timedelta(minutes=60))
     accelerator = Accelerator(kwargs_handlers=[kwargs])
     
-    # Ensure base result dir exists (main only)
     if accelerator.is_main_process:
         BASE_RESULTS.mkdir(parents=True, exist_ok=True)
     accelerator.wait_for_everyone()
@@ -284,12 +259,11 @@ def main():
 
     for stem in EXPERIMENTS:
         try:
-            best_f1, best_acc = run_one_experiment(stem, accelerator)  # now returns (f1, acc)
+            best_f1, best_acc = run_one_experiment(stem, accelerator) 
             all_scores[stem] = {"macro_f1": best_f1, "accuracy": best_acc}
         except Exception as e:
             if accelerator.is_main_process:
                 print(f"[ERROR] {stem} failed: {e}")
-                # write a failure row to the summary with both metrics as NaN
                 with open(SUMMARY_CSV, "a", newline="", encoding="utf-8") as f:
                     writer = csv.writer(f)
                     if f.tell() == 0:

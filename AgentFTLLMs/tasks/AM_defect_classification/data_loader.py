@@ -1,54 +1,7 @@
 import os
-import pandas as pd
-import torch
 from pathlib import Path
 from datasets import load_dataset
-
-
 from typing import Callable, Dict, List, Any
-
-import time
-import json
-import transformers
-import accelerate
-import peft
-import huggingface_hub
-from huggingface_hub import notebook_login
-print(f"Huggingface Hub version: {huggingface_hub.__version__}")
-
-from transformers import AutoImageProcessor
-from torchvision.transforms import (
-    CenterCrop,
-    Compose,
-    Normalize,
-    RandomHorizontalFlip,
-    RandomResizedCrop,
-    Resize,
-    ToTensor,
-)
-from transformers import AutoModelForImageClassification, TrainingArguments, Trainer
-from peft import LoraConfig, get_peft_model
-import numpy as np
-import evaluate
-from archiv.model_builder import ModelBuilder
-
-import bitsandbytes as bnb
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, PeftModel, AutoPeftModelForCausalLM
-from transformers import (AutoModelForCausalLM,
-                          AutoTokenizer,
-                          BitsAndBytesConfig,
-                          HfArgumentParser,
-                          Trainer,
-                          TrainingArguments,
-                          DataCollatorForLanguageModeling,
-                          EarlyStoppingCallback,
-                          AutoModelForSequenceClassification,
-                          pipeline,
-                          logging,
-                          set_seed)
-import os
-from random import randrange
-from functools import partial
 
 
 class TaskDataLoader:
@@ -72,11 +25,3 @@ class TaskDataLoader:
         print('dataset', self.dataset)
         self.labels = self.dataset['train'].features['label'].names
         print('labels', self.labels)
-            
-
-
-def main():
-    task_data_loader = TaskDataLoader('edit_intent_classification', 'train', 'test', 'test_big')
-
-if __name__ == "__main__":
-    main()

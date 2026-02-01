@@ -14,7 +14,6 @@ load_dotenv()
 from openai import OpenAI, AzureOpenAI
 from app.config import config, LLMSettings
 
-# Constants
 VALID_LABELS = {"none", "lof", "balling", "keyhole"}
 LABEL_ORDER = ["none", "lof", "balling", "keyhole"]
 
@@ -54,7 +53,6 @@ def make_chat_client(profile: Optional[str] = "default") -> Tuple[Any, str, dict
         return client, model, default_kwargs
 
     elif api_type.lower() == "google":
-        # Google GenAI
         try:
             from google import genai
             from google.genai import types
@@ -95,11 +93,9 @@ def _call_llm(prompt: str,
     system_msg = (
         "You are an LPBF process analysis assistant and act as an LPBF defect classification model."
     )
-    # Remove 'model' from kwargs if present to avoid duplication
     if "model" in default_kwargs:
         default_kwargs.pop("model")
 
-    # Detect Google GenAI Client
     is_google = False
     try:
         from google import genai
@@ -109,7 +105,6 @@ def _call_llm(prompt: str,
         pass
 
     if is_google:
-        # Google GenAI Flow
         full_prompt = f"{system_msg}\n\n{prompt}"
         
         resp = client.models.generate_content(
@@ -129,7 +124,6 @@ def _call_llm(prompt: str,
              return "Error: Empty response from model."
         return full_response
 
-    # Default OpenAI/Azure Flow
     resp = client.chat.completions.create(
         model=model,
         messages=[
@@ -206,10 +200,6 @@ def _build_kd_agent_prompt(process_params: dict,
     )
     return prompt
 
-# ---------------------------
-# Data model
-# ---------------------------
-
 @dataclass
 class Doc:
     doc_id: str
@@ -217,10 +207,6 @@ class Doc:
     fileName: str
     content: str
     summary: str
-
-# ---------------------------
-# Summarization helper
-# ---------------------------
 
 def _build_plain_summary(
     content: str,
@@ -261,28 +247,25 @@ def _build_plain_summary(
         "Only use information from CONTENT. Output a single paragraph."
     )
 
-    client, deployment_or_model, kwargs = make_chat_client("default") # Use default profile
+    client, deployment_or_model, kwargs = make_chat_client("default") 
     
-    # Handle Google GenAI differently if needed, but make_chat_client abstracts creation
-    # For completion call:
     try:
-        if hasattr(client, "chat"): # Azure/OpenAI
+        if hasattr(client, "chat"): 
             resp = client.chat.completions.create(
                 model=deployment_or_model,
                 messages=[{"role": "system", "content": system_msg},
                         {"role": "user", "content": user_msg}],
-                temperature=0.0 # override temp for determinism if needed, or rely on kwargs
+                temperature=0.0 
             )
             return (resp.choices[0].message.content or "").strip()
-        elif hasattr(client, "models"): # Google GenAI (approx check)
+        elif hasattr(client, "models"): 
              resp = client.models.generate_content(
                 model=deployment_or_model,
-                contents=user_msg, # system msg handling varies by model version in gemini
+                contents=user_msg, 
                 config=kwargs.get("config")
              )
              return resp.text.strip()
         else:
-            # Fallback for unexpected client type if possible, or assume OpenAI-like
              resp = client.chat.completions.create(
                 model=deployment_or_model,
                 messages=[{"role": "system", "content": system_msg},
@@ -294,9 +277,6 @@ def _build_plain_summary(
         print(f"Summarization error: {e}")
         return ""
 
-# ---------------------------
-# File / content helpers
-# ---------------------------
 def _strip_fences(s: str) -> str:
     s = s.strip()
     s = re.sub(r"^```(?:json)?\s*", "", s, flags=re.IGNORECASE)
@@ -315,9 +295,7 @@ def _as_obj(text: str) -> Any:
     i = 0
     n = len(s)
 
-    # scan to the first plausible JSON start
     while i < n:
-        # skip whitespace
         while i < n and s[i].isspace():
             i += 1
         if i >= n:
@@ -327,7 +305,6 @@ def _as_obj(text: str) -> Any:
                 obj, end = decoder.raw_decode(s, i)
                 return obj
             except json.JSONDecodeError:
-                # not a complete JSON at this position; advance one char
                 i += 1
                 continue
         i += 1
@@ -408,9 +385,6 @@ def _pick_content(result: Dict[str, Any], id2doc: Optional[Dict[str, Any]] = Non
             return resolved
     return ""
 
-# ---------------------------
-# Printing / saving
-# ---------------------------
 def print_and_save_evidence(
     evidence: Dict[str, Any],
     docs: Optional[List[Any]] = None,
@@ -421,9 +395,7 @@ def print_and_save_evidence(
     wrap_width: int = 100,
 ) -> tuple[str, List[str]]:
     results: List[Dict[str, Any]] = evidence.get("results", [])
-    # ts = time.strftime("%Y%m%d_%H%M%S")
-    # run_name = run_name or "bfsdfs"
-    out_dir = Path(base_dir)# / f"{ts}_{run_name}"
+    out_dir = Path(base_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     id2doc = _build_id_index(docs) if docs is not None else {}
@@ -469,7 +441,6 @@ def print_and_save_evidence(
             f.write(content if content else "_<no content>_\n")
         idx_to_mdtext[idx] = content
 
-    # ---- Build summaries (and write results.jsonl as before) ----
     summaries: List[str] = []
     with open(out_dir / "knowledge_retrieve_literature_results.jsonl", "w", encoding="utf-8") as f:
         for idx, r in enumerate(results, start=1):
@@ -499,26 +470,13 @@ def print_and_save_evidence(
             json.dump(out_record, f, ensure_ascii=False)
             f.write("\n")
 
-    # Also persist a human-readable summaries file (optional)
     with open(out_dir / "summaries.txt", "w", encoding="utf-8") as f:
         for i, s in enumerate(summaries, start=1):
             f.write(f"[{i}] {s}\n\n")
 
-    # with open(out_dir / "README.txt", "w", encoding="utf-8") as f:
-    #     f.write(
-    #         "This folder contains the retrieval output.\n"
-    #         "- evidence_full.json : original evidence dict (as produced by retrieval)\n"
-    #         "- results.jsonl      : revised records (no 'name', plus 'summary', 'passages'=original content)\n"
-    #         "- items/*.md         : per-result markdown files with original content\n"
-    #         "- summaries.txt      : plain-text summaries (one per result)\n"
-    #     )
-
     print(f"\nSaved results to: {out_dir}")
     return str(out_dir), summaries
 
-# ---------------------------
-# Retrieval helpers
-# ---------------------------
 
 def cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
     na = np.linalg.norm(a)
@@ -565,18 +523,13 @@ def build_query_text(process_terms: List[str],
         blocks.append("Objective: " + " | ".join(objective_terms))
     return "\n".join(blocks)
 
-# ---------------------------
-# Corpus & embeddings
-# ---------------------------
 
 def load_corpus(corpus_dir: str, specific_files: List[str] = None, min_chars: int = 150) -> List[Doc]:
     docs: List[Doc] = []
     
     if specific_files:
-        # Load only specified files
         paths = [os.path.join(corpus_dir, f) for f in specific_files]
     else:
-        # Load all json files
         paths = glob.glob(os.path.join(corpus_dir, "*.json"))
 
     skipped_count = 0
@@ -587,11 +540,9 @@ def load_corpus(corpus_dir: str, specific_files: List[str] = None, min_chars: in
             
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        # file can be a list of dicts or a single dict
         records = data if isinstance(data, list) else [data]
         for r in records:
             content = r.get("content", "")
-            # FILTER: Skip if content is too short (likely noise/headers)
             if len(content.strip()) < min_chars:
                 skipped_count += 1
                 continue
@@ -673,9 +624,6 @@ def build_faiss_index(vecs: np.ndarray) -> faiss.IndexFlatIP:
     index.add(normed)
     return index
 
-# ---------------------------
-# Missing pieces: RetrievalParams + retrieve_bfs_dfs
-# ---------------------------
 
 @dataclass
 class RetrievalParams:
@@ -719,7 +667,6 @@ def retrieve_bfs_dfs(
     objective_terms = objective_terms or []
     doc_vecs_n = normalize_rows(doc_vecs).astype("float32")
 
-    # Boolean gate cache
     allowed_mask = []
     matched_facets = []
     for d in docs:
@@ -728,7 +675,6 @@ def retrieve_bfs_dfs(
         matched_facets.append(matched)
     allowed_idx = np.array(allowed_mask, dtype=bool)
 
-    # Initial query
     q_text = build_query_text(process_terms, material_terms, parameter_terms, objective_terms)
     q_vec = embed_texts([q_text])[0].astype("float32")
     q_vec = (q_vec / (np.linalg.norm(q_vec) + 1e-12)).astype("float32")
@@ -798,221 +744,148 @@ def retrieve_bfs_dfs(
             "overlap_with_prev": ov,
         })
 
-        if ov >= params.overlap_thresh:
+        if t > 1 and ov > params.overlap_thresh:
             break
         frontier_prev = frontier_cur
 
-    final = []
-    for i, _prev in collected.items():
+    results = []
+    sorted_items = sorted(collected.items(), key=lambda x: x[1], reverse=True)
+    for i, score_hybrid in sorted_items:
         sim_q = cosine_sim(q_vec, doc_vecs_n[i])
         b = lexical_boost(docs[i], process_terms, material_terms, parameter_terms)
-        final.append((i, sim_q + b, sim_q, b))
-    final.sort(key=lambda x: x[1], reverse=True)
-
-    results = []
-    for i, score, sim_q, boost in final:
-        ok, matched = boolean_gate(docs[i], process_terms, material_terms)
-        spans = []
-        if docs[i].summary:
-            spans.extend(sent_split(docs[i].summary)[:2])
-        if not spans and docs[i].content:
-            spans.extend(sent_split(docs[i].content)[:2])
-        results.append({
-            "doc_id": docs[i].doc_id,
+        rec = {
+            "id": docs[i].doc_id,
             "name": docs[i].name,
             "fileName": docs[i].fileName,
-            "score_hybrid": round(score, 4),
-            "score_semantic": round(sim_q, 4),
-            "lexical_boost": round(boost, 4),
-            "facet_matches": matched,
-            "passages": spans,
-        })
+            "content": docs[i].content,
+            "summary": docs[i].summary,
+            "score_hybrid": float(score_hybrid),
+            "score_semantic": float(sim_q),
+            "lexical_boost": float(b),
+            "facet_matches": matched_facets[i]
+        }
+        results.append(rec)
 
-    evidence_pack = {
+    return {
+        "results": results,
+        "trace": trace,
         "query_facets": {
             "process_terms": process_terms,
             "material_terms": material_terms,
             "parameter_terms": parameter_terms,
-            "objective_terms": objective_terms,
-        },
-        "retrieval_params": {
-            "k_per_layer": params.k_per_layer,
-            "knn_neighbors_for_dfs": params.knn_neighbors_for_dfs,
-            "L_max": params.L_max,
-            "alpha": params.alpha,
-            "epsilon": params.epsilon,
-            "overlap_thresh": params.overlap_thresh,
-        },
-        "trace": trace,
-        "results": results,
+            "objective_terms": objective_terms
+        }
     }
-    return evidence_pack
 
-# ---------------------------
-# MCP Tool
-# ---------------------------
-class KnowledgeRetrievalLiterature(BaseTool):
+
+class KnowledgeRetrieveLiterature(BaseTool):
+    """
+    Search local corpus (JSONs) using BFS/DFS-inspired dense retrieval, then optionally summarize or QA.
+    """
     name: str = "knowledge_retrieve_literature"
     description: str = (
-        "Given a keyword set produced by task_extract_keywords, run literature retrieval to find evidence linking process parameters to print outcomes."
+        "Search local corpus (JSONs) using BFS/DFS-inspired dense retrieval, then optionally summarize or QA."
     )
     parameters: dict = {
         "type": "object",
         "properties": {
             "keywords": {
                 "type": "string",
-                "description": "Keyword set in JSON schema, containing process_terms, material_terms, parameter_terms, and objective_terms.",
+                "description": "Keyword set in a json format with field 'process_terms','material_terms','parameter_terms','objective_terms'",
+            },
+            "corpus_dir": {
+                "type": "string",
+                "description": "Directory containing .json corpus files.",
+                "default": "./corpus_AM",
+            },
+            "kb_construction_type": {
+                "type": "string",
+                "description": "'cache' (load existing embeddings) or 're-build'.",
+                "default": "cache",
+            },
+            "specific_doc_names": {
+                "type": "string",
+                "description": "Optional comma-separated list of filenames to restrict search to.",
+            },
+            "task_mode": {
+                "type": "string",
+                "description": "One of 'retrieval_only', 'summarize', 'defect_analysis'.",
+                "default": "retrieval_only",
+            },
+            "defect_hypothesis": {
+                 "type": "string",
+                 "description": "If task_mode='defect_analysis', suggest a defect to verify.",
             },
             "input_process_parameters": {
-                "type": "string",
-                "description": "JSON string of process parameters (material, Power, Velocity, beam D, layer thickness, Hatch spacing)."
+                "type": "object",
+                "description": "If task_mode='defect_analysis', pass process params here."
             }
         },
-        "required": ["keywords", "input_process_parameters"]
+        "required": ["keywords"],
+        "additionalProperties": False,
     }
 
-    async def execute(self, keywords: str, input_process_parameters: str, **kwargs) -> ToolResult:
+    async def execute(self,
+                      keywords: str,
+                      corpus_dir: str = "./corpus_AM",
+                      kb_construction_type: str = "cache",
+                      specific_doc_names: str = "",
+                      task_mode: str = "retrieval_only",
+                      defect_hypothesis: str = "",
+                      input_process_parameters: Dict[str, Any] = None,
+                      **kwargs) -> ToolResult:
+
+        data = _as_obj(keywords) 
+        process_terms = data.get("process_terms", [])
+        material_terms = data.get("material_terms", [])
+        parameter_terms = data.get("parameter_terms", [])
+        objective_terms = data.get("objective_terms", [])
+
+        file_list = None
+        if specific_doc_names.strip():
+            file_list = [f.strip() for f in specific_doc_names.split(",") if f.strip()]
+
         try:
-            # Parse parameters
-            params_raw = _as_obj(input_process_parameters)
-            if not isinstance(params_raw, dict): return ToolResult(error="input_process_parameters must be a JSON object")
-
-            # Normalization helper for keys
-            # Ensure "Power", "Velocity", "beam D", "layer thickness", "Hatch spacing" exist for prompt builder
-            # Map canonical user keys (power, velocity, beamDiameter, etc) to what the prompt expects
-            # Benchmark expects: Power, Velocity, beam D, layer thickness, Hatch spacing, material
-            
-            # Map common keys
-            mapped_params = {}
-            # direct copy
-            for k, v in params_raw.items(): mapped_params[k] = v
-            
-            # map canonical
-            if "power" in params_raw: mapped_params["Power"] = params_raw["power"]
-            if "velocity" in params_raw: mapped_params["Velocity"] = params_raw["velocity"]
-            if "beamDiameter" in params_raw: mapped_params["beam D"] = params_raw["beamDiameter"]
-            if "layerThickness" in params_raw: mapped_params["layer thickness"] = params_raw["layerThickness"]
-            if "hatchSpacing" in params_raw: mapped_params["Hatch spacing"] = params_raw["hatchSpacing"]
-            if "material" not in mapped_params and "wc_material" in params_raw: mapped_params["material"] = params_raw["wc_material"]
-            
-            data = _as_obj(keywords)
-            process_terms = data.get("process_terms", [])
-            material_terms = data.get("material_terms", [])
-            parameter_terms = data.get("parameter_terms", [])
-            objective_terms = data.get("objective_terms", [])
-
-            # Internal defaults
-            corpus_dir = "./corpus_AM"
-            # Define the 4 search configurations (matching AM_RAG.py)
-            search_configs = [
-                {
-                    "name": "Ti-6Al-4V_Search",
-                    "corpus_files": ["Ti-6Al-4V.json"],
-                    "cache_file": "./corpus_AM/doc_vecs_Ti64.pkl",
-                    "material_terms": ["Ti-6Al-4V", "Titanium Alloy", "Ti64"]
-                },
-                {
-                    "name": "SS316L_Search",
-                    "corpus_files": ["SS316L_SS17.json"],
-                    "cache_file": "./corpus_AM/doc_vecs_SS.pkl",
-                    "material_terms": ["SS316L", "316L Stainless Steel", "316L"]
-                },
-                {
-                    "name": "SS17-4PH_Search",
-                    "corpus_files": ["SS316L_SS17.json"],
-                    "cache_file": "./corpus_AM/doc_vecs_SS.pkl", # Reusing vector cache
-                    "material_terms": ["SS17-4PH", "17-4PH", "17-4 PH", "Stainless Steel 17-4"]
-                },
-                {
-                    "name": "IN718_Search",
-                    "corpus_files": ["IN718_IN625.json"],
-                    "cache_file": "./corpus_AM/doc_vecs_IN.pkl",
-                    "material_terms": ["IN718", "Inconel 718", "Inconel 718 Superalloy"]
-                }
-            ]
-            
-            # Determine which config to use based on material_terms
-            selected_config = None
-            
-            # Check for overlap between input material_terms and config material_terms
-            input_mat_terms_lower = [m.lower() for m in material_terms]
-            
-            for cfg in search_configs:
-                cfg_terms_lower = [t.lower() for t in cfg["material_terms"]]
-                # If any input term is in config terms, or vice versa (fuzzy match logic from AM_RAG logic?)
-                # AM_RAG iterates config and runs if that config's terms are relevant. 
-                # Here we have input terms. Let's find the best match.
-                
-                # Intersection check
-                if any(t in cfg_terms_lower for t in input_mat_terms_lower):
-                    selected_config = cfg
-                    break
-                    
-            run_name = "BFS_DFS_General"
-            corpus_files = None # load all
-            
-            if selected_config:
-                print(f"Matched configuration: {selected_config['name']}")
-                corpus_files = selected_config["corpus_files"]
-                cache_path = selected_config["cache_file"]
-                run_name = selected_config["name"]
-            else:
-                 print("No specific material config matched. Loading full corpus.")
-
-            # Pipeline Variables
-            params_obj = RetrievalParams()
-            output_base_dir = "./results_AM"
-            max_items_preview = 10
-            preview_chars = 300
-            wrap_width = 100
-            
-            # Pipeline
-            docs = load_corpus(corpus_dir, specific_files=corpus_files)
+            docs = load_corpus(corpus_dir, specific_files=file_list)
             if not docs:
-                return ToolResult(error=f"No JSON docs found for files={corpus_files} in '{corpus_dir}'.")
+                return ToolResult(error=f"No documents found in {corpus_dir}.")
 
-            doc_vecs = embed_and_cache(docs, cache_path=cache_path)
+            cache_path = os.path.join(corpus_dir, "doc_vecs.pkl")
+            if kb_construction_type == "re-build":
+                if os.path.exists(cache_path):
+                    os.remove(cache_path)
+                doc_vecs = embed_and_cache(docs, cache_path=cache_path)
+            else:
+                doc_vecs = embed_and_cache(docs, cache_path=cache_path)
+
             index = build_faiss_index(doc_vecs)
 
-            evidence = retrieve_bfs_dfs(
+            retrieval_res = retrieve_bfs_dfs(
                 docs, doc_vecs, index,
-                process_terms=process_terms,
-                material_terms=material_terms,
-                parameter_terms=parameter_terms,
-                objective_terms=objective_terms,
-                params=params_obj
+                process_terms, material_terms, parameter_terms, objective_terms
             )
 
             out_dir, summaries = print_and_save_evidence(
-                evidence,
-                docs=docs,
-                base_dir=f"{output_base_dir}/{run_name}", # Subfolder by run name
-                run_name=run_name,
-                max_items_preview=max_items_preview,
-                preview_chars=preview_chars,
-                wrap_width=wrap_width,
+                retrieval_res, docs, base_dir="results_AM/retrieval", run_name="tool_run"
             )
 
-            # Generate LLM response
-            rag_context = summaries[:5] # Use top 5 summaries
-            prompt = _build_kd_agent_prompt(mapped_params, rag_context=rag_context)
-            
-            # Call LLM
-            # NOTE: model hardcoded to match benchmark default 'gemini' or 'gpt-4o' equivalent
-            # Benchmark uses SUB_AGENT_PROFILE="gemini" which often maps to GPT-4o in config depending on setup
-            # We use "default" profile via _call_llm defaults. 
-            llm_response = _call_llm(prompt)
+            if task_mode == "defect_analysis":
+                context_snippets = summaries[:5] 
+                params = input_process_parameters or {}
+                prompt = _build_kd_agent_prompt(params, context_snippets, defect_hypothesis)
+                analysis = _call_llm(prompt)
+                return ToolResult(output=analysis)
 
-            return ToolResult(output=llm_response)
+            elif task_mode == "summarize":
+                combined_summary = "\n\n".join([f"[{i+1}] {s}" for i, s in enumerate(summaries[:10])])
+                return ToolResult(output=f"Retrieved {len(summaries)} docs. Top summaries:\n{combined_summary}")
+
+            else:
+                top_k = retrieval_res["results"][:10]
+                lines = []
+                for i, r in enumerate(top_k, 1):
+                    lines.append(f"{i}. {r['fileName']} (score={r['score_hybrid']:.3f})")
+                return ToolResult(output=f"Retrieved {len(retrieval_res['results'])} documents. Top 10:\n" + "\n".join(lines))
 
         except Exception as e:
-            msg = str(e)
-            hint = None
-            if "AZURE_OPENAI" in msg or "authentication" in msg.lower() or "invalid url" in msg.lower():
-                hint = (
-                    "Verify Azure OpenAI env vars: AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, "
-                    "AZURE_OPENAI_API_VERSION, AZURE_EMBEDDINGS_DEPLOYMENT."
-                )
-            return ToolResult(error=f"retrieval_bfs_dfs failed: {msg}" + (f" | {hint}" if hint else ""))
-
-
+            return ToolResult(error=f"knowledge_retrieve_literature failed: {str(e)}")

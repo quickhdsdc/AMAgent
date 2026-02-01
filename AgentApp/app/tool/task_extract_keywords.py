@@ -177,7 +177,7 @@ class TaskExtractKeywords(BaseTool):
     }
 
     async def execute(self, payload_json: str, **kwargs) -> ToolResult:
-        # payload_json = "{\"working_conditions\": {\"process\": \"LPBF\", \"material\": {\"name\": \"Ti-6Al-4V\", \"aliases\": [\"Ti-6Al-4V\"], \"properties\": {\"Cp\": {\"value\": null, \"unit\": null}, \"k\": {\"value\": null, \"unit\": null}}}}, \"process_parameters\": {\"laser_power\": {\"value\": 300.0, \"unit\": \"W\"}, \"scan_velocity\": {\"value\": 1100.0, \"unit\": \"mm/s\"}, \"beam_diameter\": {\"value\": 100.0, \"unit\": \"\u0000b5m\"}, \"layer_thickness\": {\"value\": 30.0, \"unit\": \"\u0000b5m\"}, \"hatch_spacing\": {\"value\": 100.0, \"unit\": \"\u0000b5m\"}}, \"validity\": {\"status\": \"pass\", \"flags\": {\"critical_missing\": false, \"unit_unrecognized\": false, \"ood_process\": false, \"ood_material\": false, \"ood_parameters\": false}, \"offending_fields\": {\"critical_missing\": [], \"unit_unrecognized\": [], \"ood_process\": [], \"ood_material\": [], \"ood_parameters\": []}, \"ranges_used\": {\"laser_power\": {\"min\": 50.0, \"max\": 100.0, \"unit\": \"W\"}, \"scan_velocity\": {\"min\": 50.0, \"max\": 3000.0, \"unit\": \"mm/s\"}, \"beam_diameter\": {\"min\": 30.0, \"max\": 200.0, \"unit\": \"\u0000b5m\"}, \"layer_thickness\": {\"min\": 10.0, \"max\": 100.0, \"unit\": \"\u0000b5m\"}, \"hatch_spacing\": {\"min\": 40.0, \"max\": 200.0, \"unit\": \"\u0000b5m\"}}}, \"prediction_objective\": \"both\"}"
+
         try:
             txt = llm_extract_keywords(payload_json, profile="default")
 

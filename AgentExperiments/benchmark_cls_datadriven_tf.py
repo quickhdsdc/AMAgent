@@ -15,20 +15,11 @@ from sklearn.utils.class_weight import compute_sample_weight
 from scipy import linalg
 import random
 
-# ----------------------------------------------------
-# Config
-# ----------------------------------------------------
-
-EXP_DIR = "data_exp"   # where Exp_ID_1_train.csv etc. live
+EXP_DIR = "data_exp" 
 LABEL_COL = "defect_label"
-META_COLS = ["material"]  # columns we should NOT treat as numeric features
+META_COLS = ["material"] 
 randomState = 11
 
-# ----------------------------------------------------
-# Model zoo and fixed selection
-# ----------------------------------------------------
-
-# Kernel reused for GaussianProcessClassifier
 ckernel = (
     (ConstantKernel() * RBF() + WhiteKernel())
     + (ConstantKernel() * RBF() + WhiteKernel())
@@ -40,7 +31,7 @@ MODEL_ZOO = {
             max_depth=None,
             random_state=randomState,
             n_jobs=-1,
-            class_weight="balanced", # Handle imbalance directly
+            class_weight="balanced", 
         ),
     "GP": GaussianProcessClassifier(
         kernel=ckernel,
@@ -82,7 +73,6 @@ EXPERIMENTS = [
     {"stem": "Exp_OOD_4"},
 ]
 
-# Fixed best model per experiment (no CV/selection)
 BEST_MODELS = {
     "Exp_ID_1": "RF",
     "Exp_OOD_1": "RF",
@@ -102,9 +92,6 @@ def _get_fixed_best_model_proto(stem: str):
         raise KeyError(f"Unknown model name '{name}' in BEST_MODELS for '{stem}'.")
     return name, MODEL_ZOO[name]
 
-# ----------------------------------------------------
-# DG / TF Algorithms
-# ----------------------------------------------------
 
 class CORALTransformer(BaseEstimator, TransformerMixin):
     """
@@ -119,25 +106,17 @@ class CORALTransformer(BaseEstimator, TransformerMixin):
         self.coloring = None
 
     def fit(self, X_source, X_target):
-        # Calculate source and target covariances
-        # Add regularization for stability
         self.src_cov = np.cov(X_source, rowvar=False) + self.reg * np.eye(X_source.shape[1])
         self.target_cov = np.cov(X_target, rowvar=False) + self.reg * np.eye(X_target.shape[1])
         
-        # Whitening matrix (Source^-0.5)
-        # scipy.linalg.fractional_matrix_power can calculate A^0.5
-        # We need A^-0.5
         self.whitening = linalg.fractional_matrix_power(self.src_cov, -0.5)
         
-        # Coloring matrix (Target^0.5)
         self.coloring = linalg.fractional_matrix_power(self.target_cov, 0.5)
         return self
 
     def transform(self, X):
         if self.whitening is None or self.coloring is None:
             return X
-        # X_aligned = X * whitening * coloring
-        # Check shapes: X is (N, D), Matrices are (D, D)
         return np.dot(np.dot(X, self.whitening), self.coloring).real
 
 def importance_weighting(X_source, X_target, r_clf=None):
@@ -149,23 +128,17 @@ def importance_weighting(X_source, X_target, r_clf=None):
     if r_clf is None:
         r_clf = LogisticRegression(solver="liblinear", random_state=randomState)
 
-    # Create dataset identifying source vs target
     X_all = np.vstack([X_source, X_target])
     y_domain = np.concatenate([np.zeros(len(X_source)), np.ones(len(X_target))])
     
     r_clf.fit(X_all, y_domain)
     
-    # Probabilities of being Target
     probs = r_clf.predict_proba(X_source)[:, 1]
     
-    # Avoid division by zero warnings
     probs = np.clip(probs, 0.05, 0.95)
     
-    # Density ratio w(x) = p_target(x) / p_source(x) ~ P(T|x)/P(S|x) * P(S)/P(T)
-    # We ignore the constant P(S)/P(T) as it scales all weights equally
     weights = probs / (1 - probs)
     
-    # Normalize weights to sum to n_source
     weights = weights / weights.sum() * len(X_source)
     return weights
 
@@ -180,14 +153,6 @@ def mixup_augmentation(X, y, alpha=0.2, num_new=None):
     n_samples = len(X)
     X_mix = []
     y_mix = []
-    
-    # If y is categorical/encoded integers, mixup on labels is tricky for RF/GB
-    # (they expect discrete classes). 
-    # For Tree ensembles, we typically only mix features and keep the label of the dominant parent,
-    # or use sample weights. 
-    # Simpler "Manifold Mixup" for Tabular: 
-    # Create new sample x' = lam*xi + (1-lam)*xj
-    # Label y' = yi if lam > 0.5 else yj
     
     for _ in range(num_new):
         i = np.random.randint(0, n_samples)
@@ -206,10 +171,6 @@ def mixup_augmentation(X, y, alpha=0.2, num_new=None):
     
     return X_aug, y_aug
 
-
-# ----------------------------------------------------
-# Helpers
-# ----------------------------------------------------
 
 def _load_split(stem: str):
     train_path = os.path.join(EXP_DIR, f"{stem}_train.csv")
@@ -249,16 +210,13 @@ def _final_train_and_eval_strategies(
     """
     Evaluates 3 DG/TF strategies + Baseline.
     """
-    # TRAIN data
     X_train_df, y_train_series, feature_cols_train = _split_features_labels(df_train)
     X_train = X_train_df.values
     y_train_enc = label_encoder.transform(y_train_series.values)
 
-    # TEST data
     X_test_df, y_test_series, feature_cols_test = _split_features_labels(df_test)
     X_test = X_test_df.values
     
-    # Test Labels (filter known)
     y_test = y_test_series.values
     seen_classes = set(label_encoder.classes_)
     mask_known = np.array([lbl in seen_classes for lbl in y_test], dtype=bool)
@@ -272,22 +230,14 @@ def _final_train_and_eval_strategies(
 
     results = {}
     
-    # ------------------------------------------------
-    # 0. Baseline (No DG)
-    # ------------------------------------------------
     model = clone(best_model_proto)
     model.fit(X_train, y_train_enc)
     y_pred = model.predict(X_test_known)
     results["Baseline"] = f1_score(y_test_enc, y_pred, average="macro")
 
-    # ------------------------------------------------
-    # 1. Importance Weighting (Covariate Shift)
-    # ------------------------------------------------
-    # Weights for Source samples to match Target distribution
     try:
-        sample_weights = importance_weighting(X_train, X_test) # Transductive use of X_test
+        sample_weights = importance_weighting(X_train, X_test) 
         model_iw = clone(best_model_proto)
-        # GB and RF support sample_weight in fit
         model_iw.fit(X_train, y_train_enc, sample_weight=sample_weights)
         y_pred = model_iw.predict(X_test_known)
         results["ImpWeight"] = f1_score(y_test_enc, y_pred, average="macro")
@@ -295,35 +245,20 @@ def _final_train_and_eval_strategies(
         print(f"ImpWeight failed: {e}")
         results["ImpWeight"] = 0.0
 
-    # ------------------------------------------------
-    # 2. CORAL (Feature Alignment)
-    # ------------------------------------------------
     try:
         coral = CORALTransformer()
-        # Align Source to Target
         coral.fit(X_train, X_test)
         X_train_coral = coral.transform(X_train)
-        X_test_coral = coral.transform(X_test) # Also transform test? 
-        # Wait, CORAL usually aligns Source to match Target. So we transform Source. 
-        # Target is considered the "Anchor". So Target features stay as they are (or identity transform).
-        # Actually, in standard CORAL (Sun et al.), we map source to target. 
-        # So we train on f(X_source) and test on X_target.
-        
-        # However, checking implementation: transform(X) applies whitening(Src)*coloring(Tgt).
-        # So transform(X_train) makes it look like Target.
-        # X_test should remain X_test.
+        X_test_coral = coral.transform(X_test) 
         
         model_coral = clone(best_model_proto)
         model_coral.fit(X_train_coral, y_train_enc)
-        y_pred = model_coral.predict(X_test_known) # Predict on original test features (Target domain)
+        y_pred = model_coral.predict(X_test_known) 
         results["CORAL"] = f1_score(y_test_enc, y_pred, average="macro")
     except Exception as e:
         print(f"CORAL failed: {e}")
         results["CORAL"] = 0.0
 
-    # ------------------------------------------------
-    # 3. Mixup (Data Augmentation)
-    # ------------------------------------------------
     try:
         X_mix, y_mix = mixup_augmentation(X_train, y_train_enc, alpha=0.2)
         model_mix = clone(best_model_proto)
@@ -372,7 +307,6 @@ def main():
         try:
             res = run_experiment(stem)
             
-            # Print row
             r_dict = res["results"]
             print(f"  [{stem}] Baseline: {r_dict.get('Baseline',0):.4f}, "
                   f"IW: {r_dict.get('ImpWeight',0):.4f}, "
@@ -392,7 +326,6 @@ def main():
         except Exception as e:
             print(f"[ERROR] {stem}: {e}")
 
-    # Save summary
     if summary_rows:
         df = pd.DataFrame(summary_rows)
         out_csv = "experiment_results_tf_summary.csv"
