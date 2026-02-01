@@ -1,0 +1,17 @@
+experiment,model_key,output_dir,best_checkpoint,macro_f1,accuracy
+Exp_ID_1,llama3.1-8b,results/AM/Exp_ID_1/llama3.1_sc_lora-r32-a32,checkpoint-240,0.7248,0.7273
+Exp_OOD_1,llama3.1-8b,results/AM/Exp_OOD_1/llama3.1_sc_lora-r32-a32,checkpoint-209,0.4361,0.6007
+Exp_ID_2,llama3.1-8b,results/AM/Exp_ID_2/llama3.1_sc_lora-r32-a32,checkpoint-240,0.8114,0.8560
+Exp_OOD_2,llama3.1-8b,results/AM/Exp_OOD_2/llama3.1_sc_lora-r32-a32,checkpoint-252,0.2971,0.3053
+Exp_ID_3,llama3.1-8b,results/AM/Exp_ID_3/llama3.1_sc_lora-r32-a32,checkpoint-156,0.8660,0.8792
+Exp_OOD_3,llama3.1-8b,results/AM/Exp_OOD_3/llama3.1_sc_lora-r32-a32,checkpoint-180,0.2200,0.3321
+Exp_ID_4,llama3.1-8b,results/AM/Exp_ID_4/llama3.1_sc_lora-r32-a32,checkpoint-182,0.8548,0.8533
+Exp_OOD_4,llama3.1-8b,results/AM/Exp_OOD_4/llama3.1_sc_lora-r32-a32,checkpoint-208,0.4807,0.7252
+Exp_ID_1,Qwen2.5-14B,results/AM/Exp_ID_1/Qwen2.5_sc_lora-r32-a32,checkpoint-240,0.8548,0.8544
+Exp_OOD_1,Qwen2.5-14B,results/AM/Exp_OOD_1/Qwen2.5_sc_lora-r32-a32,checkpoint-209,0.5535,0.6530
+Exp_ID_2,Qwen2.5-14B,results/AM/Exp_ID_2/Qwen2.5_sc_lora-r32-a32,checkpoint-225,0.8881,0.9040
+Exp_OOD_2,Qwen2.5-14B,results/AM/Exp_OOD_2/Qwen2.5_sc_lora-r32-a32,checkpoint-252,0.2728,0.2960
+Exp_ID_3,Qwen2.5-14B,results/AM/Exp_ID_3/Qwen2.5_sc_lora-r32-a32,checkpoint-192,0.8931,0.8986
+Exp_OOD_3,Qwen2.5-14B,results/AM/Exp_OOD_3/Qwen2.5_sc_lora-r32-a32,checkpoint-150,0.2550,0.3694
+Exp_ID_4,Qwen2.5-14B,results/AM/Exp_ID_4/Qwen2.5_sc_lora-r32-a32,checkpoint-182,0.8352,0.8311
+Exp_OOD_4,Qwen2.5-14B,results/AM/Exp_OOD_4/Qwen2.5_sc_lora-r32-a32,checkpoint-192,0.5070,0.7568
