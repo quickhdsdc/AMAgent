@@ -317,10 +317,6 @@ def _build_kd_agent_prompt(row: pd.Series,
     prompt += (
         "\nTask:\n"
         "1. Compare the target parameters with the evidence and your internal knowledge.\n"
-    )
-
-
-    prompt += (
         "2. Check for the 'Process Window': If parameters fall within reported optimal ranges for high density, the label is 'none'.\n"
         "3. Assess your reliability:\n"
         "   - Use the retrieved evidence to validate your predictions. Direct matches increase reliability (0.7-1.0).\n"
