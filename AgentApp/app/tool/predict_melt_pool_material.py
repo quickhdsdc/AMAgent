@@ -52,24 +52,24 @@ def _as_obj(text: Union[str, Dict[str, Any]]) -> Any:
 # Map canonical material names (our internal keys) to model *bases* for each target.
 REG_MODELS: Dict[str, Dict[str, str]] = {
     "ti-6al-4v": {
-        "dep": "./ml_models/Reg/bestMAE_Ti6Al4V_NN_dep_V_P_D_T",
         "len": "./ml_models/Reg/bestMAE_Ti6Al4V_XGB_len_V_P_D_T",
         "wid": "./ml_models/Reg/bestMAE_Ti6Al4V_NN_wid_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_Ti6Al4V_NN_dep_V_P_D_T",
     },
     "ss316l": {
-        "dep": "./ml_models/Reg/bestMAE_SS316L_GB_dep_V_P_D_T",
         "len": "./ml_models/Reg/bestMAE_SS316L_GP_len_V_P_D_T",
         "wid": "./ml_models/Reg/bestMAE_SS316L_XGB_wid_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_SS316L_GP_dep_V_P_D_T",        
     },
     "ss17-4ph": {
-        "dep": "./ml_models/Reg/bestMAE_SS174PH_GP_dep_V_P_D_T",
-        "len": "./ml_models/Reg/bestMAE_SS174PH_Bootstrap_len_V_P_D_T",
+        "len": "./ml_models/Reg/bestMAE_SS174PH_XGB_len_V_P_D_T",
         "wid": "./ml_models/Reg/bestMAE_SS174PH_GP_wid_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_SS174PH_GP_dep_V_P_D_T",        
     },
     "in718": {
-        "dep": "./ml_models/Reg/bestMAE_IN718_GP_dep_V_P_D_T",
-        "len": "./ml_models/Reg/bestMAE_IN718_RR_len_V_P_D_T",
-        "wid": "./ml_models/Reg/bestMAE_IN718_Bootstrap_wid_V_P_D_T",
+        "len": "./ml_models/Reg/bestMAE_IN718_XGB_len_V_P_D_T",
+        "wid": "./ml_models/Reg/bestMAE_IN718_XGB_wid_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_IN718_GP_dep_V_P_D_T",        
     },
 }
 
