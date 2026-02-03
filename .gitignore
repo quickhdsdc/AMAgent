@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+AgentApp/ml_models/
+AgentApp/results_AM/

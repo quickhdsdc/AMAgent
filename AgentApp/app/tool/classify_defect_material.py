@@ -37,22 +37,17 @@ def _as_obj(text: Union[str, Dict[str, Any]]) -> Any:
 
 _FEATURE_ORDER = ["velocity", "power", "beamDiameter", "layerThickness"] 
 
-_RANGES_USER_UNITS = {
-    "velocity":       (50.0, 3000.0), 
-    "power":          (50.0, 1000.0), 
-    "beamDiameter":   (10.0, 200.0),  
-    "layerThickness": (10.0, 100.0),  
-}
+
 
 LABEL_ORDER = ["none", "LoF", "balling", "keyhole"] 
 LABEL_TO_ID = {lbl: i for i, lbl in enumerate(LABEL_ORDER)}
 ID_TO_LABEL = {i: lbl for lbl, i in LABEL_TO_ID.items()}
 
 _MATERIAL_MODELS = {
-    "ti-6al-4v": "./ml_models/Cls/bestF1_Ti6Al4V_GP_V_P_D_T.joblib",
-    "ss316l":    "./ml_models/Cls/bestF1_SS316L_XGB_V_P_D_T.joblib",
-    "ss17-4ph":  "./ml_models/Cls/bestF1_SS174PH_RF_V_P_D_T.joblib",
-    "in718":     "./ml_models/Cls/bestF1_IN718_GP_V_P_D_T.joblib",
+    "ti-6al-4v": "./ml_models/Cls/bestF1_Ti6Al4V_RF_H_V_P_D_T.joblib",
+    "ss316l":    "./ml_models/Cls/bestF1_SS316L_RF_H_V_P_D_T.joblib",
+    "ss17-4ph":  "./ml_models/Cls/bestF1_SS174PH_RF_H_V_P_D_T.joblib",
+    "in718":     "./ml_models/Cls/bestF1_IN718_GP_H_V_P_D_T.joblib",
 }
 
 _MATERIAL_SYNONYMS = {
@@ -76,35 +71,26 @@ def _norm_material_name(s: str) -> Optional[str]:
             return canon
     return None
 
+def _predict_similar_material(name: str) -> str:
+    """
+    If material is OOD, map to closest known based on simple heuristics.
+    defult fallback: ss316l (most common general steel behavior in this context).
+    """
+    s = name.lower().strip()
+    if "ti" in s or "titanium" in s:
+        return "ti-6al-4v"
+    if "in718" in s or "inconel" in s or "nickel" in s or "alloy" in s:
+        return "in718"
+    if "ss" in s or "steel" in s or "iron" in s or "fe" in s:
+        if "17-4" in s or "ph" in s:
+            return "ss17-4ph"
+        return "ss316l"
+    return "ss316l"
+
 def _is_nan(x: Optional[float]) -> bool:
     return x is None or (isinstance(x, float) and (math.isnan(x) or math.isinf(x)))
 
-def _validate_ranges_user_units(x: Dict[str, Optional[float]]) -> Dict[str, Any]:
-    critical_missing = []
-    for req in ("velocity", "power"):
-        if _is_nan(x.get(req)):
-            critical_missing.append(req)
-    ood = []
-    for k, (lo, hi) in _RANGES_USER_UNITS.items():
-        v = x.get(k)
-        if _is_nan(v):
-            continue
-        if v < 0:
-            ood.append(k); continue
-        if v < lo and (lo - v) / max(lo, 1e-12) > 0.5:
-            ood.append(k)
-        if v > hi and (v - hi) / max(hi, 1e-12) > 0.5:
-            ood.append(k)
-    return {
-        "flags": {
-            "critical_missing": len(critical_missing) > 0,
-            "ood_parameters": len(ood) > 0,
-        },
-        "offending_fields": {
-            "critical_missing": critical_missing,
-            "ood_parameters": ood,
-        }
-    }
+
 
 def _normalize_label(lbl) -> str:
     if lbl is None:
@@ -220,7 +206,7 @@ class ClassifyDefect_Material(BaseTool):
     """
     name: str = "classify_defect_material"
     description: str = (
-        "Unified LPBF defect classifier for materials {Ti-6Al-4V, SS316L, SS17-4PH, IN718}. "
+        "Unified LPBF defect classifier"
         "Inputs: velocity [mm/s], power [W], beamDiameter [µm], layerThickness [µm]. "
         "Label IDs: 0=none, 1=LoF, 2=balling, 3=keyhole."
     )
@@ -229,7 +215,7 @@ class ClassifyDefect_Material(BaseTool):
         "properties": {
             "wc_material": {
                 "type": "string",
-                "description": "Material (one of 'Ti-6Al-4V', 'SS316L', 'SS17-4PH', 'IN718'). "
+                "description": "Material name (e.g. 'Ti-6Al-4V', 'SS316L')."
             },
             "input_process_parameters": {
                 "type": "object",
@@ -249,8 +235,11 @@ class ClassifyDefect_Material(BaseTool):
                 return ToolResult(error="input_process_parameters must be a JSON object.")
             
             mat_key = _norm_material_name(wc_material)
+            
+            is_ood = False
             if not mat_key:
-                return ToolResult(error=f"Unsupported material '{wc_material}'. Supported: Ti-6Al-4V, SS316L, SS17-4PH, IN718.")
+                is_ood = True
+                mat_key = _predict_similar_material(wc_material)
 
             payload = {
                 "material": mat_key,
@@ -258,6 +247,7 @@ class ClassifyDefect_Material(BaseTool):
                 "power": float(x_raw.get("power", 0.0) or 0.0),
                 "beamDiameter": float(x_raw.get("beamDiameter", 0.0) or 0.0),
                 "layerThickness": float(x_raw.get("layerThickness", 0.0) or 0.0),
+                "hatchSpacing": float(x_raw.get("hatchSpacing", 0.0) or 0.0),
             }
 
             import httpx
@@ -271,36 +261,49 @@ class ClassifyDefect_Material(BaseTool):
                 except httpx.HTTPStatusError as e:
                     return ToolResult(error=f"ML Service error: {e.response.text}")
 
-            def _calculate_entropy(probs: Dict[str, float]) -> float:
-                values = np.array(list(probs.values()), dtype=float)
+            def _calculate_entropy(probs: Dict[str, float], classes=None) -> float:
+                """Shannon entropy in bits."""
+                if not probs:
+                    return 0.0
+                if classes is None:
+                    values = np.array(list(probs.values()), dtype=float)
+                else:
+                    values = np.array([probs.get(c, 0.0) for c in classes], dtype=float)
+
                 s = values.sum()
-                if s <= 0: return 0.0
-                values = values / s
+                if s <= 0:
+                    return 0.0
+                values = values / s  
+
                 values = values[values > 0]
                 return float(-np.sum(values * np.log2(values)))
 
-            def _ml_reliability_from_probs(ml_probs: Dict[str, float], is_ood: bool=False) -> float:
-                classes = ("none","lof","balling","keyhole")
+            def _ml_reliability_from_probs(ml_probs: Dict[str, float], is_ood: bool,
+                                          classes=("none","lof","balling","keyhole")) -> float:
                 values = np.array([ml_probs.get(c, 0.0) for c in classes], dtype=float)
                 s = values.sum()
-                if s <= 0: return 0.1
+                if s <= 0:
+                    return 0.1
                 values = values / s
-                
-                entropy = _calculate_entropy(ml_probs)
+
+                entropy = _calculate_entropy(ml_probs, classes=classes)
                 K = len(classes)
-                h_norm = entropy / np.log2(K) if K > 1 else 0.0
-                
+                h_norm = entropy / np.log2(K) if K > 1 else 0.0  # 0..1
+
                 p_sorted = np.sort(values)[::-1]
                 margin = float(p_sorted[0] - p_sorted[1]) if len(p_sorted) >= 2 else 1.0
-                
+
                 reliability = (1.0 - h_norm) * (0.5 + 0.5 * margin)
-                if is_ood: reliability *= 0.5
+
+                if is_ood:
+                    reliability *= 0.5
+
                 return float(np.clip(reliability, 0.05, 0.9))
 
             proba_named = data.get("proba_named", {})
             
             entropy = _calculate_entropy(proba_named)
-            reliability = _ml_reliability_from_probs(proba_named, is_ood=False)
+            reliability = _ml_reliability_from_probs(proba_named, is_ood=is_ood)
             
             data["entropy"] = entropy
             data["reliability"] = reliability

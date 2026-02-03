@@ -19,39 +19,34 @@ FEATURE_ORDER = ["velocity", "power", "beamDiameter", "layerThickness"]
 LABEL_ORDER = ["none", "LoF", "balling", "keyhole"]
 
 _MATERIAL_CLF_MODELS = {
-    "ti-6al-4v": "./ml_models/Cls/bestF1_Ti6Al4V_GP_V_P_D_T.joblib",
-    "ss316l":    "./ml_models/Cls/bestF1_SS316L_XGB_V_P_D_T.joblib",
-    "ss17-4ph":  "./ml_models/Cls/bestF1_SS174PH_RF_V_P_D_T.joblib",
-    "in718":     "./ml_models/Cls/bestF1_IN718_GP_V_P_D_T.joblib",
+    "ti-6al-4v": "./ml_models/Cls/bestF1_Ti6Al4V_RF_H_V_P_D_T.joblib",
+    "ss316l":    "./ml_models/Cls/bestF1_SS316L_RF_H_V_P_D_T.joblib",
+    "ss17-4ph":  "./ml_models/Cls/bestF1_SS174PH_RF_H_V_P_D_T.joblib",
+    "in718":     "./ml_models/Cls/bestF1_IN718_GP_H_V_P_D_T.joblib",
 }
 
 _MATERIAL_REG_MODELS = {
     "ti-6al-4v": {
-        "dep": "./ml_models/Reg/bestMAE_Ti6Al4V_NN_dep_V_P_D_T",
-        "len": "./ml_models/Reg/bestMAE_Ti6Al4V_XGB_len_V_P_D_T",
-        "wid": "./ml_models/Reg/bestMAE_Ti6Al4V_NN_wid_V_P_D_T",
+        "len": "./ml_models/Reg/bestMAE_Ti6Al4V_XGB_len_H_V_P_D_T",
+        "wid": "./ml_models/Reg/bestMAE_Ti6Al4V_XGB_wid_H_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_Ti6Al4V_XGB_dep_H_V_P_D_T",
     },
     "ss316l": {
-        "dep": "./ml_models/Reg/bestMAE_SS316L_GB_dep_V_P_D_T",
-        "len": "./ml_models/Reg/bestMAE_SS316L_GP_len_V_P_D_T",
-        "wid": "./ml_models/Reg/bestMAE_SS316L_XGB_wid_V_P_D_T",
+        "len": "./ml_models/Reg/bestMAE_SS316L_XGB_len_H_V_P_D_T",
+        "wid": "./ml_models/Reg/bestMAE_SS316L_NN_wid_H_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_SS316L_GP_dep_H_V_P_D_T",        
     },
     "ss17-4ph": {
-        "dep": "./ml_models/Reg/bestMAE_SS174PH_GP_dep_V_P_D_T",
-        "len": "./ml_models/Reg/bestMAE_SS174PH_Bootstrap_len_V_P_D_T",
-        "wid": "./ml_models/Reg/bestMAE_SS174PH_GP_wid_V_P_D_T",
+        "len": "./ml_models/Reg/bestMAE_SS174PH_XGB_len_H_V_P_D_T",
+        "wid": "./ml_models/Reg/bestMAE_SS174PH_GP_wid_H_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_SS174PH_GP_dep_H_V_P_D_T",        
     },
     "in718": {
-        "dep": "./ml_models/Reg/bestMAE_IN718_GP_dep_V_P_D_T",
-        "len": "./ml_models/Reg/bestMAE_IN718_RR_len_V_P_D_T",
-        "wid": "./ml_models/Reg/bestMAE_IN718_Bootstrap_wid_V_P_D_T",
+        "wid": "./ml_models/Reg/bestMAE_IN718_GP_wid_H_V_P_D_T",
+        "dep": "./ml_models/Reg/bestMAE_IN718_NN_dep_H_V_P_D_T",        
     },
 }
 
-# -------------------------------------------------------------------------
-# GLOBAL MODEL STORE
-# -------------------------------------------------------------------------
-# keys: "cls_<material>" or "reg_<material>_<target>"
 loaded_models: Dict[str, Any] = {}
 
 # -------------------------------------------------------------------------
@@ -87,10 +82,10 @@ def _softmax(z: np.ndarray) -> np.ndarray:
 def _normalize_label(lbl) -> str:
     if lbl is None: return "none"
     s = str(lbl).strip().lower()
-    if s in {"none", "no defect"}: return "none"
-    if s in {"lof", "lack of fusion"}: return "LoF"
-    if s == "balling": return "balling"
-    if s == "keyhole": return "keyhole"
+    if s in {"none", "no defect", "0"}: return "none"
+    if s in {"lof", "lack of fusion", "1"}: return "LoF"
+    if s in {"balling", "2"}: return "balling"
+    if s in {"keyhole", "3"}: return "keyhole"
     return "none"
 
 def _predict_cls(model, arr: np.ndarray):
@@ -108,7 +103,10 @@ def _predict_cls(model, arr: np.ndarray):
             p = model.predict_proba(arr)[0]
             update_probs(getattr(model, "classes_", LABEL_ORDER), p)
             return max(proba_named, key=proba_named.get), proba_named
-        except: pass
+        except Exception as e:
+            print(f"DEBUG: predict_proba failed: {e}")
+            import traceback
+            traceback.print_exc()
 
     if hasattr(model, "decision_function"):
         try:
@@ -117,14 +115,16 @@ def _predict_cls(model, arr: np.ndarray):
                 p = _softmax(np.array(df[0]))
                 update_probs(getattr(model, "classes_", range(len(p))), p)
                 return max(proba_named, key=proba_named.get), proba_named
-        except: pass
+        except Exception as e:
+             print(f"DEBUG: decision_function failed: {e}")
 
     try:
         pred = model.predict(arr)[0]
         lbl = _normalize_label(pred)
         proba_named[lbl] = 1.0
         return lbl, proba_named
-    except:
+    except Exception as e:
+        print(f"DEBUG: predict failed: {e}")
         return "none", proba_named
 
 def _predict_reg(model, arr: np.ndarray):
@@ -144,7 +144,6 @@ def _predict_reg(model, arr: np.ndarray):
 async def lifespan(app: FastAPI):
     print("Loading ML models...")
     
-    # Load Classifiers
     for mat, path in _MATERIAL_CLF_MODELS.items():
         if os.path.exists(path):
             try:
@@ -155,7 +154,6 @@ async def lifespan(app: FastAPI):
         else:
             print(f"CLS model not found: {path}")
 
-    # Load Regressors
     for mat, dict_targets in _MATERIAL_REG_MODELS.items():
         for tgt, base in dict_targets.items():
             fpath, kind = _find_reg_model_file(base)
@@ -183,6 +181,7 @@ class PredictionRequest(BaseModel):
     power: float
     beamDiameter: float
     layerThickness: float
+    hatchSpacing: Optional[float] = 0.0
 
 @app.post("/predict/defect")
 async def predict_defect(req: PredictionRequest):
@@ -191,7 +190,7 @@ async def predict_defect(req: PredictionRequest):
     if not model:
         raise HTTPException(status_code=404, detail=f"No CLS model for {mat}")
 
-    arr = np.array([[req.velocity, req.power, req.beamDiameter, req.layerThickness]], dtype=np.float32)
+    arr = np.array([[req.hatchSpacing, req.velocity, req.power, req.beamDiameter, req.layerThickness]], dtype=np.float32)
     lbl, proba = _predict_cls(model, arr)
     
     return {
@@ -203,7 +202,7 @@ async def predict_defect(req: PredictionRequest):
 @app.post("/predict/meltpool")
 async def predict_meltpool(req: PredictionRequest):
     mat = req.material.lower()
-    arr = np.array([[req.velocity, req.power, req.beamDiameter, req.layerThickness]], dtype=np.float32)
+    arr = np.array([[req.hatchSpacing, req.velocity, req.power, req.beamDiameter, req.layerThickness]], dtype=np.float32)
     
     res = {}
     targets = {"depth": "dep", "width": "wid", "length": "len"}

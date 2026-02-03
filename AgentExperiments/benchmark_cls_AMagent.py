@@ -283,8 +283,7 @@ def _ml_reliability_from_probs(ml_probs: Dict[str, float], is_ood: bool,
 
 
 def _build_kd_agent_prompt(row: pd.Series,
-                             rag_context: Optional[List[str]] = None,
-                             suggested_label: Optional[str] = None
+                             rag_context: Optional[List[str]] = None
                            ) -> str:
     """
     Agent 2: Knowledge-Driven Analyst.
