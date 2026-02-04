@@ -167,7 +167,6 @@ async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[s
 def get_embedding_settings(profile: Optional[str] = None) -> EmbeddingSettings:
     profiles = config.embedding
     if not profiles:
-        # Fallback to hardcoded Azure for backward compatibility if config is missing
         return EmbeddingSettings(
             model=os.getenv("AZURE_EMBEDDINGS_MODEL", "text-embedding-3-large"),
             base_url=os.getenv("AZURE_OPENAI_ENDPOINT", ""),
@@ -189,7 +188,7 @@ def make_embedding_client(profile: Optional[str] = "default"):
     
     if api_type == "azure":
         return AzureOpenAIEmbeddings(
-            model=settings.model, # deployment name
+            model=settings.model, 
             azure_deployment=settings.model,
             openai_api_version=settings.api_version,
             azure_endpoint=settings.base_url,
@@ -242,9 +241,6 @@ class Reranker:
     def predict(self, query: str, docs: List[str]) -> List[float]:
         if self._api_url:
             try:
-                # TEI compatible payload
-                # TEI endpoint: /rerank
-                # payload: {"query": "...", "texts": ["..."], "truncate": true}
                 url = self._api_url
                 headers = {"Content-Type": "application/json"}
                 if self._api_key:
@@ -258,11 +254,7 @@ class Reranker:
                 
                 resp = requests.post(url, json=payload, headers=headers, timeout=30)
                 resp.raise_for_status()
-                # TEI returns list of {"index": i, "score": s}
                 results = resp.json()
-                # Parse results into list of floats corresponding to docs order
-                # TEI returns ranking, but we need scores in order of input docs?
-                # Actually TEI returns list of objects with index and score.
                 scores = [0.0] * len(docs)
                 for item in results:
                     idx = item.get("index")
@@ -386,20 +378,15 @@ def _entity_retrieval(
 
     final = 0.6 * bucket_weighted + 0.3 * max_per_term + 0.1 * boosts
 
-    # Reranking Logic
     reranker = Reranker.get_instance()
     
-    # Pre-select top candidates for reranking (e.g. top_m * 3)
     pre_k = min(len(attr_texts), top_m * 3)
     if reranker and pre_k > 0:
-        # Get top candidates from vector scoring
         pre_idxs = np.argpartition(-final, kth=pre_k-1)[:pre_k]
-        # Sort them by vector score
         pre_idxs = pre_idxs[np.argsort(-final[pre_idxs])]
         
         candidates = [attr_texts[i] for i in pre_idxs]
         
-        # Build query string from keywords
         q_parts = []
         for v in keywords.values():
             q_parts.extend(v)
@@ -407,16 +394,11 @@ def _entity_retrieval(
         
         rerank_scores = reranker.predict(query, candidates)
         
-        # Combine scores? Or just use rerank score? Usually just rerank score.
-        # But we need to return indices into original list.
-        
-        # Create (index, score) pairs
         rescored = []
         for i, score in enumerate(rerank_scores):
             original_idx = pre_idxs[i]
             rescored.append((original_idx, score))
             
-        # Sort by rerank score
         rescored.sort(key=lambda x: x[1], reverse=True)
         
         final_idxs = [x[0] for x in rescored[:top_m]]
@@ -424,7 +406,6 @@ def _entity_retrieval(
         return final_idxs, final_scores
         
     else:
-        # Fallback to pure vector results
         k = min(top_m, len(attr_texts))
         idxs = np.argpartition(-final, kth=k-1)[:k]
         idxs = idxs[np.argsort(-final[idxs])]
