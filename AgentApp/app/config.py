@@ -36,6 +36,21 @@ class ProxySettings(BaseModel):
     password: Optional[str] = Field(None, description="Proxy password")
 
 
+class EmbeddingSettings(BaseModel):
+    model: str = Field(..., description="Model name or deployment name")
+    base_url: str = Field(..., description="API base URL")
+    api_key: str = Field(..., description="API key")
+    api_type: str = Field(..., description="Azure or Openai")
+    api_version: Optional[str] = Field(None, description="Azure Openai version if AzureOpenai")
+
+
+class RerankSettings(BaseModel):
+    model: str = Field(..., description="Model path or name")
+    base_url: Optional[str] = Field(None, description="API base URL")
+    api_key: Optional[str] = Field(None, description="API key")
+    api_type: Optional[str] = Field(None, description="API type (e.g. tei, vllm)")
+
+
 class SearchSettings(BaseModel):
     engine: str = Field(default="Google", description="Search engine the llm to use")
     fallback_engines: List[str] = Field(
@@ -93,6 +108,12 @@ class SandboxSettings(BaseModel):
 
 class AppConfig(BaseModel):
     llm: Dict[str, LLMSettings]
+    embedding: Optional[Dict[str, EmbeddingSettings]] = Field(
+        None, description="Embedding configurations"
+    )
+    rerank: Optional[Dict[str, RerankSettings]] = Field(
+        None, description="Rerank configurations"
+    )
     sandbox: Optional[SandboxSettings] = Field(
         None, description="Sandbox configuration"
     )
@@ -162,6 +183,43 @@ class Config:
             "api_version": base_llm.get("api_version", ""),
         }
 
+        # Handle Embedding Config
+        base_emb = raw_config.get("embedding", {})
+        emb_overrides = {
+            k: v for k, v in raw_config.get("embedding", {}).items() if isinstance(v, dict)
+        }
+        default_emb_settings = {
+            "model": base_emb.get("model"),
+            "base_url": base_emb.get("base_url"),
+            "api_key": base_emb.get("api_key"),
+            "api_type": base_emb.get("api_type", ""),
+            "api_version": base_emb.get("api_version", ""),
+        }
+        embedding_config = {}
+        if default_emb_settings["model"]: # Only if default is configured
+             embedding_config["default"] = default_emb_settings
+        
+        for name, override in emb_overrides.items():
+            embedding_config[name] = {**default_emb_settings, **override}
+            
+        # Handle Rerank Config
+        base_rerank = raw_config.get("rerank", {})
+        rerank_overrides = {
+            k: v for k, v in raw_config.get("rerank", {}).items() if isinstance(v, dict)
+        }
+        default_rerank_settings = {
+            "model": base_rerank.get("model"),
+            "base_url": base_rerank.get("base_url"),
+            "api_key": base_rerank.get("api_key"),
+            "api_type": base_rerank.get("api_type"),
+        }
+        rerank_config = {}
+        if default_rerank_settings["model"]:
+            rerank_config["default"] = default_rerank_settings
+
+        for name, override in rerank_overrides.items():
+            rerank_config[name] = {**default_rerank_settings, **override}
+
         # handle browser config.
         browser_config = raw_config.get("browser", {})
         browser_settings = None
@@ -213,6 +271,8 @@ class Config:
                     for name, override_config in llm_overrides.items()
                 },
             },
+            "embedding": embedding_config if embedding_config else None,
+            "rerank": rerank_config if rerank_config else None,
             "sandbox": sandbox_settings,
             "browser_config": browser_settings,
             "search_config": search_settings,
@@ -223,6 +283,14 @@ class Config:
     @property
     def llm(self) -> Dict[str, LLMSettings]:
         return self._config.llm
+
+    @property
+    def embedding(self) -> Optional[Dict[str, EmbeddingSettings]]:
+        return self._config.embedding
+
+    @property
+    def rerank(self) -> Optional[Dict[str, RerankSettings]]:
+        return self._config.rerank
 
     @property
     def sandbox(self) -> SandboxSettings:

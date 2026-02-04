@@ -13,7 +13,10 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 import faiss
-from langchain_openai import AzureOpenAIEmbeddings
+import torch
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from langchain_openai import AzureOpenAIEmbeddings, OpenAIEmbeddings
+from app.config import config, EmbeddingSettings
 
 
 def _strip_fences(s: str) -> str:
@@ -159,14 +162,135 @@ async def _load_or_parse_aas(endpoint: str, aas_id: str, aas_idShort: Optional[s
 
     return None
 
+    return None
+
+def get_embedding_settings(profile: Optional[str] = None) -> EmbeddingSettings:
+    profiles = config.embedding
+    if not profiles:
+        # Fallback to hardcoded Azure for backward compatibility if config is missing
+        return EmbeddingSettings(
+            model=os.getenv("AZURE_EMBEDDINGS_MODEL", "text-embedding-3-large"),
+            base_url=os.getenv("AZURE_OPENAI_ENDPOINT", ""),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY", ""),
+            api_type="azure",
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2023-05-15"),
+        )
+    if profile is None:
+        profile = "default"
+    if profile not in profiles:
+         if "default" in profiles:
+            return profiles["default"]
+         raise KeyError(f"Unknown Embedding profile '{profile}'. Available: {list(profiles.keys())}")
+    return profiles[profile]
+
+def make_embedding_client(profile: Optional[str] = "default"):
+    settings = get_embedding_settings(profile)
+    api_type = settings.api_type.lower()
+    
+    if api_type == "azure":
+        return AzureOpenAIEmbeddings(
+            model=settings.model, # deployment name
+            azure_deployment=settings.model,
+            openai_api_version=settings.api_version,
+            azure_endpoint=settings.base_url,
+            api_key=settings.api_key,
+        )
+    elif api_type == "openai":
+         return OpenAIEmbeddings(
+            model=settings.model,
+            openai_api_key=settings.api_key,
+            openai_api_base=settings.base_url,
+        )
+    else:
+        raise ValueError(f"Unsupported embedding api_type: {api_type}")
+
+import requests
+
+class Reranker:
+    _instance = None
+    _model = None
+    _tokenizer = None
+    _api_url = None
+    _api_key = None
+    
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            if config.rerank and "default" in config.rerank:
+                settings = config.rerank["default"]
+                if settings.base_url:
+                     cls._api_url = settings.base_url
+                     cls._api_key = settings.api_key
+                     cls._instance = cls()
+                     return cls._instance
+                
+                model_path = settings.model
+                try:
+                    cls._tokenizer = AutoTokenizer.from_pretrained(model_path)
+                    cls._model = AutoModelForSequenceClassification.from_pretrained(model_path)
+                    cls._model.eval()
+                    if torch.cuda.is_available():
+                        cls._model.to("cuda")
+                except Exception as e:
+                    print(f"[WARN] Failed to load reranker from {model_path}: {e}")
+                    return None
+            else:
+                return None
+            cls._instance = cls()
+        return cls._instance
+
+    def predict(self, query: str, docs: List[str]) -> List[float]:
+        if self._api_url:
+            try:
+                # TEI compatible payload
+                # TEI endpoint: /rerank
+                # payload: {"query": "...", "texts": ["..."], "truncate": true}
+                url = self._api_url
+                headers = {"Content-Type": "application/json"}
+                if self._api_key:
+                    headers["Authorization"] = f"Bearer {self._api_key}"
+                
+                payload = {
+                    "query": query,
+                    "texts": docs,
+                    "truncate": True
+                }
+                
+                resp = requests.post(url, json=payload, headers=headers, timeout=30)
+                resp.raise_for_status()
+                # TEI returns list of {"index": i, "score": s}
+                results = resp.json()
+                # Parse results into list of floats corresponding to docs order
+                # TEI returns ranking, but we need scores in order of input docs?
+                # Actually TEI returns list of objects with index and score.
+                scores = [0.0] * len(docs)
+                for item in results:
+                    idx = item.get("index")
+                    score = item.get("score")
+                    if idx is not None and 0 <= idx < len(scores):
+                        scores[idx] = float(score)
+                return scores
+
+            except Exception as e:
+                print(f"[WARN] Rerank API failed: {e}")
+                return [0.0] * len(docs)
+
+        if not self._model:
+            return [0.0] * len(docs)
+        
+        pairs = [[query, doc] for doc in docs]
+        device = self._model.device
+        with torch.no_grad():
+            inputs = self._tokenizer(pairs, padding=True, truncation=True, return_tensors="pt", max_length=512)
+            inputs = {k: v.to(device) for k, v in inputs.items()}
+            scores = self._model(**inputs).logits
+            if scores.shape[1] == 1:
+                return scores.view(-1).cpu().tolist()
+            else:
+                return scores[:, 1].cpu().tolist()
+
 def _embedder():
-    return AzureOpenAIEmbeddings(
-        model=os.getenv("AZURE_EMBEDDINGS_MODEL", "text-embedding-3-large"),
-        azure_deployment=os.getenv("AZURE_EMBEDDINGS_DEPLOYMENT", "text-embedding-3-large-1"),
-        openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2023-05-15"),
-        azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-        api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    )
+    return make_embedding_client()
 
 def _entity_retrieval(
     keywords: Dict[str, List[str]],
@@ -262,11 +386,50 @@ def _entity_retrieval(
 
     final = 0.6 * bucket_weighted + 0.3 * max_per_term + 0.1 * boosts
 
-    k = min(top_m, len(attr_texts))
-    idxs = np.argpartition(-final, kth=k-1)[:k]
-    idxs = idxs[np.argsort(-final[idxs])]
-    scores = final[idxs].astype(float).tolist()
-    return idxs.tolist(), scores
+    # Reranking Logic
+    reranker = Reranker.get_instance()
+    
+    # Pre-select top candidates for reranking (e.g. top_m * 3)
+    pre_k = min(len(attr_texts), top_m * 3)
+    if reranker and pre_k > 0:
+        # Get top candidates from vector scoring
+        pre_idxs = np.argpartition(-final, kth=pre_k-1)[:pre_k]
+        # Sort them by vector score
+        pre_idxs = pre_idxs[np.argsort(-final[pre_idxs])]
+        
+        candidates = [attr_texts[i] for i in pre_idxs]
+        
+        # Build query string from keywords
+        q_parts = []
+        for v in keywords.values():
+            q_parts.extend(v)
+        query = " ".join(q_parts)
+        
+        rerank_scores = reranker.predict(query, candidates)
+        
+        # Combine scores? Or just use rerank score? Usually just rerank score.
+        # But we need to return indices into original list.
+        
+        # Create (index, score) pairs
+        rescored = []
+        for i, score in enumerate(rerank_scores):
+            original_idx = pre_idxs[i]
+            rescored.append((original_idx, score))
+            
+        # Sort by rerank score
+        rescored.sort(key=lambda x: x[1], reverse=True)
+        
+        final_idxs = [x[0] for x in rescored[:top_m]]
+        final_scores = [x[1] for x in rescored[:top_m]]
+        return final_idxs, final_scores
+        
+    else:
+        # Fallback to pure vector results
+        k = min(top_m, len(attr_texts))
+        idxs = np.argpartition(-final, kth=k-1)[:k]
+        idxs = idxs[np.argsort(-final[idxs])]
+        scores = final[idxs].astype(float).tolist()
+        return idxs.tolist(), scores
 
 async def _aas_explore(endpoint: str):
 
