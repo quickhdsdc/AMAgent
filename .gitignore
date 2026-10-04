@@ -1,0 +1,196 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+# .python-version
+
+# pdm
+.pdm-python
+.pdm-build/
+
+# pixi
+.pixi
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder / Rope project settings
+.spyderproject
+.spyproject
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy / pyre / pytype
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Abstra
+.abstra/
+
+# Ruff
+.ruff_cache/
+
+# PyPI configuration file
+.pypirc
+
+# Cursor
+.cursorignore
+.cursorindexingignore
+
+# Marimo
+marimo/_static/
+marimo/_lsp/
+__marimo__/
+
+# IDE
+.idea/
+# .vscode/
+
+###### Project-specific ignores
+
+# Large/ephemeral output directories (any sub-project)
+archiv/
+basyx/
+logs/
+ml_models/
+poppler-25.07.0/
+results_AM/
+results/
+
+# Legacy corpus dir — superseded by bibliography/kb_v2 + kb_v3.
+# Block re-introduction anywhere in the tree.
+corpus_AM/
+
+# bibliography/ contains both shipped corpora (kb_v2, kb_v3) and large
+# intermediates (PDFs, raw extractions, DOI caches, bookkeeping CSVs).
+# Ship only the final structured-row corpora; ignore everything else.
+# (Patterns with internal slashes must be path-anchored; use explicit subprojects.)
+AgentApp/bibliography/*
+!AgentApp/bibliography/kb_v3/
+AgentExperiments/bibliography/*
+!AgentExperiments/bibliography/kb_v2/
+!AgentExperiments/bibliography/kb_v3/
+AgentExperiments/bibliography/kb_v2/_stats.csv
+
+# AgentApp — secrets and local data
+AgentApp/config/config.toml
+AgentApp/data/
+AgentApp/data_binary/
+AgentApp/data_clean/
+AgentApp/data_exp_binary/
+AgentApp/data_exp_lllm_ft/
+AgentApp/_archiv/
+AgentApp/_scratch/
+AgentApp/experiments/
+
+# AgentExperiments — secrets and local data
+AgentExperiments/config/config.toml
+
+# AgentFTLLMs — local data, logs, large caches
+AgentFTLLMs/data/
+AgentFTLLMs/logs/
+AgentFTLLMs/.cache/

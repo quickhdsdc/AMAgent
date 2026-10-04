@@ -1,0 +1,849 @@
+[
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-6",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "<table><tr><td>Approaches Experimental</td><td>Examples Balls can be reduced if scanning speed is less than 190 mm/s in AlSi10Mg parts.</td><td>Refs. [11]</td></tr><tr><td rowspan=\"9\">trials</td><td>Laser power greater than 75 Wand scanning speed less than 290 mm/s can prevent balling in SS316 parts.</td><td>[12]</td></tr><tr><td>Balls can be avoided when scanning speed is greater than 6O mm/s in Co-Cr alloys.</td><td>[14]</td></tr><tr><td>A decrease in molten pool width and depth can cause balling for IN718 powders.</td><td>[16]</td></tr><tr><td>Averylow laserpowerof159WandahighspeedofO.6m/scanresult inlimitedfusionofthe substrate which maycause ballsin</td><td>[19]</td></tr><tr><td>SS316alloy.</td><td></td></tr><tr><td>Alowenergydensitywithlaserpowerof 60Wand scaning speedof10O mm/scanresult in processinstabilityandballsin the L-PBFofSS316 parts.</td><td>[20]</td></tr><tr><td>Liquid particlesreleasedfromthemeltpolbytheevaporation-drivengasflux,coupledwithhydrodynamic instabilitymaycauseballs for austenitic stainless steel.</td><td>[21]</td></tr><tr><td>Ballscan be reduced if the energy input is in the rangeof 1400-170o J/mm³in EOSPH1 stainless stelforL-PBF.</td><td>[22]</td></tr><tr><td>A low energy density may cause balling in steel powder for L-PBF.",
+    "summary": "",
+    "size": 1273,
+    "materials": [
+      "IN718",
+      "AlSi10Mg"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 25,
+    "source_folder": "SS316L_SS17",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-11",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "Here we show that the approach of combining physicsinformed machine learning,mechanistic modeling,and experimental data can reduce defects in AM by considering an example of a common balling defect in L-PBF. The physics of balling captured through the computed values of the mechanistic variables is analyzed by a physics-informed machine learning to correlate with the balling occurrence data of one hundred and sixty-six independent experiments for six commonly used alloys: AlSi10Mg [11], aluminum 357 [11],stainless steel 316 [12,13], Co-Cr [14], Ti6Al4V [15]and Inconel 718 [16].Based on this approach (Fig.1）of combining experimental data,mechanistic modeling,and physicsinformed machine learning,we develop an easy-to-use,verifiable balling susceptibility index that can be used to predict and prevent balling in L-PBF.In addition,we investigate the hierarchical importance of the mechanistic variables on balling and present balling susceptibility maps for six alloys.The approach used here can help to reduce other common defects in AM such as cracking，porosity,lack of fusion,and surface roughness for producing defect-free L-PBF components.\n\n![](images/78a667b086121aa622e16fb1873c0459a52d01aa6b5e6af18a818668ec43365c.jpg)  \nFige l ticout and balling susceptibility maps.The experimental results of‘No balling'and‘Balling'cases are adapted from [16].\n\n# 2.Materials and methods\n\n# 2.1.Why is physics-informed machine learning needed?",
+    "summary": "",
+    "size": 1444,
+    "materials": [
+      "Ti-6Al-4V",
+      "SS316L",
+      "IN718",
+      "AlSi10Mg"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 32,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - Materials - Phutela et al. - The effects of feature sizes in selectively laser melted Ti-6Al-4V parts on the validity of optimise-part-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - Materials - Phutela et al. - The effects of feature sizes in selectively laser melted Ti-6Al-4V parts on the validity of optimise.pdf",
+    "content": "-P.A Studyof the Microstructural Evolution during Selective Laser Melting of Ti-6Al-4V. Acta Mater. 2010, 58,3303-3312. [CrossRef]   \n41. Shunmugavel, M.; Polishetty,A.; Littlefair, G. Microstructure and Mechanical Properties of Wrought and Additive Manufactured Ti-6Al-4 VCylindrical Bars.Procedia Technol. 2015,20,231-236. [CrossRef]   \n42. Koutny, D.; Palousek,D.; Pantelejev,L.; Hoeler,C.;Pichler,R.; Tesicky,L.; Kaiser,J. Influence of Scanning Strategies on Processing of Aluminum Alloy EN AW 2618 Using Selective Laser Melting. Materials 2018,11, 398. [CrossRef]   \n43. Dong,Z.; Zhang, X;Shi, W.; Zhou,H.; Lei,H.; Liang,J.Study of Size EfectonMicrostructure and Mechanical Properties of AlSi10Mg Samples Made by Selective Laser Melting. Materials 2018,11,2463. [CrossRef]   \n44. Tancogne-Dejean,T.; Spierings,A.B.; Mohr,D. Additively-Manufactured Metalic Micro-Lattice Materials for High Specific Energy Absorption under Static and Dynamic Loading.Acta Mater.2016,116,14-28. [CrossRef]   \n45. Zhao, X.; Li,S.; Zhang, M.; Liu,Y.; Sercombe,T.B.; Wang,S.; Hao,Y.; Yang,R.; Murr,L.E.Comparison of the Microstructures and Mechanical Properties of Ti-6Al-4V Fabricated by Selective Laser Melting and Electron Beam Melting.Mater. Des. 2016,95,21-31. [CrossRef]   \n46. Slotwinski,J.A.; Garboczi,E.J.; Stutzman,PE.; Ferraris,C.F.; Watson,S.S.; Peltz,M.A.Characterizationof Metal Powders Used for Additive Manufacturing. J.Res.Natl. Inst.Stand.Technol.2014,119,460.[CrossRef]   \n47. F42 Committee Terminology for Additive Manufacturing-Coordinate Systems and Test Methodologies; ASTM International: West Conshohocken, PA, USA,2013.   \n48. Schneider, C.A.; Rasband, W.S.; Eliceiri, K.W.NIHImage to ImageJ: 25 Years of Image Analysis. Nat.Methods 2012, 9, 671. [CrossRef] [PubMed]   \n49. Yang, K.V.; Rometsch,P.;Jarvis,T.; Rao,J.; Cao,S.; Davies,C.; Wu, X.PorosityFormation Mechanisms and Fatigue Response in Al-Si-Mg Alloys Made by Selective Laser Melting. Mater. Sci. Eng. A2018,712,166-174.",
+    "summary": "References - Part 5/7",
+    "size": 1987,
+    "materials": [
+      "Ti-6Al-4V",
+      "AlSi10Mg"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 52,
+    "source_folder": "Ti-6Al-4V",
+    "source_origin": "legacy_json"
+  },
+  {
+    "name": "Effect of axial static magnetic field on microstructure evolution, performance, and melt pool signals of AlSi10Mg fabricated by laser powder bed fusion-chunk-12",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of axial static magnetic field on microstructure evolution, performance, and melt pool signals of AlSi10Mg fabricated by laser powder bed fusion.md",
+    "content": "Fig. 3 shows the macrostructures of the LPBF-fabricated AlSi10Mg\nsamples under three different laser power levels using varied SMF\nstrategies. Under low laser power (260 W), the LPBF conditions hinder\nsufficient melt of the powder layer, causing an LOF which results in\nforming of residual pores [23]. The LOF defects usually have an irreg­\nular, elongated shape, and unmelted powder particles are practically\nalways nearby, as shown in Fig. 3a and d. Further, entrapped pores\nproduced by gas bubbles from powder bed voids usually have a regular\nspherical shape. The LOF defects and porosity decrease with the increase\nin input energy. A small amount of large spherical voids in the solidi­\nfication structure is mainly caused by the unsteady spatter forming\nunder 340 W laser power, as shown in Fig. 3c and f.\nRelative densities of AlSi10Mg samples are shown in Table 2. Pore\nnumbers and sizes were significantly reduced when using SMF. In the\nabsence of a magnetic field, the relative density of samples increased\nwith the laser power, reaching its maximum at 340 W. On the other\nhand, when the magnetic field was applied to the melt pool during the\nforming process, the sample density reached a relatively large value\n(greater than99.5 %) at a low power level (260 W) and slightly increased\nwith the laser power.",
+    "summary": "",
+    "size": 1315,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.8,
+    "n_numeric": 12,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys-chunk-1",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys.md",
+    "content": "Contents lists available at ScienceDirect\n\n# Materials Science & Engineering A\n\n[journal homepage: http://www.elsevier.com/locate/msea](https://http://www.elsevier.com/locate/msea)\n\n## Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys\n\n### Tomotake Hirata [*], Takahiro Kimura, Takayuki Nakamoto\n\n_Osaka Research Institute of Industrial Science and Technology, 2-7-1 Ayumino, Izumi-city, Osaka, 594-1157, Japan_\n\nA R T I C L E I N F O\n\n_Keywords:_\nAdditive manufacturing (AM)\nSelective laser melting (SLM)\nAluminum alloy\nInternal porosity\nHot isostatic pressing (HIP)\n\n**1. Introduction**\n\nA B S T R A C T",
+    "summary": "",
+    "size": 672,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 7,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys-chunk-4",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys.md",
+    "content": "therefore focused on the combination of aluminum alloys with SLM. For\nexample, Kempen et al. [8] used a fiber laser SLM machine with a\nmaximum power of 200 W to fabricate AlSi10Mg (designed for\ndie-casting) and the mechanical properties of this material were com­\nparable to those of cast-melting materials. In addition, Kimura et al.\n\n[9–12] used a fiber laser SLM machine with a maximum power of 400 W\nto prepare various aluminum alloys, including AlSi10Mg [9] and\nAlSi7Mg [10], which exhibited a higher strength and ductility than\nthose of cast-melting materials.\nHowever, internal pore formation is common in aluminum SLM\nmaterials since aluminum exhibits a high thermal conductivity and poor\nlaser absorptivity, and these pores are responsible for influencing the\nmechanical properties of SLM materials. In this context, Beretta et al.\n\n[13] and Brandl et al. [14] investigated the influence of internal pores on\nthe fatigue properties of such SLM materials, and found that the fatigue\nresistance was mainly controlled by internal defects such as gas pores\nand a lack of fusion. These results indicated the necessity to understand\nthe influence of the porosity on mechanical properties, and to control\nthe formation of internal pores; however, these points have yet to be\nclarified.\nIt is well known that hot isostatic pressing (HIP) can be employed to",
+    "summary": "",
+    "size": 1357,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 12,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys.md",
+    "content": "All specimens were fabricated from a gas-atomized powder of Al10%Si-0.4%Mg (mass%) alloy using an EOSINT M280 SLM machine\n(EOS GmbH) equipped with an Yb fiber laser (maximum power: 400 W,\nbeam spot diameter: ~0.1 mm, wavelength: ~1.07 μm). The powder\nparticles had a mean diameter of 25.6 μm and a near spherical shape.\nCylindrical specimens (diameter: 7 mm, height: 55 mm) were fabricated\nunder an argon atmosphere (residual oxygen concentration: ~0.1%).\nThe stacking direction corresponds to the lengthwise direction of the\nbar, and the laser-scanning pattern was rotated through ~67[�] for each\nlayer, as shown in Fig. 1. Prior to commencing the SLM process, the base\nplates (A5083) were pre-heated to 35 [�]C using a heater placed inside the\nbuilding platform.\nIt is well known that the energy density during SLM is correlated to\nthe relative density of the material [28,29]. Thus, the energy density, E,\nwas controlled using the laser irradiation conditions as expressed in\nEquation (1):\n\n_E ¼ P=ðv ⋅_ _s ⋅_ _tÞ_ (1)",
+    "summary": "",
+    "size": 1021,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.8,
+    "n_numeric": 18,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys-chunk-8",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys.md",
+    "content": "where P is the laser power (W), v is the scan speed (mm/s), s is the scan\nspacing (mm), t is the layer thickness (mm). To investigate the influence\nof the porosity on the material properties, the various specimens were\nfabricated under four different laser irradiation conditions. As Kimura\net al. [9] previously reported the relationship between the laser energy\ndensity and the relative density of the SLM material, four laser irradia­\ntion conditions were selected using a constant layer thickness of 30 μm.\nIndeed, the initial conditions were found to be the optimum laser\n\n**Fig. 1. Schematic illustrations of (a) the stacking direction of the cylindrical**\nspecimens and (b) the laser scanning pattern.\n\nirradiation conditions, producing the highest relative density (laser\npower: 300 W, scan speed: 1200 mm/s, scan spacing range: 0.15 mm)",
+    "summary": "",
+    "size": 845,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 6,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effects of hot isostatic pressing and internal porosity on the performance of selective laser melted AlSi10Mg alloys.md",
+    "content": "We herein reported the fabrication of AlSi10Mg alloys with various\nporosities by selective laser melting (SLM), after which the effects of hot\nisostatic pressing (HIP) and the material internal porosity were\ninvestigated.\nWe found that prior to HIP treatment, fine dendritic cell micro­\nstructures of sub-micron size were observed for the horizontal crosssection, while elongated cell microstructures were observed along the\nstacking direction for the vertical cross-section, and the cell size\ndecreased with the energy density of the specimen. Following HIP,\nsignificant changes in the microstructures were observed, and Si was\nfound to diffuse and agglomerate into coarse granular phases. No major\ndifferences were observed in the case of different energy densities, and\nthe microstructures in the vertical cross-section exhibited a tendency\nsimilar to that in the horizontal cross-section. In addition, numerous\ninternal pores were observed, the amount and size of these pores\nincreasing with decreasing the energy density (i.e., decreasing the\nrelative density of the material). However, following HIP treatment,\nfewer internal pores were observed in all specimens. Furthermore,\nsimilar proof strengths were observed for all materials prior to HIP\n\n**Fig. 13. SEM fractographs for (a) the heat-treated and (b) the HIP-treated tensile specimens of sample D.**",
+    "summary": "",
+    "size": 1362,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 2,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-1",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "# Experimental Research on Selective Laser Melting AlSi10Mg Alloys: Process, Densification and Performance\n\nZhen Chen, Zhengying Wei, Pei Wei, Shenggui Chen, Bingheng Lu, Jun Du, Junfeng Li, and Shuzhe Zhang\n\n(Submitted January 10, 2017; in revised form August 23, 2017; published online November 9, 2017)\n\nIn this work, a set of experiments was designed to investigate the effect of process parameters on the relative\ndensity of the AlSi10Mg parts manufactured by SLM. The influence of laser scan speed v, laser power P and\nhatch space H, which were considered as the dominant parameters, on the powder melting and densification\nbehavior was also studied experimentally. In addition, the laser energy density was introduced to evaluate\nthe combined effect of the above dominant parameters, so as to control the SLM process integrally. As a\nresult, a high relative density (> 97%) was obtained by SLM at an optimized laser energy density of 3.55.5 J/mm[2]. Moreover, a parameter–densification map was established to visually select the optimum process\nparameters for the SLM-processed AlSi10Mg parts with elevated density and required mechanical properties. The results provide an important experimental guidance for obtaining AlSi10Mg components with\nfull density and gradient functional porosity by SLM.\n\nKeywords selective laser melting, AlSi10Mg, densification,\nenergy density, processing parameters\n\n## 1. Introduction",
+    "summary": "",
+    "size": 1423,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-5",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "- 98%. Weingarten et al. (Ref 10) produced nearly full dense\ncomponents and determined a wide range of mechanical\nproperties of laser power higher than 150 W, and the laser\nbeam diameter is fixed at 200 lm. Thijs et al. (Ref 11)\nsuggested that the optimum process parameters should be\n200 W, 1400 mm/s and the hatch space of 105 lm. Additionally, Read et al. (Ref 12) investigated the influence of SLM\nprocess parameters (laser power, scan speed and hatch space)\non the variation of porosity, while Kruth et al. (Ref 13)\ndescribed the SLM as a direct melting of the metal powder by a\nhigh-energy laser beam to achieve the density of nearly 100%.\nLouvis et al. (Ref 5) obtained the high relative density of the\nAlSi10Mg components produced by SLM by reducing the\nrequired laser power and increasing the scan speed. Olakanmi\net al. (Ref 6) pointed out that there was an optimum laser\nenergy density which combined relatively high laser power\nwith low scan speed, where the solid–liquid wettability was the\nmost appropriate. Besides, Kempen (Ref 14) inferred that the",
+    "summary": "",
+    "size": 1064,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 15,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-12",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "Figure 4 shows the effect of laser power on the relative\ndensity of the SLM-processed AlSi10Mg sample with a fixed\nhatch space of H = 0.05 mm. It can be observed that for all\ncomponents with different laser powers, as the scan speed\nincreases, the variation of relative density shows an asymmetric\nunimodal distribution. Meanwhile, the maximum value of the\nrelative density appears at a certain scan speed. For instance,\nwhen the scan speed is 1000 mm/s, the maximum relative\ndensity of the component is about 99.8% at a laser power of\n180 W. In addition, the relative density of the sample increases\nas the scan speed is increased to 1000 mm/s, at which point the\nrelative density is greater than 99.8%, i.e., nearly full density.\nHowever, further increasing the scan speed causes a decrease in\nthe relative density. This can be attributed to the higher\ntemperature of the molten pool as well as the higher\ntemperature gradient from the center of the molten pool to its\nedge, due to the larger laser power input or lower scan speed\nduring the SLM process. The high temperature gradient in the\nmolten pool results in a surface tension gradient and an\nintensity of thermal Marangoni convection. Consequently, the\nmelt tends to flow radially inward toward the melt pool center.\nSimultaneously, the strong Marangoni convection caused a\nsevere unsteady flow, leading to the defects of porosity and\n\nFig. 3 The as-built AlSi10Mg tensile samples produced by SLM",
+    "summary": "",
+    "size": 1455,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.3,
+    "n_numeric": 10,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-13",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "Fig. 4 Effect of the laser power on the relative density of the AlSi10Mg parts with a fixed hatch space of 0.05 mm\n\nballing during the solidification process of the molten pool\nwhen the scan speed v < 800 mm/s, thus decreasing the\ndensity. Reducing the laser energy input lowers the temperature\nand accordingly decreases the temperature gradient, thereby\nweakening the thermal Marangoni flow and mitigating the\ninstability of pool, thereby reducing the porosity and balling,\nresulting in enhancing the densification (Ref 7).\nIt is known that the higher scan speed indicates a shorter\nduration of interaction between the laser spot and the powders,\nresulting in a lower bed temperature leading to a weak\nMarangoni flow. When the scan speed exceeds the threshold,\ne.g., v > 1000 mm/s for the laser power of P = 140 W, the\nMarangoni flow is very weak and the thermal conductivity is\nsuppressed in the shallow pool so that the powder particles\ncannot be completely melted or the previous layer cannot remelting, resulting in the pores formed between the interfaces of\nthe layers. In addition, the melt pool is elongated and then\ndestroyed by the Rayleigh instability. The disconnected track",
+    "summary": "",
+    "size": 1186,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 7.0,
+    "n_numeric": 7,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-14",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "forms the ball by surface tension. As a result, holes and balling\noccur during the SLM process. Hence, the higher scan speed\nresults in a lower solidification densification. Increasing the\nlaser power will cause an increase in the temperature of the\npowder bed, and Marangoni convection promotes wetting and\nspreading of the pool, thereby reducing the porosity and the\nsolidification ball accordingly, thus improving the relative\ndensity of the components, e.g., the relative density of the parts\nincreased as the laser power increases from 140 Watts to 180\nwhen the scan speed v > 1000 mm/s (Fig. 4).\n\n### 3.2 Effect of the Scan Speed\n\nTo examine the effect of the scan speed v on the relative\ndensity of the specimen, the scan speed v =300-1700 mm/s is\nconsidered in the SLM process while laser power is kept at P =\n180 W. As shown in Fig. 5, the relative density of the specimen\nincreased from 94 to 98%, as the scan speedincreased from 500 to\n\nFig. 5 Effect of the laser power and hatch space on the relative density of the AlSi10Mg parts, at a scan speed of 180 W and 0.06 mm",
+    "summary": "",
+    "size": 1080,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-15",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "800 mm/s. A lower laser scan speed implies that the longer\nduration between laser and material results in a higher energy\ndensity. Thus, the lower relative density at a smaller scan speed\ncan be attributed the pores and balling induced by turbulence\nwithin the superheating melt pool. On the contrary, the relative\ndensity of the specimen decreases as the scan speed increases\nwhen the scan speed v is higher than 800 mm/s. This is due to the\nincrease in the amount of pores and balls caused by un-melted\nparticles during the solidification stage as the scanning speed\nincreases (Rayleigh–Plateau instability).\nFor samples with different hatch spaces, the relative density\noccurs at the threshold of the scan speed, e.g., 1000 mm/s when\nthe hatch space is 0.05 mm, 800 mm/s when the hatch space is\n0.06 mm and 700 mm/s when the hatch space is 0.07 mm.\nHence, the relative density of specimen exhibits a maximum\nvalue at the scan speed threshold during the SLM process, e.g.,\nthe maximum relative density of specimen is 99.8% at scan speed\nof 1000 mm/s, while the hatch space is 0.05 mm, 97% and\n0.06 mm, 95%, respectively, at the scan speed of 800 and\n700 mm/s. Moreover, the hatch space is 0.07 mm (when a fixed\nlaser power of 180 W was used during the SLM process) (Fig. 5).\n\n### 3.3 Effect of the Hatch Space",
+    "summary": "",
+    "size": 1311,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 8.3,
+    "n_numeric": 20,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-17",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "the melt pool, the material is affected by the heat generated by\nthe overlapping scan tracks, which results in localized coarsening of the microstructure. Obviously, due to the sufficient\nmelting between multilayers, a good bond between layers\nwithout any interlayer pores is observed.\nThe influence of hatch space on the relative density of the\nSLM-processed AlSi10Mg alloy parts when the laser power\nP = 180 W is depicted in Fig. 7. It is obvious that the relative\ndensity of all specimens increased significantly or decreased at\nthe scan speed of v > 1000 or v < 800 mm/s, with the\nreduction in the hatch space. Due to the insufficient overlap\nbetween the laser scan tracks caused by Gaussian laser beam,\nthe higher hatch space (H = 0.07 mm) eventually leads to\npores, resulting in incomplete consolidation, thereby reducing\nthe relative density of the components. Furthermore, an\nincrease in laser power or a reduction in hatch space will\nallow more liquid phase to enter the overlapping region,\nminimizing or eliminating the pores within the overlap, thereby\nenhancing the densification of the solidification.\nAs described in section 3.1, due to the overheating of the\nscan tracks, the typical defects of pores and the balls are formed\nat a slower scanning speed or a large power input, thereby\nreducing the relative density. In addition, the width of the\nscanning track becomes larger at a lower scan speed\n(v = 800 mm/s), and the overlap region between two adjacent\ntracks is just filled with liquid phase during the SLM process at\nthe hatch space of H = 0.06 mm. In the lower hatch space\n(H = 0.05 mm), the overlap becomes rough due to the stacking\nsolidification, thus reducing the relative density of the specimen. The combined effect of laser power, scan speed and hatch\nspace on the relative density of the sample results in a\nmaximum density at the hatch space of 0.06 mm, and the\nminimum hatch space is 0.07 mm when the laser power\nincreased from 160 to 180 W.",
+    "summary": "",
+    "size": 1974,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 14,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-18",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "Fig. 6 OM images showing characteristic microstructures at various hatch space: (a) 0.05 mm; (b) 0.06 mm; (c) 0.07 mm\n\nw ¼ [4][P] ðEq 3Þ\npvH\n\nwhere P is the laser power input (W), v represents the scan\nspeed (mm/s) and H is the hatch space (mm).\nAccording to Eq 3, the laser energy density can be enhanced\nby increasing the laser power or decreasing the scan speed,\nhatch space or layer thickness.\nThe relation between the energy density and the relative\ndensity of the different laser powers is shown in Fig. 8. It is\nclear that the relative density of the component increases\nsignificantly when the laser energy density increases from 1 to\n5 J/mm[2]. Subsequently, as the laser energy density increases,\nthe relative density of the parts is moderately reduced. It can be\nillustrated that the defects of porosity and balling of the SLMprocessed AlSi10Mg alloy parts are caused by insufficiently\nlaser energy. Moreover, the experimental data can be obtained\nby nonlinear fitting according to Eq 4\n\nFig. 7 The influence of the laser scan speed on the relative density\nat fixed laser power (P = 180 W)\n\n### 3.4 Prediction of Optimized Processing Parameters",
+    "summary": "",
+    "size": 1154,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-20",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "w < 3.5 J/mm[2], the AlSi10Mg powder cannot be melted\ncompletely due to insufficient energy input, which leads to\nporosity during solidification, resulting in a decrease in density\nof the parts. On the other hand, when the power energy density\ninput w > 5.5 J/mm[2], the excessive transmission of the energy\ndensity will lead to complications, such as balling, layer\ndelamination and over-burning, which tend to reduce the\ndensity of the SLM-fabricated components. Moreover, when\nthe laser energy density input is within the range of 3.5-5.5 J/\nmm[2], higher laser power and scan speed should be used to\n\nimprove the manufacturing efficiency of the SLM-processed\nAlSi10Mg alloy parts.\nTo get an in-depth investigation, Fig. 9 depicts the relative\ndensity–parameter (laser power P and the scanning speed v)\nmap. It is clear that the optimum scan speed is 800-1300 mm/s\nat the laser power of P = 180 W during the SLM process of\nAlSi10Mg alloy (relative density > 97%). The range of\noptimum scan speed becomes narrower and smaller with the\ndecreasing laser power input. The best scan speed is 700900 mm/s.",
+    "summary": "",
+    "size": 1102,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Experimental Research on Selective Laser Melting AlSi10Mg Alloys Process, Densification and Performance.md",
+    "content": "1. The densification behavior of AlSi10Mg alloy parts is significantly affected by the SLM processing parameters, such as\nlaser power, scan speed and hatch space. Insufficient energy\ninput (too low laser power or too high scan speed) may result\nin a reduction in the densification due to the occurrence of\nballing effect and the formation of residual pores. A high-level densification (> 99% theoretical density) is achieved for\nthe SLM-processed AlSi10Mg alloy parts with optimized\nparameters. In addition, a low hatch space during SLM will\nbe favorable to enhance the densification of the parts.\n2. The densification behavior of AlSi10Mg alloy parts is significantly affected by the laser energy density input during\nSLM. In addition, the fine relative density of the parts\n(> 97% theoretical density) was obtained by SLM using\nthe optimized laser energy density of 3.5-5.5 J/mm[2].\n3. The SLM-processed AlSi10Mg alloy parts experienced undergo significant structural changes with the variation of the\nprocess parameters. With a reasonable laser energy input\n(3.5-5.5 J/mm[2]), fine structure densification is achieved during the SLM process. In addition, the pores or ball will be\ngenerated by insufficient or excessive laser energy input.\n4. The densification–parameters contour of SLM-processed\nAlSi10Mg alloy parts show that the optimum scan speed\nis 800-1300 mm/s and the laser power of P = 180 W\nduring the SLM process (relative density > 97%). As\nthe laser power is reduced, the range of optimum scan\nspeed becomes narrower and smaller.",
+    "summary": "",
+    "size": 1545,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 21,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "In this study, the influence of two laser beam profiles (a standard Gaussian beam profile and a Donut beam profile) on the formation of single tracks and density cubes is investigated for\ndifferent process parameters. Single-track experiments were performed to get a basic understanding of the influence of the beam\nprofile on the melt pool size and shape and density cubes to understand the influence on the multilayer SLM process.\n\nA. Material and equipment\n\nFIG. 2. Measured Gaussian and Donut beam profiles used for the experiments.\nThe maximum intensity of the Gaussian beam profile is 42% higher.\n\nThe experiments were done with material AlSi10Mg, the most\ncommonly used aluminum alloy in SLM.[17] The powder used had a 140 μm (1/e² beam width). To increase the diameter of the\nparticle size distribution of 20–63 μm. The experiments were con- Gaussian beam to an equivalent size, the laser beam was defocused.\nducted on an AconityLAB from Aconity3D with a Coherent For measurement and calibration of the laser power and the\nFL1000R 1 kW fiber laser and a customized optical bench that laser beam shape and position along the z axis, the 1000W-BB-34\nallows an integration of beam-shaping optics in the optical path thermal sensor, an SP928 camera, and a BeamWatch AM from\n(see Fig. 1).[19] Ophir were used. For polishing the specimen, a Struers",
+    "summary": "",
+    "size": 1350,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-13",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "Figure 5 shows the results of the single-track top view analysis for the Gaussian and Donut beam profiles. The results\nreveal several important facts: First, the region of the type I\nmelt tracks (homogenous melt track) is larger for the Donut\nbeam profile and exceeds the limits of the process parameters\ntested. It can be expected that melt tracks of type I can be produced with higher scanning speeds and laser powers than the\nones tested. Second, homogeneous melt tracks were produced\nwith scanning speeds of up to 2000 mm/s for the Donut beam\nprofile, while the maximum speed that produced a continuous\nmelt track for the Gaussian beam profile was 1750 mm/s at\n500 W. This could be an indication that higher scan speeds (and\nhence productivity) are feasible with a Donut beam profile.\nThird, the region where protrusion and depression are present\nis significantly larger for the Gaussian beam profile, compared\nwith the Donut beam profile. Last but not least, no balling was\ndetected for the Donut beam profile, while it was present for\nthe Gaussian beam profile at high laser powers (600–800 W)\nand high scanning speeds (1250–1750 mm/s). This can be\nexplained by more significant vaporization and higher temperature gradients that come along with the Gaussian beam profile.\nBoth lead to more elongated melt pools due to an increased\nradial melt flow as described by Zhang et al.[22] This results in",
+    "summary": "",
+    "size": 1403,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 9,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-14",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "the formation of protrusions and balling based on the Plateau–\nRayleigh instability.[6][,][22][,][24]\n\nAdditionally, microsections of the single tracks were prepared\nto analyze the width and depth of the melt tracks depending on the\nprocess parameters and to identify possible defects such as porosity\nor cracks within the single tracks. For a laser power of 200–400 W,\nthe cross sections of the melt tracks were barely visible. Therefore,\na reliable measurement of their width and depth was not possible\nand they are excluded from the following analysis.",
+    "summary": "",
+    "size": 555,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 5,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-17",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "TABLE III. Comparison of single tracks for the Gaussian and Donut beam profiles for selected process parameters.\n\n1. Analysis of the effect of beam profile on process\nwindow (stability of process)\n\nFigures 9 and 10 show the density of the cubes for different\nLEDs [Eq. (1)] and volumetric energy densities (VEDs) as defined\nby Eq. (2),[1]\n\nVED ¼ PL/(vS � h � d), (2)\n\nwhere PL is the laser power, vS is the scanning speed, h is the hatch\ndistance, and d is the layer thickness.\nFrom the results, it can be seen that the density of the cubes\nmanufactured by the Donut beam profile is higher for most process\nparameters and that the amount of cubes with densities >99.5% is\nsignificantly higher compared with the ones manufactured by the\nGaussian beam profile (36 compared with 26). This is especially\ntrue for high LEDs and VEDs. Above an LED of 0.6 J/mm and a\nVED of 100 J/mm³, none of the cubes manufactured with a\nGaussian beam profile has a density higher than 99.5%, while all\ncubes manufactured with a Donut profile have a density above this\nvalue. For low LEDs and VEDs, the difference between the results",
+    "summary": "",
+    "size": 1111,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 9.3,
+    "n_numeric": 13,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-18",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "for the two beam profiles is not as significant. It is interesting to\nnote that all cubes manufactured with a Donut beam profile and\nlaser powers above 500 W have a density above 99.5%, independent\nof the scanning speed (between 1000 and 2000 mm/s) and hatch\ndistance (100–200 μm). This indicates a very broad process\nwindow, while such a broad process window cannot be observed\nfor the Gaussian beam profile.\n\nTable IV shows the microsections of the density cubes for different laser powers and scanning speeds for a hatch distance of\n150 μm. It can be seen that on average the porosity is lower for the\nDonut beam profile and that at low scanning speeds and high laser\npowers (high LEDs and VEDs), gas pores can be identified in considerable amount for the Gaussian beam profile, while they are\nalmost not present for the Donut beam profile. Gas pores are\ndirectly related to the key hole effect and the results are, therefore,\nin good agreement with the single-track experiments.[29] For low\nlaser powers and high scanning speeds (low LEDs and VEDs), a\nlack of fusion porosity can be identified for both beam profiles.\n\nFigure 11 visualizes the process windows for the Gaussian and\nDonut beam profiles for the three different hatch distances. One\n\nJ. Laser Appl. 32, 022059 (2020); doi: 10.2351/7.0000100 32, 022059-5\n\nPublished under license by Laser Institute of America\n\nARTICLE [scitation.org/journal/jla](https://lia.scitation.org/journal/jla)",
+    "summary": "",
+    "size": 1451,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 9.8,
+    "n_numeric": 17,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-19",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "FIG. 6. Melt pool width for the Gaussian and Donut beam profiles for different process parameters.\n\ncan see that the process window with densities >99.5% is smaller\nfor the Gaussian beam profile than that for the Donut beam\nprofile. While the results are similar for low laser powers\n(300–400 W), the density at laser powers between 500 and 800 W is\nhigher for the Donut beam profile. For the Gaussian beam profile,\nthe density gets lower with an increase in laser powers above\n500 W for 100 and 150 μm hatch distance and above 600 W for\n200 μm hatch distance due to an increase in gas porosity that is\ndirectly linked to increase vaporization and the key hole effect as\n\ncan be seen in Table IV.[27][,][30] As stated before, all cubes manufactured with a laser power above 500 W have a density >99.5% and\nthe highest densities of >99.75% are achieved at laser powers of\n600–800 W for the Donut beam profile. A decrease in density with\nan increase in laser power is not observed for the parameters\ntested, since gas porosity is almost not present as a result of\nreduced vaporization.\nOverall, it can be stated that the process window that produces\nhigh densities (>99.5%) is larger for the Donut beam profile than\n\nFIG. 7. Melt pool depth for the Gaussian and Donut beam profiles for different process parameters.\n\nJ. Laser Appl. 32, 022059 (2020); doi: 10.2351/7.0000100 32, 022059-6\n\nPublished under license by Laser Institute of America",
+    "summary": "",
+    "size": 1439,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 8.3,
+    "n_numeric": 28,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-21",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "Published under license by Laser Institute of America\n\nARTICLE [scitation.org/journal/jla](https://lia.scitation.org/journal/jla)\n\nTABLE IV. Comparison of microsections for different scanning speeds and laser powers for a hatch distance of 150 μm (G, Gaussian beam profile; D, Donut beam profile).\n\nJ. Laser Appl. 32, 022059 (2020); doi: 10.2351/7.0000100 32, 022059-8\n\nPublished under license by Laser Institute of America\n\nARTICLE [scitation.org/journal/jla](https://lia.scitation.org/journal/jla)\n\nFIG. 11. Process window for the Gaussian and Donut beam profiles for different hatch distances.\n\nalso offers benefits in terms of productivity of the process for\nAlSi10Mg. For the current experiments, a maximum build rate\nof 20 mm³/s was used (a scanning speed of 2000 mm/s and a\nhatch distance of 200 μm), and additional experiments with\n\nhigher build rates are necessary to investigate the maximum\nfeasible build rate for both profiles. Due to the broader process\nwindow (see Fig. 11) and results from the single-track\nexperiments, the authors are confident that the Donut beam\n\nFIG. 12. Comparison of the density of cubes produced by the Gaussian and Donut beam profiles for different build rates.\n\nJ. Laser Appl. 32, 022059 (2020); doi: 10.2351/7.0000100 32, 022059-9\n\nPublished under license by Laser Institute of America\n\nprofile will show benefits for higher scan speeds and hatch\ndistances.\n\nC. Comparison of single-track and density cube\nexperiments",
+    "summary": "",
+    "size": 1459,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 24,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "From the results of the single-track and density cube experiments, it can be seen that general characteristics that have been\nidentified in the single-track experiments are also found in the\ndensity cube experiments. Two examples for this are that the\nprocess window that produces good results (type I melt tracks for\nsingle tracks; >99.5% density for the density cube experiments) is\nwider for the Donut beam profile and that the key hole effect/gas\nporosity is not observed for the Donut beam profile in both experiments. But the results also reveal that a direct correlation between\nthe quality of the single tracks and the density of the cubic specimens is not possible. The maximum speed for a type I single track\nis 1750 mm/s, while different combinations of laser powers and\nscanning speeds of 2000 mm/s result in cubic specimens with densities >99.5%. Nevertheless, the single-track experiments provide a\ngood indication about the region of a stable SLM process.\nIn addition, it is interesting to note that the comparable high\nvariation in melt pool width for the single tracks manufactured\nwith the Donut beam profile, especially for 700 and 800 W, does\nnot seem to have a negative effect on the density of the additively\nmanufactured cubes. This is probably due to the fact that melt pool\nwidth, even under consideration of the variation, is still larger than\nthe maximum hatch distances of 200 μm tested (except for a laser\npower of 500 W and scanning speeds of 1750 and 2000 mm/s).",
+    "summary": "",
+    "size": 1493,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 8.8,
+    "n_numeric": 10,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-24",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "IV. CONCLUSION\n\nACKNOWLEDGMENTS\n\nThe presented results are based on work that was done for the\nBionic Aircraft project. This project has received funding from the\nEuropean Union’s Horizon 2020 Research and Innovation Program\nunder Grant Agreement No. 690689.\n\nIn this study, the effect of the laser beam profile (the Gaussian\nand Donut beam profiles) on the SLM process has been studied for\nthe aluminum alloy AlSi10Mg. The goal was to investigate if alternative beam profiles such as the Donut beam profile offer benefits\nto the SLM process in terms of stability and productivity of the\nprocess. Therefore, single tracks and density cubes were manufactured for different process parameters. For the single tracks, the\nshape and size of the single tracks were analyzed based on their top\nview and microsections. For the density cubes, the porosity and\ntypes of defects were analyzed on microsections with respect to different key figures (LEDs, VEDs, and build rate). The most important findings can be summarized as follows:\n\n- The process window that produces stable single tracks and cubes\nwith densities of >99.5% is larger for the Donut beam profile\nthan that for the Gaussian beam profile.\n\n- The single tracks of the Donut beam profile are wider than that\nof the Gaussian beam profile and the effect of the process parameters on the melt pool depth of the Donut beam profile is not as\nsignificant as that of the Gaussian beam profile.",
+    "summary": "",
+    "size": 1441,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 4,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg-chunk-31",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Influence of laser beam profile on the selective laser melting process of AlSi10Mg.md",
+    "content": "ARTICLE [scitation.org/journal/jla](https://lia.scitation.org/journal/jla)\n\n[process using high-speed x-ray imaging and diffraction,” Sci. Rep. 7, 3602](https://doi.org/10.1038/s41598-017-03761-2)\n(2017).\n26S. Katayama, “Handbook of laser welding technologies,” in Conduction Laser\nWelding (Elsevier, New York, 2013), Chap. 6.\n27N. T. Aboulkhair, N. M. Everitt, I. Ashcroft, and C. Tuck, “Reducing porosity\n[in AlSi10Mg parts processed by selective laser melting,” Addit. Manuf. 1–4,](https://doi.org/10.1016/j.addma.2014.08.001)\n77–86 (2014).\n28H. Gong et al., “Melt pool characterization for selective laser melting of\nTi-6Al-4V pre-alloyed powder,” in 25th Annual International Solid\nFreeform Fabrication Symposium (University of Texas, Austin, TX),\npp. 256–267.\n29R. Lin, H.-P. Wang, F. Lu, J. Solomon, and B. E. Carlson, “Numerical\nstudy of keyhole dynamics and keyhole-induced porosity formation in\n[remote laser welding of Al alloys,” Int. J. Heat Mass Transfer 108, 244–256](https://doi.org/10.1016/j.ijheatmasstransfer.2016.12.019)\n(2017).\n30W. E. King, A. T. Anderson, R. M. Ferencz, N. E. Hodge, C. Kamath,\nS. A. Khairallah, and A. M. Rubenchik, “Laser powder bed fusion additive manu[facturing of metals; physics, computational, and materials challenges,” Appl.](https://doi.org/10.1063/1.4937809)\n[Phys. Rev. 2, 041304 (2015).](https://doi.org/10.1063/1.4937809)\n\nJ. Laser Appl. 32, 022059 (2020); doi: 10.2351/7.0000100 32, 022059-11",
+    "summary": "",
+    "size": 1447,
+    "materials": [
+      "Ti-6Al-4V",
+      "AlSi10Mg"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 51,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-2",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "High-quality manufacturing has particular importance in the Industry 4.0 era. Additive manufacturing (AM) is\namong the core technologies of industry 4.0, and selective laser melting (SLM) is among its best techniques in\nmanufacturing of near-full dense parts. To ensure densification and porosity free products, the influence of\nprocessing parameters and heat treatment conditions should be understood. The aim of this paper is to study the\neffect of processing parameters and heat treatments such as T4 (solution heat treatment) and T6 (artificial aging)\non the densification and porosity of AlSi10Mg parts built by SLM. The results showed that the best densification\nwith minimum porosities was attained at the energy density of 144.89 J/mm[3]. It was confirmed from optical\nmicroscopic and SEM images that highly dense parts had lower porosity. We have also optimized the processing\nparameters by applying statistical analysis for the fabrication of fully dense components. Finally, it is concluded\nthat the densification is enhanced to 99.94% by applying T4-HT at 530 °C and 99.87% in T6-HT, and porosities\nare also reduced by the heat treatments due to fine grain structure and strong bonding among the powder\nparticles.",
+    "summary": "",
+    "size": 1225,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.3,
+    "n_numeric": 12,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-9",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "There is an\ninterrelation between energy density and porosity, which means that\nporosity can be reduced by utilizing a specific energy density range\n(Peng & Chen, 2018). Porosities and density are also a sign of stability\nand strength of any manufactured product for the manufacturing process. The porosities are generally categorized by the macro and micro\nlevel porosities, and macro porosities create cracks in the SLM fabricated components, and micro porosities become more critical and\nprominent after heat treatment processes (Galy, Le Guen, Lacoste, &\nArvieu, 2018). The densification and porosity are inter-connected to\neach other; if the densification increases then the porosity reduces. The\ndensification of parts is decreased due to the insufficient melting and\npoor interlayer metallurgical bonding of the powder particles during\nthe SLM fabrication. The variations in the densification are due to the\ndevelopment of porosities, oxides particles, etc. in the parts. Higher\ndensification can be attained by the sufficient melting, good interlayer\nmetallurgical bonding of powder particles, and appropriately filling the\npores of the solid phase (Wang, Wang et al., 2017). So, fully-dense\ndensity parts have better mechanical properties. Recently, Majeed,\nZhang, Lv, Peng, Waqar, and Atta (2018) investigated the influence of\nprocessing parameters and heat treatments on the relative density of\nAlSi10Mg alloy parts.",
+    "summary": "",
+    "size": 1427,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 5,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-18",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "The results of measured relative density (RD) of SLM built AlSi10Mg\nsamples in the AB, T4-HT and T6-HT conditions are shown in Fig. 7. It\ncan be observed (see Fig. 7(a)) that the maximum relative density of\n98.17% was achieved at two energy densities of 144.89 and 175.05 J/\n\n**Fig. 2. SLM built samples, (a) SLM 3D model and (b) fabricated specimens.**\n\n**Fig. 3. Setup of heat treatment for samples, (a) T4-heat treatment system and (b) T6-heat treatment system.**\n\n**Fig. 4. Density measurement setup by Archimedes’ Principle, (a) in air and (b) in water.**\n\nmm[3] for the test samples No. 07 and 14, and the minimum relative\ndensity of 95.59% was obtained at an energy density of 190.91 J/mm[3]\n\nfor the sample No. 19. It can be seen that most of the samples were\nmanufactured with good RD which is almost greater than 97%. The\nrelative density was reduced due to the insufficient melting and poor\ninterlayer metallurgical bonding of the powder particles during the SLM\nprocess. The variations in the relative density are due to the development of porosities, oxides particles, etc. in the samples. Higher relative\ndensities can be achieved by the sufficient melting and good interlayer\nmetallurgical bonding of powder particles. Moreover, the molten liquid\ncan appropriately fill the pores of the solid phase, so that the samples\ncan achieve higher relative density (Wang, Wang et al., 2017). This",
+    "summary": "",
+    "size": 1402,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 1.8,
+    "n_numeric": 23,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-22",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "**Fig. 6. EDS of bulk sample for Chemical analysis, (a) actual SEM image and (b) measurement locations.**\n\n**Table 3**\nChemical analysis of AlSi10Mg alloy powder and fabricated bulk samples (DIN-EN-1706, 1998).\n\nDescription/Element wt. % %Al %Si %Mg %Fe %Mn %Cu %Ti\n\nStandard (DIN-EN-1706, 1998) Bal 9–11 0.20–0.45 ≤0.55 ≤0.45 ≤0.05 ≤0.15\nPowder Bal 9.50 0.38 0.18 < 0.01 < 0.01 < 0.01\nSample 88.26–88.60 10.27–10.89 0.20–0.48 0.27–0.50 0.29 0.04 0.02\n\nSLM fabricated component of the manufacturing industry. By the improvement in the RD, there may be a possibility of a reduction in the\nporosities of the fabricated products, and also an enhancement in the\nstrength. It is distinguished by the Pareto optimal method that the\noptimum energy density for the AB, T4-HT and T6-HT conditions is\n144.89 J/mm[3] (sample # 07) with the processing parameters of\n0.32 kW of laser power, 0.90 m/s of scan speed, 81.80 µm of hatch\ndistance and 25% of overlap rate. So, this energy density and processing\nparameters will be used for the manufacturing of actual products for\ngetting full densification. The detailed statistical analysis for optimization of processing parameters will be discussed in Section 3.4.\n\n_3.3. Porosity study_\n\nThe porosities in the SLM products are examined by various\nmethods which are Archimedes’ method and Microscopic analysis of\nsamples (Malcolm, Wong, & Fan, 2015).",
+    "summary": "",
+    "size": 1385,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 5.0,
+    "n_numeric": 44,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "_3.3.1. Archimedes’ technique_\nThe porosities are established due to the insufficient melting and\npoor interlayer metallurgical bonding of the powder particles during\nthe SLM production (Wang, Wang et al., 2017). The measured porosities of the bulk samples in the AB, T4-HT and T6-HT conditions are\nshown in Figs. 11 and 12 and presented in Table 4 which was estimated\nby Eq. (5) (Malcolm et al., 2015).\n\n_Pb_ _=_ 100 _RD_ (5)\n\nwhere Pb designates porosity of the bulk samples.\nFirstly, in the AB condition (see Fig. 11(a)), the maximum porosity\n\n**Fig. 8. Relative density comparison of AB to the T4-HT samples.**\n\nof 4.41% was observed at an energy density of 190.91 J/mm[3] for the\ntest sample # 19, and the lowest porosity was detected at an energy\ndensity of 144.89 and 175.05 J/mm[3] (sample # 07 and 14). It can be\nobserved from Fig. 11(a) that porosity values are varying from sample\nto sample and energy density. It means that some other processing\nparameters may influence the porosity because no direct correlation\nwas observed from Fig. 11(a). The lower values of porosities were found\nat different energy densities but the porosities less than 2% were obtained at energy density of 144.89, 167.16, 175.05, 186.15, 200.43 and\n220.24 J/mm[3] (for sample # 07, 09, 14, 03, 02 and 21 respectively).\nIt can be observed from Fig. 11(b) that the porosities were reduced\nin comparison to AB condition by applying the T4-HT at 530 °C except",
+    "summary": "",
+    "size": 1444,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 1.8,
+    "n_numeric": 43,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-25",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "in sample # 3, 10, 17, 25 with a maximum increase in sample # 10\nwhich has an energy density of 180.18 J/mm[3] and porosity was increased by 4.43%. All other specimens’ porosities were decreased which\nmeans that T4-HT has reduced the pores or voids of AB specimens and\nalso changed the internal grain structure. Furthermore, the T6-HT had\nalso reduced the porosities and enhanced the components densification\nby the reduction in pores and voids. The minimum porosity of 0.13%\nwas obtained (see Fig. 11(c)) by T6-HT for sample # 07. In comparison\nto AB samples, it can be observed from Fig. 12 that the porosities were\nreduced in all the test samples by applying the T6-HT (detailed analysis\nin Section 3.4). When compared to T4-HT at 530 °C, the porosities\nbehavior is random with reduction and rising in some samples, and in\nsample No. 24 there is no variation in porosity which means same\nporosity at both T4-HT at 530 °C and T6-HT. It can also be observed\nthat for sample No. 10 porosity was increased by T4-HT at 530 °C, but it\nwas reduced by T6-HT (see Fig. 12). The porosities of samples were\nreduced from AB to T4-HT and T6-HT conditions which showed that\nheat treatments are very beneficial for the AB components of AlSi10Mg\nalloy (see Fig. 12).",
+    "summary": "",
+    "size": 1253,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.3,
+    "n_numeric": 32,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-26",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "_3.3.2. Microscopic images analysis method_\nFor a further in-depth study of porosity, the optical microscopic\n(OM) images of samples of AlSi10Mg alloy were taken and shown in\nFigs. 13–15 at AB, T4-HT and T6-HT conditions with the changing in\nthe energy density. The OM images were helpful in the detection of\nporosities in the forms of pores, voids, oxides particles and un-melted\npowder particles with various shapes and sizes. The oxides particles are\nmainly developed in the aluminum products during the SLM method\nwhich was studied by Louvis, Fox, and Sutcliffe (2011) and proposed\nthe use of high-power lasers to prevent these defects. First of all, the optical micrographs of AB specimens were observed\nat different energy densities which are shown in Fig. 13 and the size and\nshapes of the porosities (i.e. pores, voids, etc.) were different for different energy densities. The samples having higher relative densities as\ncompared to others have a low values of porosities which can be seen\nfrom Fig. 13(a) and (b), since both the samples have higher relative\ndensity values, so the low and small size porosities were observed in\nthese samples. In Fig. 13(a), the size of the pores are from 32.50 µm to\n91.90 µm at energy density of 144.89 J/mm[3] for sample # 07, and the\nsize of porosities from 22.50 to 73.60 µm were observed in sample # 14\nwith an energy density of 175.05 J/mm[3] (see Fig. 13(b)).",
+    "summary": "",
+    "size": 1409,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 22,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "**Fig. 11. Measured porosities of the bulk samples, (a) AB condition, (b) T4-HT condition, and (c) T6-HT condition.**\n\n**Table 4**\nCalculated porosities of bulk samples in as-built, T4-HT and T6-HT conditions.\n\nSample No Energy Density Porosity (%)\n(J/mm[3])\n\nAs-built T4-HT at T4-HT at T6-HT at\n530 °C 540 °C 155 °C\n\n**Fig. 12. Comparative study of porosities of the bulk samples in AB, T4-HT and**\nT6-HT conditions.\n\nspherical, elliptical, etc., and of various dimensions. From the observations of OM cross-section images of T4-HT samples, the minimum\npores were observed in the sample # 14 with an energy density of\n175.05 J/mm[3] with the sizes of pores from 6.80 to 97.10 µm (see\nFig. 14(a)). In T4-HT at 540 °C, the maximum number of pores were\nobserved in sample # 10 (highest porosity discussed in Section 3.3.1 for\nT4-HT at 540 °C) with energy density of 180.18 J/mm[3] with the sizes\nranging from 7.90 to 134.10 µm (see Fig. 14(c)) and also sizes of pores\nare larger than other samples.\nFurthermore, the behavior of porosity distribution was investigated\nfor T6-HT which could be seen from Fig. 15, and the size of porosities",
+    "summary": "",
+    "size": 1135,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 37,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-32",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "The laser power mainly improves the average track size but deep penetration is resulted due to\nhigh power, and at low scan speed the problem of the keyhole is observed (Darvish, Chen, & Pasang, 2016). The higher scan speed leads to\nthe amount of un-melted powder which generates low density and more\nporosity with unstable strength (Gong et al., 2015). Generally, the\nunmelted powder is left on the overlapping zone due to larger hatch\ndistances and heat sinks of laser energy have generated on the previous\nscans due to small hatch distances (Peng & Chen, 2018). To summarize\nthe overall results, it is concluded that all the processing parameters\nwhich influence the energy density should be selected mutually to\nproduce pore-free components from SLM process and the proper heat\ntreatment condition is further applied to enhance the densification and\nmechanical properties of AlSi10Mg alloy parts.",
+    "summary": "",
+    "size": 899,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 4,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-34",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "Fig. 17 shows the relative density and porosity under AB condition\nwith increasing energy density. The trend indicates that the relative\ndensity decreases and porosity increase with increasing energy density.\nThe statistical analysis of variability in average and standard deviation\nor precision in relative density and porosity with energy density and\ninput process parameters levels is presented in Table 5.\nThe input process parameter levels are selected on the basis of\nminimum energy density or energy consumption, maximum relative\ndensity and minimum standard deviation or higher precision criteria.\nThe parameter which meets at least two criteria conditions is preferred.\nThe overlap rate has a maximum energy density, relative density and\nstandard deviation at different levels. The overlap rate of 25% is preferred due to the minimum energy density. Based on the analysis,\n0.320 kW laser power, 0.900 m/sec scan speed, 25% overlap rate and\n70.9–86.9 µm hatch distance region is appropriate for optimum results.\nThese settings have a minimum energy density with maximum relative\ndensity and minimum standard deviation (maximum precision). The\nsample No. 7 and 14 have shown the maximum relative density of\n98.17% and minimum porosity 1.83% under AB condition as shown in\nFig. 17. However, the setting of sample No. 7 is preferred due to low\nenergy density as compared to sample No. 14 and meeting the abovementioned optimum setting conditions. Therefore, based on the overall\nanalysis the input parameters settings of sample No. 7 are selected as\noptimal for AB condition of samples.\nThe behavior of densification varied with the energy density and is\nvery difficult to find an optimal solution. By applying the Pareto optimal, the best optimal energy density was found by considering the",
+    "summary": "",
+    "size": 1796,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 5.8,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-39",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "minimization of the porosity. The results revealed 0.32 kW laser power,\n0.90 m/s scanning speed and 25% overlap rate are the best input\nprocess parameters values for achieving the optimization goal, as\nshown in Fig. 24. The optimal parameters would be helpful for manufacturing of functional parts of aerospace and automobile industries\nwith fully densification and lowest possible pores and voids. These\noptimal parameters are also very supportive to designers for achieving\ndifferent mechanical and physical properties of fabricated parts by\napplying different heat treatment conditions. Therefore, based on\nPareto and DOE optimization, the optimized processing parameters are\nidentified as mentioned in Table 6.\nThe repeatability of the results was validated on our best optimized\nprocessing parameters of sample # 07 (i.e. laser power of 0.320 kW,\n0.90 m/s scan speed and hatch distance of 80 µm). 06 samples (02\nsamples for each process condition) were manufactured for validation\nof our optimized processing parameters, and repeatability and\n\nreliability of the SLM process. The results have a good agreement with\nthis study. The relative density in AB condition is 99.44%, in T4-HT at\n540 °C is 99.56% and in T6-HT (initially T4-HT at 530 °C) is 99.63%.\n\n**4. Conclusions**",
+    "summary": "",
+    "size": 1280,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 7.3,
+    "n_numeric": 20,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-40",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "In the present study, the effects of various processing parameters\nand different heat treatment conditions were investigated on the densification and porosity formation for AlSi10Mg alloy samples. The best\nvalues of relative density in AB condition were attained for test specimen Nos. 7 and 14 at different energy densities, and relative density\nwas approximately 98.17% for both. The densification was enhanced to\n99.94% by applying T4-HT at 530 °C for 2 h, which was the highest\nrecorded densification of this study. Furthermore, the best relative\ndensity of 99.87% was obtained in T6-HT condition at an energy density of 144.89 J/mm[3]. It may be due to changes in the grain structure\n\n**Fig. 20. End effects plots for (a) Relative Density and (b) Porosity.**\n\n**Fig. 21. Interaction plot for Relative Density.**",
+    "summary": "",
+    "size": 816,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.8,
+    "n_numeric": 14,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-41",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "and metallurgical bonding of the particles. The overall densification has\nbeen improved by applying heat treatments which were also analyzed\nby the statistical analysis and OM analysis.\nHeat treatment has an excellent effect on the reduction of porosities\nof the AB samples. Both T4-HT and T6-HT processes have reduced the\nporosities to minimum porosity of 0.06% at energy density of 144.89 J/\nmm[3] (sample No. 07) at T4-HT at 530 °C. Furthermore, the T6-HT has\ninfluenced the porosity of all AB specimens which was clarified by the\nstatistical analysis. The higher porosities in AB condition were reduced\nfrom 4.41% to 1.04% with T6-HT (sample No. 19), which showed that\nthe heat treatments (specifically T6-HT) are very beneficial to bulk\nsamples. The investigation via optical microscope (OM) concluded that\nthe porosities in the samples were varied with the process parameters",
+    "summary": "",
+    "size": 881,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.3,
+    "n_numeric": 14,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM-chunk-42",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Investigation of T4 and T6 heat treatment influences on relative density and porosity of AlSi10Mg alloy components manufactured by SLM.md",
+    "content": "and process conditions used. It is also concluded that maximum porosities were observed in the low densification samples and the porosities were reduced by applying T4 and T6 heat treatments on the asbuilt samples. Moreover, from the investigation of SEM images of\nfracture surfaces, it was observed that the low densification specimens\nhave more amount of porosities and voids. It is also found that high\ndensification specimens have low values of pores and voids, and the size\nof pores is also reduced for higher relative density specimens.\nFinally, the statistical analysis is performed on the densification and\nporosity results of AB, T4-HT and T6-HT process conditions for finding\nPareto optimal solution. The best optimal energy density of 144.89 J/\nmm[3] (at processing parameters of 0.32 kW laser power, scanning speed\nof 0.90 m/s, overlap rate of 25% and hatch distance of 81.80 µm) was\n\n**Fig. 22. Interaction plot for Porosity.**",
+    "summary": "",
+    "size": 940,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 11,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Process parameters influence on mechanical properties of AlSi10Mg by SLM-chunk-13",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Process parameters influence on mechanical properties of AlSi10Mg by SLM.md",
+    "content": "partial evaporation of the powder. Furthermore, in the process\nof high-energy laser scanning, there is a significant temperature\ndifference that forms from the center to the edge of the molten\npool’s surface. This temperature gradient leads to variations in\nsurface tension, causing the emergence of Marangoni convection. As a result of Marangoni flow, the molten material is\ndirected toward the central region of the pool, rather than\nspreading outward across the underlying surface leading to\nballing effect which is a typical metallurgical defect in powder\nbed fusion process (Ref 17). Higher scan speeds can impose\nincreased shear stress on the liquid phase which generates\nheightened surface tension within the melt pool, also increasing\nthe possibility of ball formation. The occurrence of liquid ball\nsplashes at higher scan speeds can further contribute to porosity\nin such processing conditions (Ref 20, 21). Notably, both sample sets A and B experience a drop in\ndensity at an LED of 0.45 J/mm and 0.381 J/mm, respectively. This is due to the increased scan rate that contributes to the\ndensity reduction in laser-melted AlSi10Mg since it results in\ninsufficient energy input for complete powder melting and\npartial re-melting of the substrate material, introducing irregularities (Ref 5). Figures 3 and 4 provide SEM micrographs illustrating the\ncross sections of laser-melted samples, offering insight into the\ndistribution of porosity in both sample sets A and B.",
+    "summary": "",
+    "size": 1476,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 5.0,
+    "n_numeric": 9,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Process parameters influence on mechanical properties of AlSi10Mg by SLM-chunk-14",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Process parameters influence on mechanical properties of AlSi10Mg by SLM.md",
+    "content": "Figure 4\nclearly demonstrates that the pores in sample set B (LT = 60\nlm) are relatively larger and exhibit irregular shapes, consistent\nwith the relative density measurements. The thicker powder\nlayer in sample set B leads to insufficient laser beam\npenetration, resulting in partial melting. This, in turn, hinders\ninterfacial bonding and leads to the formation of large,\ninterconnected pores. In contrast, sample set A (LT = 30 lm)\nexhibits enhanced inter-layer densification, as the laser energy\ninput is adequate to re-melt the previous layer, fostering\ncoherent bonding. The maximum relative density achieved in both sample sets\ncorresponds to an LED of 0.368 J/mm, aligning with the\nporosity distribution observed in SEM micrographs in Fig. 3(c)\nand 4(f). This is evident from the microstructure that when the\nLED is increased beyond 0.350 J/mm the cross-sectional view\nexhibited a consistent microstructure characterized by uniformly distributed layers, demonstrating its capability for\ncohesive bonding between the layers eliminating residual\ncracks or pores.",
+    "summary": "",
+    "size": 1068,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 7,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Process parameters influence on mechanical properties of AlSi10Mg by SLM-chunk-16",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Process parameters influence on mechanical properties of AlSi10Mg by SLM.md",
+    "content": "consolidation and porosity and higher densities typically result\nin increased hardness properties (Ref 22). However, it is noteworthy, as indicated in Fig. 5(a) and (b),\nthat maintaining the same LED while increasing the layer\nthickness from 30 to 60 lm and the hatch distance from 130 to\n170 lm results in a slight reduction in hardness. Although this\nobservation underscores the influence of hatch distance and\nlayer thickness as process parameters, the interactions between\nhatch distance, scan rate, and laser power play a substantial role\nin determining the hardness of SLM-processed specimens (Ref\n23). Nevertheless, it is important to highlight that the maximum\naverage hardness values observed in both sample sets still\nexhibit a remarkable 30% improvement over the as-built\nAlSi10Mg material without TiC reinforcement (Ref 18). The\nmechanisms underlying this strengthening effect because of\nTiC nanoparticles are further explored in the section addressing\nsolidification microstructure in this study. A hardness of 111HV0.1 was observed for sample A9,\ncorresponding to an LED of 0.450 J/mm, which was achieved\nwith a laser power of 350W and a scanning speed of 780 mm/s. Similarly, sample B9 exhibited a minimum hardness of 104\nHV0.1, linked to an LED of 0.381 J/mm. This was attained with\na laser power of 400W and a scanning speed of 1050 mm/s, and\nthe examination of their density measurements unveiled a clear\ncorrelation between the low hardness values and relative\ndensity.",
+    "summary": "",
+    "size": 1488,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 7.5,
+    "n_numeric": 22,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Process parameters influence on mechanical properties of AlSi10Mg by SLM-chunk-17",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Process parameters influence on mechanical properties of AlSi10Mg by SLM.md",
+    "content": "Samples A9 and B9, which had the lowest relative density,\nalso demonstrated the lowest hardness values. This underscores\nthe inverse relationship between porosity and both hardness and\nrelative density within the fabricated components. Intriguingly,\nthe pore characteristics depicted in Fig. 3(i) and 4(i), corresponding to samples A9 and B9, reveal that the shape of these\npores deviates significantly from spherical. The presence of\nsuch irregularly shaped pores, particularly the inability to close\nlarger lack-of-fusion defects, is directly linked to the process\nparameters. This observation aligns with previous studies\nconducted by Gouveia et al. (Ref 24), which emphasized that\nthe existence of defects such as pores resulting from lack of\nfusion can lead to reduced hardness. Surface roughness measurements were conducted on the 18\nas-built samples, and the results are graphically presented in\nFig. 6. The data reveal noteworthy trends in surface roughness\nacross the various sample configurations. Specifically, the\nlowest recorded surface roughness value was an impressive\n3.3 lm, observed in sample A1 printed with a layer thickness\nof 30 lm. Conversely, the highest surface roughness value,\nmeasuring 17.57 lm, was encountered in sample B5 printed\nwith a layer thickness of 60 lm, while both samples were\ncharacterized by an LED of 0.368 J/mm. These results",
+    "summary": "",
+    "size": 1370,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 7.0,
+    "n_numeric": 16,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Process parameters influence on mechanical properties of AlSi10Mg by SLM-chunk-19",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Process parameters influence on mechanical properties of AlSi10Mg by SLM.md",
+    "content": "Fig. 3 SEM micrographs (Mag = 200X) of cross sections of sample set A at different LED (a) 0.321 J/mm, (b) 0.342 J/mm, (c) 0.368 J/mm,\n(d) 0.385 J/mm, (e) 0.411 J/mm, (f) 0.441, (g) 0.449 J/mm, (h) 0.479 J/mm, (i) 0.515 J/mm\n\n### 3.3 Effects of TiC Nanoparticles on the Microstructure\n\nThe impact of nano-TiC particles on the microstructure of\nSLM-fabricated specimens was investigated, with a focus on\nsample A1. This specimen, produced using a laser power of\n250 W, scanning speed of 680 mm/s, and a layer thickness of\n30 lm, exhibited the highest relative density, lowest porosity,\nand maximum hardness. In the works done by Gu et al. (Ref\n17) it is seen that there are no major differences in the\n\nmicrostructure of TiC-reinforced AlSi10Mg specimens with\nvarying LED as the dispersion of TiC was observed to be\nuniform, but there was a noticeable variation in the size of the\nTiC reinforcements at higher LED levels, primarily due to their\ntendency to aggregate into clusters. This is attributed to the\nemergence of Marangoni effect in the molten pool leading to\nthe generation of liquid capillary forces. This force, in turn,\nexerts an influence on the TiC reinforcing particles, facilitating\ntheir rearrangement within the pool.\n\nFig. 4 SEM micrographs (Mag = 200X) of cross sections of sample set B at different LED (a) 0.286 J/mm, (b) 0.316, (c) 0.333 J/mm, (d)\n0.353 J/mm, (e) 0.381 J/mm, (f) 0.368 J/mm, (g) 0.412 J/mm, (h) 0.421 J/mm, (i) 0.471 J/mm",
+    "summary": "",
+    "size": 1460,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 7.5,
+    "n_numeric": 29,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Process parameters influence on mechanical properties of AlSi10Mg by SLM-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Process parameters influence on mechanical properties of AlSi10Mg by SLM.md",
+    "content": "The investigation into the effects of laser processing\nparameters, layer thickness, and the incorporation of TiC\nnanoparticles on the mechanical properties and microstructure\nof SLM-fabricated AlSi10Mg yielded the following key\nfindings:\n\nFig. 14 (a) Stress–strain curves for as-built AlSi10Mg (Ref 18) and\nAlSi10Mg/TiC (specimen A1), (b) max Eyy strain measurement\nusing DIC before fracture, (c) SEM image of recycled powder\nparticles showing agglomeration (d), and (e) images of fractography\n\nFig. 14 continued\n\n1. The study identifies the optimal laser energy density\n(LED) for achieving maximum part density in TiC/AlSi10Mg specimens fabricated via selective laser melting\nprocess. The findings reveal that an LED of 0.36 J/mm\nresults in the highest theoretical relative density, while\nhigher energy inputs lead to decreased density due to\ndeep penetration and partial evaporation of the powder.\nFurthermore, increased scan rates resulted in inadequate\nenergy input resulting in metallurgical defects like balling\nleading to the formation of porosities.This finding provides valuable guidance for optimizing the SLM process",
+    "summary": "",
+    "size": 1127,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 10,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "Selective laser remelting of an additive layer manufacturing process on AlSi10Mg-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Selective laser remelting of an additive layer manufacturing process on AlSi10Mg.md",
+    "content": "Fig. 2. SEM image of AlSi10Mg topography.\n\nExperimental details\n\nAlSi10Mg powder with a spherical shape and an average particle\nsize of 45 μm supplied by LPW Technology (LPW Technology Ltd.,\nWidnes, Cheshire, UK) was used in this study. The powder particle size\nobeys normal distribution and has good flowability. It’s composition\nand topography are shown in Table 1 and Fig. 2, respectively.\nAll samples were processed using a Renishaw AM 400 SLM system\n(Renishaw PLC, Wotton-under-Edge, UK), equipped with a modulated\nytterbium fibre laser with a wavelength of 1070 nm. An ENAW-5083 Al\nalloy substrate positioned underneath the powder bed. A meander\nstrategy (Fig. 3a) and a remelting strategy (Fig. 3b), with a rotation\nstart angles of 0° and a rotation increment angle of 0° between layers,\nwere used. And the process parameters used here have been optimized\nin earlier study [22], and been listed in Table 2.\nAs-fabricated bulk samples were separated from the substrate by a\nwire cut electric discharge machine and were ultrasonically cleaned in\n\nTable 1\nChemical component of AlSi10Mg powders (wt%).\n\nElements Si Mg Mn Cu Fe Ni Zn Sn Ti Pb Al\n\nWt% 10.0 0.40 0.40 0.05 0.50 0.05 0.10 0.05 0.15 0.05 Bal\n\nFig. 3. Scanning strategies: (a) meander and (b) remelting.\n\nTable 2\nThe process parameters in experiments.\n\nParameter Value\n\nLaser power, P 200 W\nHatching space, S 80 μm\nSpot diameter, D 80 μm\nLayer thickness 25 μm\nExposure Time, ET 140 μs\nPoint Distance, PD 80 μm",
+    "summary": "",
+    "size": 1474,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 35,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Selective laser remelting of an additive layer manufacturing process on AlSi10Mg-chunk-11",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Selective laser remelting of an additive layer manufacturing process on AlSi10Mg.md",
+    "content": "formed and lead to decreasing density, the pores take effect as stress\nconcentrators and sites of crack initiation. Besides, the shrinkage-induced-balling [25] due to low energy input also make for the large\nroughness value [26]. After each layer was remelted, the melt pool tend\nto spread wetting due to the increasing maximum temperature and liquid lifetime. It contributed to the smooth surface formed and low\nporosity, while the forming time was double extended. As with the\nroughness Ra testing results, the Ra was decreased to 9.94 μm from\n13.34 μm (Table 3), decreasing by 25.49%. The agreed result was also\ndiscovered by Yasa et al. [17]. Although the surface finish is improved\nby remelting at a cost of longer production times, it should be noted\nthat, selective remelting can alter the surface chemical composition and\nthe surface oxide layer by Vaithilingam et al. [16,27], the oxide layer\nthickness and corrosion resistance of the selective remelting parts will\nalso change. In view of introducing nanoparticles of nucleants to highstrength Al alloys processed successfully using SLM technology [3].\nFurther studies on particle concentrations will be considered when\ndifferent scanning methods are used. Further investigations of this\nphenomenon will be conducted in future studies.\n\nMelt pool binding",
+    "summary": "",
+    "size": 1314,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.3,
+    "n_numeric": 10,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method-chunk-5",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method.md",
+    "content": "where Ed is the energy density (J/mm[3]), P is the laser power (W), v is the laser scan speed (mm/s), h is\nthe hatch distance (mm), and d is the layer thickness of the powder bed (mm) [16].\nThe energy density and each process parameter are all significant factors affecting mechanical\nproperties [17,18]. The SLMed sample using a lower hatching distance would have a higher ultimate\ntensile strength (UTS) and yield strength for AlSi10Mg [18]. Equation (1) does not consider the effect\nof a single factor such as hatching distance, however, which was also taken into account during the\nparameter optimization [9,19]. With the decrease in the laser power, the tensile properties deteriorate\nbecause of the increasing amount of keyhole porosity [20].\nThe most economic way to get information about the quality of a SLMed part is the measurement\nof relative density. The Archimedes method is widely used to measure the solid density and porosity\nof powder metallurgy products. The relative density of parts has a close relationship with the existence\nof internal pores [21]. Nataliya Perevoshchikova et al. [22] used the Archimedes method and image\nanalysis to assess the relative density of SLM-produced samples of Ni-basedsuperalloyIN-738LCwith\nsets of processing parameters.\nAmerican Society for Testing Materials (ASTM) provides two standards [23,24] for measuring the\ndensity of powder metallurgy products. ASTM Standard B311-13 [23] is only suitable for the materials\nwith a porosity of less than 2%, not taking into account the effect of the surface-connected cavities\n(open cavities).These defects might be porosity and/or cavities because of unmelted powder or cracks\nformed during SLM.\nAccording to Archimedes’ principle, the relative density can be calculated as follows [23]:",
+    "summary": "",
+    "size": 1784,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 20,
+    "source_folder": "AlSi10Mg",
+    "gate": "causal"
+  },
+  {
+    "name": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method-chunk-10",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method.md",
+    "content": "**2. Materials and Experimental Procedures**\n\n_2.1. Materials_\n\nThe AlSi10Mg powder (gas-atomized powder) with spherical particles and a size distribution\nranging between 20 and 60 µm was supplied by FalconTech Co., Ltd., Wuxi, China. The chemical\ncomposition is listed in Table 1. Fourteen test specimens with cubical dimensions of 10 × 10 × 10 mm\nwere manufactured by SLM using various sets of processing parameters (laser power, scan speed,\nhatch distance). The processing parameters were generated with Doehlert design [31] and are shown\nin Table 2. A Concept Laser X Line 1000 machine was used to produce samples. The relative density\nof the samples is estimated considering the effect of three variables—laser power (P), scan speed (v),\nand hatch distance (h). An experimental field was defined as P = 300–950 W, v = 500–2000 mm/s\nand h = 0.3–0.4 mm. Layer thickness and beam diameter were kept constant at 60 µm and 0.1mm\nin consideration of the distribution of powder particles size to decrease the number of variables.\nThe effect of layer thickness on relative density was not investigated. Then, the laser energy density is\ngiven by Equation (5) [32], including the three experimental variables of P, v, and h.\n\n_E = P/(v · h)._ (5)\n\n_Appl. Sci. 2019, 9, 583_ 4 of 14\n\n**Table 1. Chemical composition of AlSi10Mg alloy by inductively coupled plasma atomic emission**\nspectrometry (ICP-AES) [10].",
+    "summary": "",
+    "size": 1405,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 31,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method-chunk-24",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method.md",
+    "content": "Table 5 shows the measured results of relative density using the Archimedes methods. In Table 6,\nthe value of the correlation coefficient R[2] is provided as a measure of how closely the statistical model fits\nthe data—the coefficient of determination varies between 0 and 1. F is used to perform the f test and test\nthe regression significance of the model in Equation (9), using different combinations of the constants a0,\n_a1 . . . a23. For this study, the threshold of F values 5.9988 at the 95% confidence level, which is determined_\nby the freedom degree of regression and residual variation, which are 9 and 4, respectively, corresponding\nto the design in Table 5. According to f test theory, if the F value of regression model is larger than the\nthreshold, the model indicates a highly significant regression. From Table 6, the F value of 8.9160 is\nlarger than the tabled F9,4 value of 5.9988 at the 95% confidence level. Thus, the model indicates highly\nsignificant regression. Furthermore, the model has high values of R[2]. This indicates that the models fit the\nresults data well and are useful for predictions and optimization of parameters. According to the relative\ndensity model, the optimum combination of SLM process parameters is Po = 651 W, vo = 500 mm/s,\nand ho = 0.378 mm. Figure 5a–f show the 3d response surfaces and the 2D contours reflecting the change of relative\ndensity with power and scan speed at some specified hatching distance.",
+    "summary": "",
+    "size": 1461,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 27,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "The Effects of Selective Laser Melting Process Parameters on Relative Density of the AlSi10Mg Parts and Suitable Procedures of the Archimedes Method.md",
+    "content": "(1) The suggested procedure of the Archimedes method is that the Archimedes method with and\nwithout considering the effect of open cavities is used for the sample with a relative density of less than\n99% and more than 99%, respectively, which was measured using the Archimedes method without\nconsidering the effect of open cavities.\n(2) The Doehlert design was applied to optimize the SLM process parameters of AlSi10Mg in the\nlaser power range of 1000W. In the range of experimental parameters, the optimum combination of\nSLM processing parameters is Po = 651 W, vo = 500 mm/s, and ho = 0.378 mm.\n(3) The regression model would have two combinations of optimum parameters if a greater range\nof experimental hatching distance was provided. The relative density is higher both at the combination\nof the higher scan speed, higher power, and lower hatching distance and at the combination of a lower\nscan speed, a moderate laser power, and an optional hatching distance in the range of experimental\nparameters—the optimal combinations of power and scan speed is in a bigger selectable range.\n(4) The hatching distance is the crucial parameter. When hatching distance is low, the combination\nof power and scan speed is in a wide operating window and the mechanical property of the sample\nis higher.\n\n**Author Contributions: Conceptualization, X.W. and N.P.; methodology, N.P.; investigation, S.B.; writing—original**\ndraft preparation, S.B.; writing—review and editing, Y.S.; supervision, X.W.",
+    "summary": "",
+    "size": 1489,
+    "materials": [
+      "AlSi10Mg"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 11,
+    "source_folder": "AlSi10Mg",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-34",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "[28] N.T. Aboulkhair, N.M. Everitt, I. Ashcroft, C. Tuck, Reducing porosity in\nAlSi10Mg parts processed by selective laser melting, Addit. Manuf. 1 (2014)\n[77e86, https://doi.org/10.1016/j.addma.2014.08.001.](https://doi.org/10.1016/j.addma.2014.08.001)\n\n[29] W.E. King, H.D. Barth, V.M. Castillo, G.F. Gallegos, J.W. Gibbs, D.E. Hahn,\nC. Kamath, A.M. Rubenchik, Observation of keyhole-mode laser melting in\nlaser powder-bed fusion additive manufacturing, J. Mater. Process. Technol.\n[(2014), https://doi.org/10.1016/j.jmatprotec.2014.06.005.](https://doi.org/10.1016/j.jmatprotec.2014.06.005)\n\n[30] R. Cunningham, S.P. Narra, C. Montgomery, J. Beuth, A.D. Rollett, Synchrotronbased X-ray microtomography characterization of the effect of processing\nvariables on porosity formation in laser power-bed additive manufacturing of\n\n8 R. Esmaeilizadeh et al. / Journal of Alloys and Compounds 812 (2020) 152097\n\n[Ti-6Al-4V, JOM (2017), https://doi.org/10.1007/s11837-016-2234-1.](https://doi.org/10.1007/s11837-016-2234-1)\n\n[31] K. Darvish, Z.W. Chen, T. Pasang, Reducing lack of fusion during selective laser\nmelting of CoCrMo alloy: effect of laser power on geometrical features of\n[tracks, Mater. Des. (2016), https://doi.org/10.1016/j.matdes.2016.09.086.](https://doi.org/10.1016/j.matdes.2016.09.086)",
+    "summary": "",
+    "size": 1300,
+    "materials": [
+      "Ti-6Al-4V",
+      "AlSi10Mg"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 46,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  }
+]

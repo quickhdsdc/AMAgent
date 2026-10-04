@@ -1,0 +1,40 @@
+[project]
+name = "amtraineval"
+version = "0.1.0"
+description = "AM defect classification — LLM fine-tuning experiments (C7 / C10)"
+requires-python = ">=3.10"
+dependencies = [
+    # torch + torchvision are intentionally NOT listed here.
+    # Install them once with the CUDA-specific command (see README/run.sh):
+    #   uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+    # This avoids pulling CPU-only PyPI wheels and works on all uv versions.
+
+    # HuggingFace stack
+    "transformers>=4.44",
+    "datasets>=2.20",
+    "accelerate>=0.32",
+    "peft>=0.12",
+    "trl>=0.11",
+    "bitsandbytes>=0.43",
+    # Data / eval
+    "scikit-learn>=1.5",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "tqdm>=4.66",
+    # Config / utils
+    "python-dotenv>=1.0",
+    # Logging / visualisation
+    "tensorboard>=2.17",
+    # Tokenizer backend for Qwen2.5
+    "tiktoken>=0.7",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+python = "3.12"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tasks"]

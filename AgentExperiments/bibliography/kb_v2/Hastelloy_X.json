@@ -1,0 +1,407 @@
+[
+  {
+    "name": "Controlling mechanical properties of additively manufactured hastelloy X by altering solidification pattern during laser powder-bed fusion-chunk-9",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Controlling mechanical properties of additively manufactured hastelloy X by altering solidification pattern during laser powder-bed fusion.md",
+    "content": "inset picture in Fig. 1 shows a magnified image of a spherical particle\nwith some attached satellites to the surface. An EOS M290 (equipped\nwith a Ytterbium fiber) was employed to print the laser powder-bed\nfusion Hastelloy X samples with different scanning strategies but\nidentical process parameters (scanning velocity of 1250 mm/s, laser\npower of 250 W, layer thickness of 40 μm, and hatch spacing of 80 μm). Four different scanning strategies were used and are referred as; a) Unipaths (Stripe Uni), b) chess board rotational (Chess Rot) c) XY raster\n(Stripe XY), and d) rotational (Stripe Rot) (Fig. 2a–d). It should be noted\nthat the Stripe XY performs a 90° rotation in laser path after each scan\nwhereas Stripe Rot and Chess Rot perform a 67° rotation in laser path. Tensile samples (Fig. 3b) with three repetitions were also printed\nwith the different scanning strategies and are identified as building\ndirection (BD), transverse direction (TD), and normal direction (ND)\nwhere BD is parallel to the building direction of the printed part, TD is\nparallel to the recoater moving direction, and ND is perpendicular to\nthe recoater moving direction (Fig. 3a). All tensile samples were built\nsuccessfully except the Stripe Uni and Chess Rot BD samples that were\ncancelled due to recoater impact.",
+    "summary": "",
+    "size": 1300,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 11,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-2",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "This paper systematically studies the effect of laser scanning speed, one of the main process parameters\nin laser powder-bed fusion (LPBF), on the quasi-static tensile response of Hastelloy X at room temperature. The experimental results demonstrate that the macrostructure and the microstructure of the\nsamples changes significantly by altering the laser scanning speed. Results show that for a fixed laser\npower, extremely high (>1300 mm/s) and low (<550 mm/s) scanning speeds result in lack of fusion and\nkeyhole defects, respectively, which were found to have a detrimental effect on the tensile strength and\nductility of printed parts. On the other hand, moderate speeds (850e1300 mm/s) resulted in parts with\nhigh density and varying mechanical properties due to the as-built microstructure. Analysis of grain size\nand yield strength for high-density parts shows a good agreement with the Hall-Petch equation. The\nresults obtained in this study suggest a new method to customize the mechanical properties of LPBF\nparts by changing the laser scanning speed.\n© 2019 Elsevier B.V. All rights reserved.\n\n1. Introduction approach (OFAT) might not result in optimum parameters but can\n\nbe used to study the printability and quality of printed parts with a",
+    "summary": "",
+    "size": 1255,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 6,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "Fig. 2. Samples produced with the lowest LSS (550 mm/s- Fig. 2 (a)),\nshows spherical pores while defects with irregular shapes are\n\n2. Experimental methods\n\npresent in the highest speed (2050 mm/s) samples (Fig. 2 (e)). On\nthe other hand, samples printed with 850 mm/s and 1150 mm/s do\n\nEOS M290 equipped with a Ytterbium fiber was used for not show any significant porosities. Different defect shapes indicate\nmanufacturing the tensile samples (Fig.1) with three repetitions for\n\ndifferent formation mechanisms for these defects [25,26]. Spherical\n\neach laser scanning speed from Hastelloy X powder supplied by\n\npores are gas pores which are mainly produced through the for\nEOS with powder size of D50 < 30 mm [22]. All samples were\n\nmation of keyhole shaped melt pool [27,28]. Balling effect and\n\nmanufactured vertically with a laser power of 195 W, the layer\n\ninstability in the melt pool may also originate such spherical de\nthickness of 0.04 mm, hatching spacing of 0.09 mm, 5 mm stripe\n\nfects. By decreasing the LSS, a deeper melt pool forms, where a\n\nwidth with rotating scanning vectors (67[�]) in each successive layer,\n\nhigher input laser energy is used and a higher recoil pressure exists,\n\nand the build plate temperature of 80 [�]C. After printing, the sam\nhence, the melting mode may change from conduction to keyhole\n\nples were cleaned and the 5 mm support structures were removed.\n\nmode [29,30]. On the other hand, at the high LSS, the amount of",
+    "summary": "",
+    "size": 1461,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 7.5,
+    "n_numeric": 26,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-8",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "Laser scanning speed was altered from 550 to 2050 mm/s to study\n\navailable laser energy for the melt pool formation decreases\n\nits effect on the quasi-static tensile behavior of as-built parts. significantly. Hence, with a decrease in the melt pool size while\nInstron 8872 servo-hydraulic machine with a load capacity of\n\nkeeping the same hatching distance and layer thickness, the\n\n±25 kN was used for quasi-static tensile testing under standard\n\nprobability of having the lack of fusion (LoF) will increase [30,31].\n\nlaboratory conditions. The tests were performed according to ASTM\n\nAs indicated by yellow arrows in Fig. 2(d), irregular-shaped po\nE8 standard [23] in the displacement control mode at the rate of\n\nrosities due to the LoF are observed at 1300 mm/s. By increasing the\n\n0.45 mm/min. An Instron 2630-120 extensometer with 8 mm\n\nLSS, the consequantial reduction in the laser input energy results in\n\ngauge length and ±4 mm travel was used.\n\na narrower melt pool. This narrower melt pool can result in an\n\nZEISS Xradia 520 Versa X-ray computed tomography (CT) was insufficient overlap as the hatching distance is kept unchanged. As\nused to find the defects distribution in the additively manufactured\n\nindicated by red arrows in Fig. 2 (e), due to the lower energy input,\n\nsamples. CT scan of 801 2D projections was performed at 10 W,\n\nsome un-melted powder particles are trapped inside the irregular\n\n160 kV with an exposure time of 1 s per image. A beam hardening",
+    "summary": "",
+    "size": 1478,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 22,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-9",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "lack of fusion porosities which were not observed with a lower LSS.\n\nconstant of 0.05 was used for re-construction and the 3D images\n\nIt should be noted that while the LoF defects have started to form at\n\nwere analysed in Dragonfly 3.1.\n\nthe speed of 1300 mm/s, the observed YS and UTS is higher than all\n\nKeyence VK-X250 confocal laser microscope was used for optical\n\nthe samples studied in this work.\n\nmicroscopy. In this work, BD (Building Direction) cross-section is\n\nIn summary, the gradual increase in the mechanical strength,\n\nperpendicular to the building direction and ND (Normal Direction)\n\nobserved in the 850, 1150 and 1300 mm/s samples might be related\n\ncross-section is parallel to the building direction. SiC grinding",
+    "summary": "",
+    "size": 733,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 8,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-12",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "under tensile loading. This difference in load bearing crosssectional area in these samples could affect the tensile response\nof these samples and is discussed below. Each pore and defect reduces the effective cross-section and increases the local stress in\ncomparison to the nominal engineering stress, which is calculated\nbased on the defect free cross-section assumption [32]. Moreover,\nthe shape of these defects will directly influence the stress concentration. The keyhole porosities and irregular LoF defects in this\nstudy are similar to circular holes and sharp notches inside an\ninfinite plate, respectively. In an elastic body, the stress concentration factor for circular holes is three and for sharp tip notches\ninside an infinite plate is infinite [33,34]. Stress concentration at the\nroot of sharp tips of LoF defects and constrained deformation\naround them results in stress triaxiality and high local stresses,\ncausing high local deformation in these areas [33,35]. Consequently\nvoid growth and coalescence will be accelerated [36]. Therefore,\nthe existence of keyhole and LoF defects should result in overall\nreduced ductility [37].\n\n3.2. Microstructural characterization",
+    "summary": "",
+    "size": 1188,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 8,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-16",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "Fig. 4. EBSD IPF maps including grain boundaries for ND, BD samples manufactured with laser scanning speed of (a), (c) 850; (d), (f) 1150; and (g), (i) 1300 mm/s showing the grain\nrefinement as a function of LSS. Also, pole figures displayed from ND cross-sections of samples manufactured with (b) 850, (e) 1150, (h) 1300 mm/s showing random texture of the\nas-built material.\n\nFig. 5. (a) Engineering stressestrain curves, (b) Variation of the yield strength (YS), UTS, and Fracture Strain of LPBF processed Hastelloy X samples at the laser power of 195 W with\ndifferent laser scanning speed.\n\nstrategy [44,45], layer thickness [41], hatch spacing [9], and laser\nspeed [46]. The results of this study (Fig. 5) also show that tensile\nproperties in terms of strength and ductility could be greatly\naffected by the LSS. This will help designers and manufacturers to\nproduce a part not only based on the structural requirements, but\nalso the desired microstructure as well.\n\n3.4. Grain refinement mechanism and Hall-Petch relationship\n\nBy reducing the input energy via increasing the LSS, the size of\nthe melt pool decreases that eventually results in lack of fusion. The\nmelt pool size reduction implies that there is less volume available\nfor grains to grow, hence the grain size reduction is expected to\noccur at the higher LSS. Further analysis of the grain morphologies,\nas shown in Fig. 6, reveals that the melt pool size reduction is not",
+    "summary": "",
+    "size": 1440,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 17,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "section. The stress concentration near the pores and thin walls\nbetween them will result in stress triaxiality [33,34] and severe\nlocal deformation (Fig. 7 (b)). Therefore, a premature necking or\nlow elongation occurs at very high or low LSS values as shown in\nFig. 5.\nHigh elongation to fracture in nearly full dense parts (produced\nby 850, 1150 and 1300 mm/s) was found to be associated with the\nnecking behavior and cup and cone fracture. The observed fracture\nsurface for all three samples was covered with dimples, an attribute\nof ductile fracture (Fig. 7 (d)). The inset of Fig. 7 (c) shows a gas\nporosity surrounded by a dimpled fracture surface. The size of the\ndimples, which are formed due to micro-void coalescence, is less\nthan 2 mm, while the gas pores are around 8 mm in the sample\nproduced by LSS of 850 mm/s; both of which are far away in size\nfrom 50 to 70 mm keyhole pores, observed in the fracture surface of\nthe 550 mm/s sample.\nThe fracture surface of the 1150 mm/s sample, Fig. 8 (a), is\nsimilar to the 850 mm/s sample with larger pores as shown in Fig. 8\n(a) - inset. Fig. 8 (b) shows the fracture surface of the 1300 mm/s\nsample, where the small LoFs and unmelted particles are highlighted by blue arrows in the inset. Due to the excessive LoF,\n2050 mm/s samples show unmelted particles and unmelted regions at the fracture surface (Fig. 8 (c) - inset). These unmelted\nregions are formed due to insufficient heat flux for remelting of the\nprevious layer and indicate that the successive layers are not wellbonded to the prior ones, leading to the reduced load-bearing capacity observed in the uniaxial tensile results. In addition to that,\nthe irregular shape and large size of LoF defects increases the stress\nconcentration factor and causes a premature failure, which result in\na sharp decrease in the fracture strain and UTS (Fig. 5).",
+    "summary": "",
+    "size": 1861,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 24,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed-chunk-25",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Customizing mechanical properties of additively manufactured Hastelloy X parts by adjusting laser scanning speed.md",
+    "content": "1 No major porosities were observed in the 850, 1150 and 1300\nsamples while keyhole and lack of fusion porosities were\nobserved in the 550 mm/s and 2050 mm/s samples, respectively.\nCompared to samples with highest strength (1300 mm/s) presence of keyhole (550 mm/s) and lack of fusion (2050 mm/s)\nresulted in reduction of UTS by 12% and 35% respectively.\nSimilarly, compared to the sample with highest ductility\n(850 mm/s), 550 and 2050 mm/s samples show a reduction of\n26% and 88% respectively.\n2 A decrease in the average grain size from 136 to 51 mm is\nobserved in the samples printed with the LSS of 850 mm/s and\n1300 mm/s respectively. This resulted in an increase in mechanical strength due to grain refinement caused by smaller\nmelt pools and an increase in partially melted particles (PMP).\n3 Analysis of pole figures obtained from the ND cross-section of\n850, 1150 and 1300 mm/s samples shows random texture due to\nthe rotation of laser scanning vectors and presence of PMPs.\nRotation of laser scanning vectors results in the change of inplane heat flow direction in each successive layer while PMP\nparticles introduced new random orientations during\nsolidification.\n4 Grain size results show that the yield strength can be predicted\nas a function of the grain size by using the Hall-Petch relationship. This is due to the solid solution strengthening and grain\nrefinement observed in the as-built LPBF-made HX samples.\nHowever, this is not applicable for samples with keyhole and\nlack of fusion defects.",
+    "summary": "",
+    "size": 1513,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 26,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting-chunk-1",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting.md",
+    "content": "# Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting\n\nXiaoqing Ni, Decheng Kong, Liang Zhang, Chaofang Dong, Jia Song, and Wenheng Wu\n\n(Submitted December 17, 2018; in revised form April 28, 2019; published online August 20, 2019)\n\nMechanical properties of Hastelloy X alloys fabricated by selective laser melting were investigated and\ncompared with the wrought counterpart. Nano-inclusions (Mo-rich carbides) distributed at the sub-grain\nboundaries in the selective laser-melted (SLMed) Hastelloy X alloy, whereas micron-scale precipitations\nexisted in the wrought counterpart. The molten pool boundaries widely existed in the SLMed substrate,\nwhich acted as an initial site for crack and led to poor plasticity. However, the ultimate tensile strength\nvalues of the SLMed Hastelloy X alloys were around 910 MPa and much higher than the wrought counterpart (� 750 MPa), which was mainly ascribed to the high-density dislocations enriched at the sub-grain\nboundaries. Process parameter effects on the mechanical properties were also delineated in this work, and\nthe volumetric energy density for the best mechanical properties of the SLMed Hastelloy X alloy was in the\nrange from 140 to 170 J/mm[3].\n\nKeywords Hastelloy X, mechanical property, selective laser\nmelting, transmission electron microscopy\n\n## 1. Introduction",
+    "summary": "",
+    "size": 1386,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 12,
+    "source_folder": "HastelloyX",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting-chunk-6",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting.md",
+    "content": "y ( )\nelectron microscopy (TEM). The mechanical properties were\ninvestigated using tensile experiments, and the fracture morphology was observed via scanning electron microscopy\n(SEM).\n\n## 2. Experimental Procedures\n\n### 2.1 Sample Preparation\n\nThe size distribution of the argon gas-atomized powder and\nthe morphology of the powder particles are shown in Fig. 1(a),\nand the average diameter was around 32 lm for Hastelloy X\npowders. The chemical compositions of the powders used for\nthe SLMed components were similar with the traditional\nwrought Hastelloy X (wt.%): Fe 18.99, Cr 21.45, Mo 8.73, Mn\n0.45, Si 0.45, C 0.075, P 0.006, N 0.02 and Ni balance, as given\n\np g p, p g p p\nlayer by layer by lowering the platform until the whole objects\nare totally fabricated.\nSamples were manufactured using an EOS M290 system\n(Germany), which was equipped with a 400WYb/YAG fiber\nlaser (1070 nm wavelength), operated at a spot size of 100 lm.\nThe SLMed samples were produced in continuous laser mode:\na scanning speed of 1000 mm/s with 250, 280 and 310 W laser\npowers, and 280 W laser power with 800, 1000 and 1200 mm/\ns, respectively. The hatch spacing was around 80 lm, the layer\nthickness was 25 lm, and the layers were scanned in a zigzag\npattern, rotated by 67� between each successive layer to reduce\nthe stress concentration.\n\n### 2.2 Microstructural Characterization",
+    "summary": "",
+    "size": 1367,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 28,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting-chunk-12",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting.md",
+    "content": "where e is the value of laser energy, r is the scanning rate, d is\nthe hatch distance, and t is the thickness of powder layer. The\nprocess window for the highest relative density (approximately\n99.0%) for the SLMed Hastelloy X alloy was in the range from\n140 to 170 J/mm[3]. In our work, the porosity decreased slightly\nwith the increasing laser power or the decreasing scanning\nspeed.\nHowever, several authors doubted the availability of the\nvolumetric energy density as an assessment criterion of the\nporosity, and they pointed out that some other printing\nparameters, such as hatch style and laser diameter, were\ndisregarded, which can also affect the porosity (Ref 43).",
+    "summary": "",
+    "size": 673,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 7.8,
+    "n_numeric": 5,
+    "source_folder": "HastelloyX",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting-chunk-13",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting.md",
+    "content": "y p p y p g y y g,\nparameters. typical dimple morphology for metallic fractures was widely\nobserved for wrought Hastelloy X alloy, while many voids\nexisted in the SLMed samples. Many small dimples were\nobserved in the SLMed Hastelloy X alloy, related to the\nabundant sub-grain boundaries with a high concentration of\ndislocations and the premature instability, and fracture of the\nSLMed Hastelloy X alloy was largely attributed to the pores\nand molten pool boundaries near the surface. While there were\nmany precipitates (Mo-rich carbides) on the fracture surface for\nthe wrought Hastelloy X alloy as shown in Fig. 8(a) and (b), as\na hard and brittle phase, those precipitates have a quite different\ndeformation ratio from matrix, which would accelerate crack\ninitiation. For the SLMed samples, there were many voids\nexisted in the matrix, which lead to the poor elongation (Ref 23,\n44, 45). The more the porosity is, the less of the ductility. In our\nwork, the volumetric energy density for the best mechanical\nproperties of the SLMed Hastelloy X alloy was therefore in the\nrange from 140 to 170 J/mm[3]. Meanwhile, pores also affect the\ndurability of the SLMed parts, which is very necessary if\n\nFig. 6 Relative density of the SLMed Hastelloy X alloys at various additive techniques are to find widespread application (Ref 46laser energy densities 48). However, the size distribution of the pores on the SLMed",
+    "summary": "",
+    "size": 1411,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 10,
+    "source_folder": "HastelloyX",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting-chunk-14",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting.md",
+    "content": "Fig. 7 Cross section and side view of the fractographic Hastelloy X alloys through SEM after tensile experiments: (a1, a2) wrought, (b1, b2)\n250 W and 1000 mm/s, (c1, c2) 280 W and 1000 mm/s, (d1, d2) 310 W and 1000 mm/s, (e1, e2) 280 W and 800 mm/s, (f1, f2) 280 W and\n1200 mm/s\n\nFig. 8 Microscopic morphologies of the fractographic Hastelloy X alloys after tensile experiments: (a, b) wrought, (c, d) 280 W and 1000 mm/\ns\n\nparts were not evaluated systematically in the existing literature, and further understanding of the effect of porosity, such as\npore size and aspect ratio, on the mechanical properties of the\nSLMed parts needs to be clarified in further work.\n\n## 4. Conclusions\n\nIn this work, the microstructure and mechanical properties\nof Hastelloy X alloy fabricated by SLM were investigated by\nEBSD, TEM, SEM and tensile experiments. The printing\nparameters, including laser power and laser scanning speed, on\nthe mechanical properties of the SLMed Hastelloy X alloys\nwere studied, and the results were compared with those of the\nwrought counterparts. The main conclusions were drawn as\nfollows:",
+    "summary": "",
+    "size": 1109,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 27,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting-chunk-15",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of Process Parameters on the Mechanical Properties of Hastelloy X Alloy Fabricated by Selective Laser Melting.md",
+    "content": "1. Nano-inclusions (Mo-rich carbides) distributed at the\nsub-grain boundaries in the SLMed Hastelloy X alloy\ndue to the rapid solidification, whereas micron-scale precipitations existed in the wrought counterpart.\n2. Molten pool boundaries widely existed in the SLMed\nmatrix, which lead to poor plasticity. However, the UTS\nvalues of the SLMed Hastelloy X alloys were around\n910 MPa and much higher than the wrought\n(� 750 MPa), which was mainly ascribed to the highdensity dislocation.\n3. The UTS and the elongation for the SLMed samples all\nincreased slightly with the increasing laser power and the\n\ndecreasing scanning speed in our printing processes. The\nvolumetric energy density for the best mechanical properties of the SLMed Hastelloy X alloy was in the range\nfrom 140 to 170 J/mm[3].\n\n### Acknowledgments\n\nThis work was supported by Shanghai Materials Genome\nInstitute No. 5 (Project Number 16DZ2260605), Shanghai Sailing\nProgram (Project Number 17YF1405400), Shanghai Research\nInstitute of Materials Technology Innovation Project (18SG-07)\nand the project to strengthen industrial development at the grassroots level (Project Number TC160A310/19).",
+    "summary": "",
+    "size": 1158,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 2.2,
+    "n_numeric": 18,
+    "source_folder": "HastelloyX",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "Effect of temperature on the microstructure and tensile properties of micro-crack free hastelloy X produced by selective laser melting-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of temperature on the microstructure and tensile properties of micro-crack free hastelloy X produced by selective laser melting.md",
+    "content": "2. Material and methods\n\nIn this study, MetcoAdd HX-D powder, a modified commercial\nvariant of Hastelloy X provided by Oerlikon AM, was used as feedstock\nmaterial. The powder particles were spherical in shape and had a d50\nvalue of 31.4 μm as seen in Fig. 1. The chemical composition of the\npowder is shown in Table 1.\nAll samples were built using a SLM Solutions SLM280HL (Lübeck,\nGermany) machine. Several cube-shaped samples were built with\nvarying parameters: laser power varying from 200 to 350 W, scan speed\nvarying from 400 to 1200 mm/s, layer thickness from 30 to 50 μm and\nhatch spacing from 80 to 120 μm. The volumetric energy density was\ncalculated as Ev = P (hs·t·v)[−][1] [J/mm[3]] where P is the laser power (W),\nhs is the hatch spacing (mm), t is the layer thickness (mm) and v is the\nscan speed (mm/s). Based on the process optimisation, the chosen optimal parameter combination equalled an energy density of 62.5 J/\nmm[3]. The parts were built using a preheating temperature of 100 °C.\nThe relative densities were measured using the Archimedes method",
+    "summary": "",
+    "size": 1067,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 19,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Effect of temperature on the microstructure and tensile properties of micro-crack free hastelloy X produced by selective laser melting-chunk-12",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Effect of temperature on the microstructure and tensile properties of micro-crack free hastelloy X produced by selective laser melting.md",
+    "content": "Cubes were built with different scanning parameters in order to\noptimise the sample density and reduce the crack density. The relative\ndensity of all samples is shown in Fig. 2 as a function of the volumetric\nenergy density. None of the samples showed cracks, contrary to earlier\nexperiments performed with a different powder [7]. When increasing\nthe volumetric energy density, the relative density increases exponentially up to 50 J/mm[3], resulting in 99% dense parts. As seen in\nthe bottom inset micrograph, low energy densities result in lack of fusion porosities and, hence low relative densities. Above 50 J/mm[3] high\nrelative densities are obtained. No relative density decrease is observed\nas seen previously for similar alloys where keyhole porosities are\nformed at an energy density of 75 J/mm[3] [7]. The two top inset micrographs show the high-density parts obtained at different energy\ndensity levels ranging from 75−150 J/mm[3], with the absence of pores.\n\nFig. 2. Relative density of cubes as a function of the volumetric energy. The top\nimages show full dense samples while the bottom micrograph shows unmolten\nregions in black.",
+    "summary": "",
+    "size": 1145,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 14,
+    "source_folder": "HastelloyX",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-1",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "```\n               Elsevier Editorial System(tm) for Materials\nScience & Engineering A\n                 Manuscript Draft\nManuscript Number: \nTitle: Selective laser melting of Hastelloy-X: microstructure and\nmechanical properties \nArticle Type: Research Paper\nKeywords: Selective laser melting, Hastelloy-X, Microstructure,\nMechanical properties, Fatigue life\nCorresponding Author: Professor Rossitza Setchi, PhD\nCorresponding Author's Institution: Cardiff University\nFirst Author: Quanquan Han, PhD\nOrder of Authors: Quanquan Han, PhD; Raya Mertens; Shoufeng Yang, PhD;\nRossitza Setchi, PhD; Maria L Montero-Sistiaga; Kim Vanmeensel, PhD;\nBrecht Van Hooreweder, PhD; Sam L Evans, PhD\nAbstract: Hastelloy-X is the trademark for a nickel-based, hightemperature super-alloy that is increasingly applied in gas turbine\nengines because of its exceptional combination of oxidation resistance\nand high-temperature strength. This increased hardness and strength,\nhowever, makes the material difficult to form when using traditional\nmanufacturing techniques. Selective laser melting (SLM) is an advanced\nmanufacturing process which offers the ability to manufacture Hastelloy-X\nusing a layer-by-layer manufacturing principle. This paper systematically\nstudies the microstructure and mechanical properties of SLM-fabricated\nHastelloy-X, with an emphasis on fatigue performance. The experimental\nresults demonstrated that the optimum scanning speed and hatch spacing\nwere 200 mm/s and 90 µm, respectively, when a relatively low laser power\n(95 W) was employed; under this optimum condition, a 99.5% relative\ndensity was achieved. Due to the difference in solidification rates, the\nmicrostructure of the austenite phase that was formed showed different\ntypes of grain orientations. The specimens offered a consistent 470 MPa\nyield strength with a fairly high elongation of 40%. Compared to the\nfatigue life of comparable materials from CES EduPack, the SLMmanufactured Hastelloy-X was found to offer much higher fatigue life in\nthe relatively lower-cycle range and similar fatigue life in the highercycle range.",
+    "summary": "",
+    "size": 2099,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 4.8,
+    "n_numeric": 6,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "while the roughness of the down-skin surfaces increased with laser power and\n\ndecreased with scanning speed. Wang [14] studied the tensile and fatigue\n\nperformances of SLM-fabricated Hastelloy-X using an EOS M270 machine with\n\na relatively high laser power (200 W); because only one fatigue sample was\n\nused in each level of applied load, however, the fatigue life might not have been\n\nrepresentative in that study; the author did not analyse the fatigue-fracture\n\ncharacteristics in detail.\n\nAccordingly, the aim of the present study was to determine the optimum\n\nSLM parameters (scanning speed and hatch spacing) to produce minimum\n\nporosity and cracking in Hastelloy-X components when a relatively low laser\n\npower (95 W) is used. This study also investigated the microstructure and\n\nmechanical properties of the as-fabricated samples with an emphasis on the\n\nfatigue behaviour, which was systematically examined for the first time in this\n\nstudy.\n\n**2. Material and procedure**\n\n_2.1. Material_\n\nThe Hastelloy-X powder used in this study was obtained from Concept\n\nLaser GmbH with a chemical composition (wt.%) of\n\n23Cr-20Fe-10Mo-2.5Co-1Si-1W-bal.Ni. Fig. 1 shows the particle morphology\n\nand size of the raw material; the particles were observed to be fairly spherical\n\nwith an average particle size of 35 µm.\n\n**<insert Figure 1>**\n\n_2.2. The selective laser melting process_\n\nA Concept Laser M1 machine equipped with a 100 W fibre laser was",
+    "summary": "",
+    "size": 1447,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 18,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-10",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "represent the scanning speed, layer thickness and hatch spacing,\n\nrespectively.\n\nii. The different solidification rates that are induced by temperature\n\ngradient may result in the formation of austenite phase with different\n\ngrain orientations.\n\niii. The microcracks that form may have the least influence on both tensile\n\nand fatigue performances when the specimens are fabricated vertically.\n\n**3. Results**\n\n_3.1. Relative density_\n\nThe relative density of the as-fabricated cubic samples with respect to the\n\nscanning speed and hatch spacing are shown in Fig. 2. When the hatch\n\nspacing was maintained at 60 µm, the relative density measurements\n\nincreased with an increase in scanning speed until 500 mm/s, which\n\ncontributed to a relative density of 99%. The relative density then decreased\n\nwith further increase in scanning speed; a relatively low density measurement\n\nof 97.8% was associated with a scanning speed of 800 mm/s, which can be\n\nexplained by the change in the laser-energy density. A combination of low\n\nscanning speed and small hatch spacing generally led to a dramatic increase\n\nin laser-energy density, which may cause the laser’s working mode to\n\ntransition from conduction to keyhole mode. A keyhole working mode tends to\n\ncause splashing because of the recoil pressure; the splashing, however, could\n\ngive rise to high porosity and a relatively low density (97.6%), both of which\n\nwere obtained at 200 mm/s scanning speed.\n\n**<insert Figure 2>**",
+    "summary": "",
+    "size": 1472,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 8.8,
+    "n_numeric": 11,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-11",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "The splashing was reduced and the relative density increased with an\n\nincrease in scanning speed. But when the scanning speed exceeded the\n\nthreshold (500 mm/s in the present work), the laser-energy density reduced\n\ngradually, and the accumulated heat energy was insufficient to fully melt the\n\nHastelloy-X powder; the relative density thus decreased with a further increase\n\nin scanning speed. A similar trend was also observed when the hatch spacing\n\nwas maintained at 75 µm, although it should be noted that a much lower\n\nrelative density was observed when the scanning speed exceeded the\n\nthreshold compared to the hatch spacing of 60 µm. When the hatch spacing\n\nwas further increased to 90 µm, the relative density was found to have\n\ndecreased from 99.5% to 95.2%, while the scanning speed increased from 200\n\nmm/s to 800 mm/s. The four samples with the highest relative densities\n\n(marked in Fig. 2) were then vertically sectioned to study their defect\n\ndistributions.\n\n**<insert Figure 3>**\n\nThe porosity and microcrack distribution of the four samples with the\n\nhighest relative densities are shown in Fig. 3. More specifically, Fig. 3a shows\n\nthe porosity distribution of the elongated sample fabricated at 200 mm/s\n\nscanning speed and 90 µm hatch spacing; a very small number of pores were\n\nfound to have formed, and no microcracks were observed under this\n\nmagnification (Fig. 3e). Fig. 3b–d shows typical microstructures when the",
+    "summary": "",
+    "size": 1441,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 6.3,
+    "n_numeric": 16,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-12",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "conditions varied. Both microcracks and pores were generated in these\n\nsamples, and microcracking seem to be the primary defect in the SLM of\n\nHastelloy-X. The formation of microcracks is believed to be caused by thermal\n\nstress, which is induced by the temperature gradient during the laser\n\nirradiation; the microcracks are generated when the residual stress is greater\n\nthan the ultimate tensile strength during the rapid solidification process. The\n\nOM observations confirmed that the optimum scanning speed and hatch\n\nspacing in order to fabricate nearly fully dense Hastelloy-X were 200 mm/s and\n\n90 µm, respectively. This parameter combination was employed to fabricate\n\ntensile and fatigue specimens for further mechanical-property investigation.\n\n_3.2. Phase identification and microstructure_\n\nFig. 4 shows the XRD patterns of the Hastelloy-X powder and the\n\nas-fabricated sample fabricated at 200 mm/s scanning speed and 90 µm hatch\n\nspacing. A secondary phase was not detected from the diffraction patterns,\n\nwhich suggests that only an austenite single phase was formed following the\n\nSLM process. The first two diffraction-angle (2θ) measurements were 51.15°\n\nand 59.65°, respectively. An value of 0.75 was calculated from Eq. (1),\n\nwhich implies that the crystal structure of the austenite phase that formed was\n\nFCC.\n\n**<insert Figure 4>**\n\nFig. 5 shows the microstructure of the as-fabricated sample under\n\noptimum scanning speed and hatch spacing. The molten pool boundary was",
+    "summary": "",
+    "size": 1494,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 13,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-15",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "determined the texture. The four types of solidification microstructures (I–IV)\n\nwere observed to correspond to the grain orientations shown in Fig. 7a, which\n\nconfirms the hypothesis that the thermal gradient and cooling rate might result\n\nin the formation of the austenite phase with different grain orientations.\n\n_3.3. Mechanical properties_\n\n_3.3.1. Surface topography and tensile performance_\n\nThe optimum parameters (200 mm/s scanning speed and 90 µm hatch\n\nspacing) were employed to fabricate a set of tensile and fatigue specimens\n\n(Fig. 8a); the as-fabricated fatigue specimens were polished prior to the fatigue\n\ntesting (Fig. 8b). Fig. 8c–d shows the top surface topography of the fatigue\n\nspecimens; the surface was observed to exhibit fairly consistent surface quality,\n\napart from a few ‘satellites’ that had formed. A satellite, which is a particle that\n\nsticks to the surface of the layer that is in contact with the scan track, can be\n\nformed by spattering or partial remelting of the powder during the\n\nlaser-irradiation process. The molten pools were also observed to have an\n\nelongated ripple shape; the angle (α) between the ripples and the laser\n\nmovement direction was in the order of 32° over the majority of the molten pool\n\ntail, which can be used to predict the shape of the molten pool.\n\n**<insert Figure 8>**\n\nFig. 9 and Table 2 show the tensile-testing results of the as-fabricated\n\nspecimens. The tensile performances of the four tensile specimens were found",
+    "summary": "",
+    "size": 1490,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 13,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-20",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "cross-section (region III in Fig. 12a1 and b1). The unstable crack growth region\n\n(region II) may be regarded as a transition from a smooth to a rough surface.\n\nThe ductile fatigue fracture surfaces (Fig. 12a3, b3) were observed to offer\n\nsimilar fracture structures to the fracture surfaces generated through tensile\n\ntesting (Fig. 10a1–3). A dimpled microstructure was observed, and the\n\nmicrocracks that had formed during the SLM were found to have opened\n\nconsiderably.\n\n**4. Discussion**\n\n_4.1. Relative density and laser-working mode_\n\nThe experimental results demonstrate that laser-energy density strongly\n\naffects relative density. When the laser power, layer thickness and hatch\n\nspacing are fixed, the laser-energy density is generally inversely proportional\n\nto the scanning speed. For instance, when the hatch spacing was maintained\n\nat 60 µm (Fig. 2), the laser-energy density increased with the decrease in\n\nscanning speed from 800 mm/s to 200 mm/s, while the relative density first\n\nincreased and then decreased; an optimum 500 mm/s scanning speed was\n\ndetermined. This finding may be attributed to the transition of the laser-working\n\nmode between conduction mode and keyhole mode [16]. When the\n\nlaser-energy density was lower than the threshold (corresponding to 500 mm/s\n\nscanning speed), with an increase in energy density – which is generally\n\nachieved by reducing the scanning speed – more heat energy could be",
+    "summary": "",
+    "size": 1433,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 18,
+    "source_folder": "HastelloyX",
+    "gate": "causal"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-21",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "accumulated, which in turn tended to fully melt the Hastelloy-X powder, thus\n\nleading to an increase in relative density. At this stage, the laser works in\n\nconduction mode, and the penetration depth is determined by the thermal\n\nconductivity of the solidified layers (with scanning speeds of 500–800 mm/s;\n\nFig. 2).\n\nWhen the laser-energy density goes beyond the threshold, the maximum\n\ntemperature of the molten pool surface is generally greater than the boiling\n\npoint of the powder, which can induce strong evaporation. The recoil pressure\n\nthat is generated together with Marangoni convection can then cause\n\nspattering and depression of the molten pool surface. Keyhole pores and\n\nmicrocracks would then be formed, which would further result in decreases in\n\nrelative density (scanning speeds of 200–500 mm/s; Fig. 2). This finding is in\n\nagreement with [17] and [18], in which the significant effects of recoil pressure\n\nand Marangoni convection in the SLM of stainless steel and aluminium\n\nnanocomposite were investigated. The experimental results of the present\n\nstudy also imply that the optimum SLM condition (200 mm/s scanning speed\n\nand 90 µm hatch spacing) the study determined contributed to a\n\nconduction-laser-working mode in the SLM of Hastelloy-X powder. This\n\nhypothesis was confirmed by the OM investigation (Fig. 5), in which keyhole\n\npores were not observed in the vertical section.\n\n_4.2. Micro-cracks_\n\nThe experimental results demonstrated that microcracking was the primary",
+    "summary": "",
+    "size": 1500,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 12,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "This finding may be explained by the laser-energy density induced by the\n\nSLM-process parameters this study employed. Compared to the 95 W laser\n\npower and 200 mm/s scanning speed used in the present work, Tomus et al.\n\nemployed a 370 W laser power, 1900 mm/s scanning speed and a 100°C\n\npreheated building platform. When the powder layer thickness was taken into\n\nconsideration, the calculated laser-energy density was 176 J/mm[3 ] in the\n\npresent study and 54 J/mm[3] in the literature, respectively. The fairly high\n\nelongation (40%) that was observed in the present study also suggests that\n\nthese vertically fabricated samples were expected to be the least influenced by\n\nthe microcracks present in both the horizontal and vertical sections.\n\n_4.4. Fatigue performance_\n\nThe fatigue tests demonstrated that the SLM-fabricated Hastelloy-X\n\nspecimens offered much higher fatigue cycles in the relatively low-cycle range\n\nand similar fatigue life in the high-cycle range compared to the CES EduPack\n\n[20]. Fig. 13 shows the fatigue performance of Hastelloy-X from the CES\n\ndatabase while the stress ratio is maintained at 0.1; the fatigue performance of\n\nthe SLM-fabricated samples in this study is also indicated. When the applied\n\nfatigue strength was 250 MPa, the magnitudes of the fatigue cycles were\n\nbetween 2 x 10[4] and 3 x 10[7 ]from the CES database, while the fatigue cycles\n\nobtained in the present study were between 8 x 10[5] and 1.5 x 10[6] (Fig. 11).",
+    "summary": "",
+    "size": 1468,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 28,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism-chunk-24",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "Laser powder bed fusion of Hastelloy X Effects of hot isostatic pressing and the hot cracking mechanism.md",
+    "content": "When a 300 MPa fatigue strength is chosen, however, the fatigue cycles from\n\nthe CES database are between 200 and 4 x 10[4], while the SLM-fabricated\n\nspecimens offered fatigue cycles between 4 x 10[5] and 8 x 10[5], which are much\n\nhigher than those of the CES database. With a further increase in the fatigue\n\nstrength to 350 MPa, the fatigue cycles from the CES database are less than\n\n200, compared to around 3 x 10[5] cycles in the present work. This improved\n\nfatigue performance of the SLM-fabricated Hastelloy-X is attributable to the\n\nvery fine microstructures that were formed during the SLM process. The\n\nmicrocracks that form may have the least influence on the fatigue life of\n\nvertically manufactured samples.\n\n**<insert Figure 13>**\n\n**5. Conclusions**\n\nThis study investigated the microstructure and mechanical properties of\n\nas-fabricated Hastelloy-X using the selective laser melting (SLM) process. The\n\nfatigue performance in particular was systematically examined for the first time\n\nin this work. This paper has presented the following important findings derived\n\nfrom the experimental results.\n\n(1) An optimum 200 mm/s scanning speed and 90 µm hatch spacing were\n\ndetermined by quantifying the relative density of the as-fabricated cubic\n\nsamples (10 x 10 x 10 mm) using the Archimedes method. The relative\n\ndensity was found to be as high as 99.5% under the optimum process\n\nparameters.\n\n(2) The primary defect in the as-fabricated Hastelloy-X was microcracks",
+    "summary": "",
+    "size": 1482,
+    "materials": [
+      "Hastelloy X"
+    ],
+    "info_score": 3.3,
+    "n_numeric": 26,
+    "source_folder": "HastelloyX",
+    "gate": "quant_2plus"
+  }
+]

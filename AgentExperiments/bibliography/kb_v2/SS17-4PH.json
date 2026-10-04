@@ -1,0 +1,1217 @@
+[
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-2",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "Abstract Selective laser melting involves melting and solidification of metal powder particles in a track- by- track and layer- by- layer method to fabricate 3D parts. The present investigation focuses on understanding the effect of laser power and scan speed on the evolution of melt pool, porosity and multiple thermal cycling effects on the microstructure in parts fabricated using selective laser melting. In this study, Ti- 6Al- 4V pre- alloyed powder was used to produce single- track deposits and bulk parts. Using different combinations of laser power and scan speeds, single- track deposits and bulk parts were produced. The cross- sections of the single- track deposits and bulk samples were prepared for metallographic observations and the melt pool shape and size and porosity were evaluated. When a low energy density was applied the un- melted powder particles produced irregularly shaped porosity, and a high energy density resulted in rounded porosity, which was due to keyhole effects. The samples produced with a proper combination of power and speeds were fully dense. Further, microstructural development under the influence of process condition was highlighted. Overall, the study demonstrates a good correlation between the single- track melt pool geometries, porosity in bulk parts and also demonstrates the microstructural inhomogeneity during deposition.\n\nKeywords Additive manufacturing · Selective laser melting · Ti- 6Al- 4V alloy · Single- track deposits",
+    "summary": "",
+    "size": 1483,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 5,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-14",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "The top surface of the single line deposits was observed under SEM, and the results are presented in Fig. 4. The single- track deposit scanned with low laser power, and slow scan speed (50 W and  $500~\\mathrm{mm / s}$ ) shows a continuous, and a uniform weld bead. Keeping the laser power constant (50 W), with an increase in the scan speed the single- track deposit was noticed to become inconsistent and discontinuous (1000 mm/s), and eventually resulting in fragmentation of tracks (1200 mm/s), commonly referred to as balling [11]. Balling appears spherical in shape (as shown in Fig. 5, 50 W, 1200 mm/s) and bulging upwards which is a result of the dominant surface tension forces of the molten alloy. When such a sets of parameters are applied to fabricate the bulk parts, they may result in a significant amount of porosity [9, 11]. Keeping scan speed constant, and with an increase in the laser power, the single bead deposit shows an increase in width. This increase in the width is due to the higher intensity of the laser beam, which causes a higher volume of melting and results in a wider and deeper melt pool [11] (Fig. 6). In the case of single tracks deposited with a laser power of 100, 150, and 195 W, the bead width was observed to decrease with an increase in scan speed; however, balling phenomenon was not observed at these higher laser power settings.\n\nThe single- track deposits produced on a Ti- 6Al- 4V alloy plate were sectioned and prepared for microstructural",
+    "summary": "",
+    "size": 1488,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 19,
+    "source_folder": "SS316L_SS17",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-16",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "observations. The etched cross- sections were examined under an optical microscope, and the micrographs are presented in Fig. 5. The morphology, width, and depth of the single- track deposits can be clearly observed from the optical micrographs. At a power level of  $50~\\mathrm{W}$  and scan speed of  $500~\\mathrm{mm / s}$ , the energy was sufficient to melt the powder and a small portion of the base plate  $(10~\\mu \\mathrm{m})$ . When the scan speed was increased, the depth of the melted region was observed to decrease and eventually resulted in balling, which can be observed for the single track made with  $50~\\mathrm{W}$ ,  $1200~\\mathrm{mm / s}$ . This phenomenon occurs due to the reduction in the energy density as the scan speed was increased according to Eq. 1 [10]. The melt pool depth was observed to increase significantly at lower scan speeds  $(500~\\mathrm{mm / s})$  and higher power levels particularly from  $100~\\mathrm{W}$  (depth:  $45~\\mu \\mathrm{m}$ ) to  $195~\\mathrm{W}$  (depth:  $176~\\mu \\mathrm{m}$ ). The melt pool geometry was observed to have a keyhole shape for the laser power of  $195~\\mathrm{W}$ , whereas for  $100~\\mathrm{W}$  it was bowl shape. This remarkable change in melt pool shape with laser irradiation can be attributed to keyhole versus conduction modes of melting. For lower laser power, melting occurs by locally melting the alloy with heat transfer by conduction and convection inside the melt pool.",
+    "summary": "",
+    "size": 1455,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 15,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-17",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "In the later case, with a laser power of  $195~\\mathrm{W}$ , melting of the alloy occurs by keyhole mode, giving rise to deeper penetration. Keyhole is always associated with vaporization of the alloy and in many cases results in entrapped pores in the melt pool [16]. The single tracks with the parameter combinations of:  $100~\\mathrm{W}$ – $500~\\mathrm{mm / s}$ ,  $150~\\mathrm{W}$ – $500~\\mathrm{mm / s}$ ,  $150~\\mathrm{W}$ – $1000~\\mathrm{mm / s}$ ,  $195~\\mathrm{W}$ – $1000~\\mathrm{mm / s}$ , and  $195~\\mathrm{W}$ – $1200~\\mathrm{mm / s}$ , have moderate energy input and provide consistent melt pool shape with sufficient depth of penetration (two to three layers deep). These parameters above when used with a well- defined melt pool overlap could provide a window of optimum processing conditions to produce fully dense parts. It is worth noting that the heat affected zone size close to the melt pool also varies with the energy density applied.",
+    "summary": "",
+    "size": 958,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 12,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-19",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "Bulk sample parts of dimensions  $10\\mathrm{mm}\\times$ $10\\mathrm{mm}\\times 5\\mathrm{mm}$  were fabricated using the parameters listed in Table 1. The SLM- built sample parts were cut and prepared for microstructural studies. The polished and etched cross- section surfaces of the as- built bulk samples are presented in Fig. 7. The effect of process parameters on the porosity/density of the sample can be clearly observed in Fig. 7. The samples made with parameters  $50~\\mathrm{W}$  laser power and different scan speeds reveal irregular shape pores (dark) with sharp edges and also some unmelted powder particles in the micrographs. The porosity was observed to increase as the scan speed was increased. These results have a good match with the single- track melt pool observations. The sample with  $100\\mathrm{W}$  laser power and  $500~\\mathrm{mm / s}$  scan speed resulted in full density, and as the scan speed was increased the porosity in the parts showed a rise due to insufficient melting of the powder. With the higher laser power levels, 150 and  $195\\mathrm{W}$ , a scan speed of  $500~\\mathrm{mm / s}$  showed round voids. The sample with  $195\\mathrm{W}$  laser power showed larger pore sizes in the cross- section. The formation of porosity in the deposits could be derived from the keyhole- shaped melt pool that developed while high power parameters were used. High energy density causes the alloy to melt and vaporize in some local regions; since the process is dynamic and quick, the vapors cannot escape fully and become entrapped in the melt pool, resulting in pores (which appear round) in the deposit [16, 19- 22]. However, the pores when formed towards the top of the melt pool are not detrimental because re- melting causes gas to escape out of that layer during subsequent",
+    "summary": "",
+    "size": 1802,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 16,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-21",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "The energy density gives an estimate of the energy input to the SLM process. Energy density estimation applied in SLM is calculated by using Eq. 1 and the values are presented in Table 2. The effect of energy density on the porosity of the samples produced by SLM of Ti- 6Al- 4V is shown in Fig. 8. The energy densities applied below  $50~\\mathrm{J / }$ $\\mathrm{mm}^3$  show a significant amount of porosity due to insufficient melting of the powder particles, which could be conceived from the shape of the porosity and presence of sintered un- melted powder particles. The energy densities applied higher than  $66~\\mathrm{J / mm}^3$  also show some amount of porosity due to higher energy resulting in keyhole effects confirmed by the rounded shape of pores [9, 11, 19, 20, 22]. The red dotted region in the Fig. 8 with the energy density values between 50 and  $66~\\mathrm{J / mm}^3$  produced samples near to full density.\n\n![](images/a2b8985daf788b6189b5143ef022e64ae4b367a9128cdaaba741629b881204a8.jpg)  \nFig. 8 Plot showing variation of porosity with respect to energy density",
+    "summary": "",
+    "size": 1085,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 32,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d-chunk-30",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2017 - Progress in AM - Dilip et al. - Influence of processing parameters on the evolution of melt pool, porosity, and microstructures i.pdf-77ff682e-9368-48e6-a96a-c40309de953d.md",
+    "content": "The bulk parts produced using parameters similar to single- track deposits showed a direct correlation to the energy density applied and the porosity evolution in the process. Characterization of the cross- sections of the bulk parts demonstrates a good correlation between the single- track melt pool geometry and porosity in the bulk parts. It was learned from this investigation that the process parameters with low energy density and high energy density both result in porosity in the parts, however, due to different reasons. The melt pool information of single- track deposits could be an aid to select a process window determining an optimum set of process parameters. SLM processing parameters with 150 W,  $750~\\mathrm{mm / s}$  and  $195\\mathrm{W}$ ,  $1000~\\mathrm{mm / s}$  and  $1200~\\mathrm{mm / s}$  result in well- defined bowl- shaped melt pools and contribute to near fully dense parts. Therefore, these sets of parameters could be recommended to produce denser parts in the Ti- 6Al- 4V alloy using selective laser melting.",
+    "summary": "",
+    "size": 1041,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 7,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2019 - J. Manufacturing Processes - Zhang, Chaudhari, Wang - Surface quality and material removal in magnetic abrasive finishing of sele-chunk-22",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2019 - J. Manufacturing Processes - Zhang, Chaudhari, Wang - Surface quality and material removal in magnetic abrasive finishing of sele.md",
+    "content": "Fig.7 shows representative SEM images of surface topography evolution for $0 ^ { \\circ }$ sample during polishing process.It can be clearly seen that as polishing process progresses,the unmolten particles,balling and rippling on the initial sample surface are gradually removed and finally obvious scratches are generated.The initial and final surface topography as well as surface roughness profile for all the samples are shown in Fig.8.The as-printed surface topography shows insignificant stair effect,which is distinct from the printing results studied by Strano et al.[1].And the effect of unmolten particles is predominant followed by rippling and balling effect. On ${ { 6 0 } ^ { \\circ } }$ sample surface,numerous particles agglomerate on the interface layer.The polishing results show that most unmolten particles can be removed after 75-min polishing except $3 0 ^ { \\circ }$ ， $4 5 ^ { \\circ }$ and ${ { 6 0 } ^ { \\circ } }$ samples on which some particles still exist in the valleys.Regarding the surface profile,the peaks are flattened but the valleys are still maintained for $\\boldsymbol { 1 5 ^ { \\circ } }$ to $7 5 ^ { \\circ }$ samples.More detailed analysis on surface roughness will be presented in the next section.The material removal mechanism will be proposed and analysed in Section 3.3.\n\n# 3.2.Surface roughness and material removal by MAF",
+    "summary": "",
+    "size": 1366,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 19,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - Computational Materials Science - Wang et al. - Experimental characterization and micromechanical-statistical modeling of 316L st-chunk-24",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - Computational Materials Science - Wang et al. - Experimental characterization and micromechanical-statistical modeling of 316L st.md",
+    "content": "<table><tr><td>Range of pore size (mm)</td><td colspan=\"4\">Pore size distribution (in relative frequency)</td></tr><tr><td></td><td>Energy input 50.02 J/mm (Set A)</td><td>Energy input 50.02 J/mm (Set B)</td><td>Energy input 200.06 J/mm³ (Set C)</td><td>Energy input 200.06 J/mm³ (Set D)</td></tr><tr><td>0.0147-0.0347</td><td>56.04%</td><td>57.79%</td><td>58.51%</td><td>56.78%</td></tr><tr><td>0.0347-0.0547</td><td>34.05%</td><td>33.45%</td><td>33.48%</td><td>35.38%</td></tr><tr><td>0.0547-0.0747</td><td>7.33%</td><td>6.41%</td><td>6.44%</td><td>7.06%</td></tr><tr><td>0.0747-0.115</td><td>1.01%</td><td>0.72%</td><td>0.96%</td><td>0.76%</td></tr><tr><td>0.115-1.2</td><td>1.57%</td><td>1.64%</td><td>0.61%</td><td>0.02%</td></tr></table>\n\nFig.8 has demonstrated a good visualization for the size distribution of the relatively small pores,however,it does not capture clearly the distribution of the larger pore sizes due to their low relative frequency. For further understanding the stories of the larger pore sizes,we categorized the full range of the pore sizes into five groups,the relative frequency of which were calculated by summing up the relative frequencies of the pores in the corresponding intervals in Fig.8.The resulted relative frequency for the five groups of pore sizes is given in Table 3.Also included are the corresponding data for the specimens in Sets B and D.",
+    "summary": "",
+    "size": 1389,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.3,
+    "n_numeric": 38,
+    "source_folder": "SS316L_SS17",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "2020 - Computational Materials Science - Wang et al. - Experimental characterization and micromechanical-statistical modeling of 316L st-chunk-26",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - Computational Materials Science - Wang et al. - Experimental characterization and micromechanical-statistical modeling of 316L st.md",
+    "content": "The analysis above on the pore size distributions may explain well the porosity given in Table 4 by the XCT characterizations for the four sets of tensile specimens.It is observed that the specimens fabricated by the low energy input, containing more pores greater than $0 . 1 1 5 ~ \\mathrm { m m }$ exhibit obviously higher porosity. This may be as expected considering that the porosity is intrinsically dominated by the presence of the larger pores.For a better correlation between the porosity and the larger pores,the number density (defined as the number of pores divided by the total volume under investigation） and relative frequency for the pores above $0 . 1 1 5 ~ \\mathrm { m m }$ are also included in Table 4.\n\nThe pore size analysis in Tables 3 and 4 can be well visualized by mapping the three dimensional XCT images to transverse,sagittal and coronal planes as illustrated in Fig.9.Figs.1O and 11 respectively present the pore characteristics for the specimens fabricated using the low and high energy input at the transverse and coronal planes.For all the four sets of specimens,it is observed that there are numerous pores of nearly spherical shape having the sizes below $0 . 1 1 5 \\mathrm { m m }$ 、As pointed out by [4O],these small pores generally tend to be formed at a low scanning speed due to the gases trapped within the melting pool or the pores evolved from the powder feedstock.",
+    "summary": "",
+    "size": 1407,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 20,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - Computational Materials Science - Wang et al. - Experimental characterization and micromechanical-statistical modeling of 316L st-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - Computational Materials Science - Wang et al. - Experimental characterization and micromechanical-statistical modeling of 316L st.md",
+    "content": "On the contrary,the large pores with the sizes above $0 . 1 1 5 \\mathrm { m m }$ are observed to have irregular shape in Fig.1O (a) and (c).They are usually generated due to a rapid scanning and solidification where the gaps cannot be completed filled with the molten metal [41].With the scanning speed decreases from $2 1 6 6 \\ \\mathrm { m m } / s$ (Set A) to $5 4 1 . 5 \\ \\mathrm { m m } / s$ (Set C),itis obvious that the irregular pores in Fig.11 (a) are significantly reduced compared to Fig.1O (c),whereas the amount of spherical pores increases.This is also well demonstrated by the values of the relative frequency for Set A and Set C in Table 3.The above observations agree well with the conclusions in [40].\n\nThe large pores with the size above $0 . 1 1 5 \\mathrm { m m }$ are also observed in Figs.1O (b) and (d). These pores are found in irregular shape too, however,some of them have the spatial locations in linear pattern. They may evidence the lack of fusion caused by the large hatch distance in the laser scanning [16].When the hatch distance decreases from $1 8 0 ~ { \\mu \\mathrm { m } }$ (Set B) to $4 5 ~ { \\mu \\mathrm { m } }$ (Set D),the large irregular pores are almost observed to disappear in Fig.11 (b) compared to Fig.1O (d).This is also reflected in Table 3 that the relative frequency for the pores above $0 . 1 1 5 ~ \\mathrm { m m }$ in the Set B specimen is $1 . 6 4 \\%$ ,however the corresponding relative frequency in the Set D specimen is only $0 . 0 2 \\%$",
+    "summary": "",
+    "size": 1491,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 42,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - Int. J. Fatigue - Lee, Pegues, Shamsaei - Fatigue behavior and modeling for additive manufactured 304L stainless steel The effect-chunk-36",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - Int. J. Fatigue - Lee, Pegues, Shamsaei - Fatigue behavior and modeling for additive manufactured 304L stainless steel The effect.md",
+    "content": "# 3.3.Fractography analysis\n\nThe events leading to final fracture are distinct,and therefore, provide information regarding crack initiation and propagation mechanisms. Fig.1Oshowsthe final fracture surfacesunder $\\varepsilon _ { \\mathrm { a } } = 0 . 0 0 3 ~ \\mathrm { m m / m m }$ with (a) AB and (b) M/P surface conditions. The entire fracture surfaces,as well as the magnified crack initiation sites, are presented in these images.In Fig.lO(a),arrows,dashed lines,and shaded areas with red color indicate crack initiations,the early stage of crack propagations,and surface defects,respectively. The multiple initiated cracks in AB specimen, shown in Fig.1O(a),grew,coalesced,and grew further until the final fracture.In contrast,the cracks of M/P specimens shown in Fig.1O(b) were not solely initiated on the surface, but also by internal defects close to the surface.Lack-of-fusion defects highlighted as shaded areas were observed in both surface region and internal part of M/P specimens,as shown in enlarged images of Fig.lO(b).While the surface crack dominates the crack growth,it coalesces with multiple internal cracks but maintains stability and propagates through the entirety of the specimen under strain-controlled testing,as seen in Fig.10(b).",
+    "summary": "",
+    "size": 1259,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 9,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-2",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "The discrete element method (DEM) and the finite volume method (FVM) were used to build a 3D numerical model to simulate the selective laser melting process(SLM).The Marangoni efect and the recoil pressure were incorporated in the model.Experiments for the single track were performed for verification.The numerical results indicated that melt tracks with diferent morphologies were formed when the same linear energy density (LED) was applied.The formation mechanism of the melt track defects including balling,porosity and distortion were analyzed. It was found that the balling defect was concluded to be resulted by insuficient energy input incapable of melting the substrate.The distortion defect originated from thecombined effect of the random distribution of powder particles and the Marangoni efect.In the keyhole-mode laser melting proces,the unsteady behavior of the molten pool and keyhole led to the porosity defect.\n\n# 1．Introduction",
+    "summary": "",
+    "size": 947,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 2,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-6",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "Khairallah et al.[15] proposed a relatively comprehensive model considering the recoil pressure and the Marangoni effect to explore the formation mechanism of common defects during the laser powder bed fusion process.Their model expounded the formation mechanism of spattering,denudation,pore defect. Furthermore,their study revealed the significant effect of the recoil pressure and the Marangoni effect. Yan et al.[16] built a multi-physics field model to identify the formation mechanism of single/multiple-track defects during the EBSM process. They found that the energy input and the powder bed thickness significantly affected the presence of the balling defect,and the powder size distribution and powder bed thickness were two pivotal process parameters for the single melt track nonuniformity. Qian et al.[17] investigated the influence of process parameters on surface morphology. They found that scanning speed was a critical parameter which was closely related to the dimension of the molten pool and surface morphology.Le et al.[18] developed a physics-based computational fluid dynamics (CFD) model with the application of the ray-tracing technique.Their model demonstrated that the unstable behavior of the molten pool and keyhole accounted for the porosity defect.",
+    "summary": "",
+    "size": 1281,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 4,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-20",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "As shown in Fig.5, there existed differences in the forming quality of the single melt track obtained under different combined process parameters. The simulation results indicated that the forming quality of the single melt track varied even if the same linear energy density (LED) was applied.As illustrated in Fig.5(a),the balling defect occurred, the discontinuous track with poor surface morphology was formed in the calculation scheme A1.When laser power and laser scanning speed increased to $3 0 \\mathrm { W }$ and $1 0 0 \\mathrm { m m } / s$ respectively, the single melt track was distorted.The formation mechanism of the distortion defect and the ballng defect will be detailly discussed in Section 3.2 and Section 3.3, respectively.Fig.5(c) shows the straight morphology of the single melt track in the calculation scheme A3.The dimension of the molten pool in Fig.5(a) was very small,which was approximately equivalent to the diameter of the laser beam $( 8 0 ~ \\mu \\mathrm { m } )$ .Additionally, the increase in the length of the molten pool was more obvious than the change of the width,which accounted for the transformation from the circular shape to the comet-like shape of the molten pool.\n\nTable 2 Physical parameters used in the simulation.",
+    "summary": "",
+    "size": 1261,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 16,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-31",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "According to Refs.[11,l2],the energy input hasa significant effect on the forming quality of melt tracks. Therefore,the efects of the energy input on forming quality would be discussed in this section.Based on the simulation schemes,group B had a constant laser power of $1 5 0 ~ \\mathrm { W }$ ,and four different scanning speeds were chosen. Group B was applied to investigate the effects of the energy input on the forming quality of the single melt track.\n\nThe surface morphology of the single melt track obtained from simulation (calculation scheme B4) and the experiment is illustrated in Fig.9.The result of the simulation agreed well with that of the experiment.A discontinuous track with the balling defect was formed in the calculation scheme B4 (150 W, $1 3 0 0 \\mathrm { m m } / s $ ). Due to the low heat input, there were still a large number of voids between the melt track and the substrate,which led to bad connectivity between the melt track and the substrate (Fig. 9(b)). The balling phenomenon occurs commonly during the SLM process when the inappropriate parameters are utilized, causing the poor bonding between layers,low density of parts and even damaging to the blade when the height of the ball is higher than designed layer thickness [31].",
+    "summary": "",
+    "size": 1266,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 15,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-33",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "![](images/0025d6b174fb6a40fc442fe34e16de08a60df16d58e9211c104646c1ed3c464c.jpg)  \nFig.10.The formation process of the balling defect in calculation scheme B4.\n\nBased on the above discussion, the cause of the balling defect can be summarized.Insuficient energy input is incapable of melting the substrate below the powder bed.When the substrate below the powder particles is melted,the wetting behavioris beneficial for the spreading of the melted particles on the substrate,contributing to the sound bonding between the solidified track and the substrate [16,25].According to the analysis above,the issue of insufficient melting of the substrate below the powder bed is responsible for the balling defect.The effective approach of diminishing the balling defect is to provide sufficient energy input.Additionally,a thinner powder bed composed of particles with smaller sizes can be used to ensure a well metallurgical bonding between the melted particles and the substrate.It is noted that suficient energy input can ensure powder particles fully fused and bonded with the previous layer,avoiding the possibility of interlayer defects.",
+    "summary": "",
+    "size": 1136,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 21,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-36",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "The forming process of the pores in the keyhole-mode laser melting process is shown in Fig.l3.The melt flowed randomly on the front of the keyhole wall.At the rear of the molten pool, the flow of molten metal was very complex and unstable.The flow direction of the melt is shown in the white line segment in Fig.13(b).The melt flowed downward near the surface of the rear wall of the keyhole while the melt at the rear area of the keyhole flowed upward along the fusion line,resulting in a clockwise vortex at the rear area of the molten pool. Such melt flow patterns mainly caused by the recoil pressure and the surface tension were also observed in the laser welding simulation [32,33]. The flow field signed by the black arrows indicated that the fluid velocity near the keyhole was more drastic than that of other parts of the molten pool, revealing the melt near the keyhole flowed with a strong and unstable flow pattern.Due to the melt backflow,a hump was formed on the rear wall of the keyhole.The severe fluctuation and instability of the keyhole caused the collapse of the hump,and the pore was generated at the bottom of the keyhole,as shown in Fig.l3(c)-(e).A hump collapsed again so that a pore formed again (Fig.l3(f)).Notably, the gas pores rapped in the solidified metal led to the residual pores.",
+    "summary": "",
+    "size": 1313,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 6,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-37",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "![](images/fe29094146b038732d0ec95adf2cdb8e6b3d8a1c5b1417ec548ecffcf2faee4d.jpg)  \nFig.11.Simulated and experimental results of calculation scheme B3: (a) 3-dimensional view; (b)sectional view $( \\mathrm { Y } = 1 5 0 ~ \\mu \\mathrm { m } )$ ； (c） corresponding experi mental result.\n\n![](images/a34769d312c3de29dd3d97e48282c7729ae289dc2f88b7a60ff9186636220e3b.jpg)  \nFig.12.Simulated and experimental resultsof calculation scheme B2: (a) 3-dimensional view; (b) sectional view $( \\mathrm { Y } = 1 5 0 ~ \\mu \\mathrm { m } )$ ; (c) corresponding expel mental result.\n\n![](images/c6cfe343284f5a7cbbcf42a902343f1837679418c801f3aa61e998d2ebe31273.jpg)  \nFig.13.The forming process of the pores in calculation scheme B1.\n\nBased on the numerical results,the formation of the pore is closely related to the dynamic behavior of the keyhole in the keyhole-mode laser melting process.Different combination of laser power and scanning speed will result in different behavior of the molten pool.The simulation results indicate that the pore is formed due to the dynamic behavior of the keyhole when the process parameters resulting in high energy input is applied. Consequently,appropriate energy input plays an essential role in alleviating the porosity defect.\n\n# 4. Conclusions",
+    "summary": "",
+    "size": 1268,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 58,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las-chunk-38",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - J. Manufacturing Processes - Tian et al. - Numerical analysis of powder bed generation and single track forming for selective las.md",
+    "content": "In this paper,a DEM based model was built to simulate the powder bed generation process and a 3D numerical model was established to investigate the forming quality of melt tracks and the relevant formation mechanism of track defects.The numerical model was validated by the experiments.The main conclusions can be drawn as follows:\n\n(1）Three different types of melt tracks:balling,distortion,continuous,were observed in simulation results with a constant LED. The peak temperature,heating rate and cooling rate of the molten pool had an increasing tendency with increasing laser power and scanning speed.   \n(2) The random distribution of powder particles in the scanning path and the Marangoni effect contributed to the distortion defect.   \n(3) The occurrence of the balling defect was caused by insufficient energy input incapable of melting the substrate when the high scanning speed was used.The keyhole collapse led to the porosity defect in the keyhole-mode laser melting process.The dynamic behavior of keyhole and the molten pool was strongly associated with the porosity defect.",
+    "summary": "",
+    "size": 1088,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 5.5,
+    "n_numeric": 4,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2020 - Materials Science and Engineering A - Agrawal, Meric de Bellefon, Thoma - High-throughput experimentation for microstructural des-chunk-39",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2020 - Materials Science and Engineering A - Agrawal, Meric de Bellefon, Thoma - High-throughput experimentation for microstructural des.md",
+    "content": "Based on equation (8),the keyholing threshold was estimated to be around $\\mathrm { V E D } = 1 4 5 { - } 1 6 5 \\ \\mathrm { J / m m } ^ { 3 } .$ 、It is important to note that the specimens below the predicted energy densities are essentially free from keyhole defects.While the specimens above this threshold value may or may not have keyhole defects,and the probability of their occurrence will increase with increasing VED.A LT microscopic examination revealed the presence of keyhole type defects at $\\mathrm { V E D } = 2 1 2 . 1 2 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ (Fig.3a) correlating well with the theoretical model and the HT density measurements.\n\nOverall,HT experiments are quick,efficient,and reliable in identifying the lower and higher VED bounds of the processing window, and the bounds are consistent with analytical approximations.In addition, the real value of this HT technique lies in creating large datasets that can effectively couple with machine learning models for rapid processing parameter discovery.Ideally,this approach can be applied to any material system and within a span of 2-3 days,hundreds of specimens can be fabricated,extracted,and analyzed to determine the processing bounds.\n\n# 4.2.Low-throughput microstructure dependence on the melt pool geometry",
+    "summary": "",
+    "size": 1295,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 18,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-10",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "Balling defects can occur under some undesirable process conditions when the molten pool may suffer from instability and disintegrate into several small,disconnected beads or balls appearing on the component surfaces [3,4]. The formation of balls can require post-processing,reduce dimensional accuracy, degrade fatigue properties,and may hinder the movement of powder spreading roller which interrupts the process [3,4]. Several examples of experimental trials [11-26], the use of mechanistic models [27- 44],and machine learning [47-58] to adjust process parameters for reducing balling defects are provided in Table 1.Eforts have been made to explore the mechanistic factors impacting balling defects. Heat energy per unit volume of material deposited controls the melting of alloy powders which affects the balling defect [17,33,49,50,59]. Similarly,surface tension force on the top surface of the molten pool and convective flow of molten metal have been related to the mechanism of ball formation [15,16,19,25,27- 30,33,60-62]. Furthermore,balls are formed by the disintegration of the molten pool due to the hydrodynamic [21,35] and capillary instabilities [30-34,43,50]. These important factors are quantified in the literature and their values have been evaluated for various experimental conditions and alloy compositions using mechanistic models (Table 1） to reduce balling defect.All of these factors depend on the alloy compositions and process parameters,and the effects of each factor on balling defects have been studied separately.However,the combined effects of these important factors on balling defects during L-PBF have not been investigated.",
+    "summary": "",
+    "size": 1663,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 32,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-18",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "The method relies on 166 data sets from peer-reviewed articles [11-16]. Each experimental test contains a group of high-quality data of cases with the presence and absence of balling defects. Among 166 data sets,81 cases with balling,and 85 cases where balling were not detected experimentally [11-16]. The case number of each alloy is summarized in the Supplementary document. Six mechanistic variables are found to be related to the mechanism of balling defect formation (Section 2.3). Each of the data set consists of six computed mechanistic variables along with the absence or presence of balling.The 166 experimental data sets are all marked with $\\mathbf { \\delta } ^ { \\ast } \\mathbf { 0 } ^ { \\prime }$ or‘1'to represent the absence or presence of balling,respectively. Ranges of process parameters,alloy properties,and six computed mechanistic variables corresponding to the 166 experimental data sets are provided in Table 2.Thermo-physical properties of six alloys investigated in this work are available in Table 3. Values of process parameters,gas properties,and six mechanistic variables corresponding to 166 data sets are provided in the Supplementary document.\n\n![](images/fa3edfd5f76e847c89d39daeefd035e9c35f104c992845742a72ee5f72bac3e9.jpg)  \nig2fect produce tie al o this article.).\n\n# 2.3.Six mechanistic variables and their calculation using α heat transfer and fluid flow model",
+    "summary": "",
+    "size": 1400,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 34,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-21",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "Richardson number (R): Balls may form because of the segregation of the pool due to its instability.The Kelvin Helmholtz hydrodynamic instability is caused by the difference between the velocities of shielding gas and the convective flow of liquid metal on the top surface of the molten pool (Fig.2, top middle). The resulting deposit appears similar to what is observed as the humping effect in fusion welding [36,37,4O]. However, the literature from which we collected the experimental data, termed this defect as balling. This hydrodynamic instability can be represented by a dimensionless number called the Richardson number [21,35].The susceptibility to the balling defect increases with Richardson number due to high pool instability [35]. Richardson number (R) can be calculated as [3,35].\n\n$$\n\\mathsf { R } = \\mathrm { \\frac { g L } { ( U _ { g } - U _ { l } ) \\vphantom { \\frac { g L } { 2 } } } }\n$$\n\nwhere $^ { \\mathrm { g } }$ is the acceleration due to gravity,L is the pool length that can be calculated using the 3D,transient,heat transfer,and fluid flow model. $\\mathrm { U _ { g } }$ is the velocity of shielding gas,for L-PBF,which is assumed to be equal to the scanning speed. $\\mathrm { U } _ { \\mathrm { l } }$ is the maximum velocity of the convective flow of the liquid metal.The maximum velocity is found on the top surface of the pool along the scanning direction.",
+    "summary": "",
+    "size": 1389,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 11,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "The hierarchical importance of the six mechanistic variables on ball formation is evaluated by the relative importance of each variable in BSI,as well as three feature selection indexes,information gain (IG),information gain ratio (IG ratio),and Gini index [52,68]. These three indexes rely on the threshold values of the mechanistic variables that approximately delineate between the cases with balling and the cases where balling is not observed.The hierarchical importance is estimated using the 166 sets of computed values of six mechanistic variables and the experimentally observed balling ( $\\mathbf { \\cdot } _ { 0 } \\mathbf { \\cdot }$ or‘1'). The high values of information gain and information gain ratio show more importance which are calculated based on entropy [52,68]. In contrast,low values of the Gini index show more importance [52,68]. A set of sample calculations of hierarchical importance using the three algorithms are provided in the Supplementary document.\n\n# 3.Results and discussion",
+    "summary": "",
+    "size": 1008,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 10,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-30",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "![](images/ebc2fedc8f06edf033ee2557b90f976fdc18baebb9b2d264bc046e354e0c29d5.jpg)  \nFig.5.Balling formation prediction ability of the machine learning.The matrices shown in the figure are called confusion matrices commonly used to visually represent the prediction ability of a machine learning algorithm.(a) The basic structure of a confusion matrix. Target' represents the target output of the machine learning which is the experimental observation of balling. $\\mathbf { \\nabla } ^ { \\cdot } \\mathbf { 0 } ^ { \\cdot }$ and ‘1'indicate the absence and presence of balling in the part respectively.'Prediction' represents the predicted output by machine learning.",
+    "summary": "",
+    "size": 663,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 19,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact-chunk-35",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Applied Materials Today - Du, Mukherjee, DebRoy - Physics-informed machine learning and mechanistic modeling of additive manufact.md",
+    "content": "![](images/14d2452b3dc0d5076b5e53a58131733fd2607a0b08b5fd189a2b9115fe9d017d.jpg)  \nFig.6.The relative importance of the six mechanistic variables.The contribution of each of the six mechanistic variables to the balling susceptibility index (BSI) and the values of BSI are shown for five experimental cases [11-16] with both the (a) absence and (b) presence of balling.The beneficial contributions of energy density (grey)and surface tension force (yellow),solidification time (green),and Marangoni number (pink) in preventing balling are due to their negative coefficients in Eq. (4). The balling susceptibility index increases with the increase of Richardson number (orange） and the pool aspect ratio (blue） because of their positive coefficients in Eq.(4).For the absence of balling (Fig.a),the computed BSI values are less than the threshold value of O.5 (Fig.4).In contrast, the values of BSI are higher than 0.5 when balling Was found (Fig.b) (For interpretation of the references to color in this figure legend,the reader is referred to the web version of this article.).",
+    "summary": "",
+    "size": 1077,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 25,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder-chunk-9",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder.md",
+    "content": "The data of the effect of different process parameters on the as-built tensile strength of SS316L are collected from the literature as shown in Table 1. The observation from collated data is plotted concerning different parameters. The overallinfluence of energy density on ultimate tensile strength is shown in Figure 3. The graph shows that the tensile strength increases with incremental increase in the energy density, due to better densification. However, at a higher energy density, keyhole porosity leads to restrict the further increment in tensile strength. The optimal energy density for the better tensile property is in the range of 50 J/mm³ to 105 J/mm.\n\n![](images/527a4028870421f71b92b0eca6db762b77c465d293c1a6d691e9fcd7a741e8a3.jpg)  \nFigure 1. Fracture surfaces. (A) Finer and (B) coarse powder particle, $\\mathbf { ( A _ { 1 } , B _ { 1 } ) }$ sub-grain micrographs for finer and coarse particles, $( \\mathbf { A } _ { 2 } , \\mathbf { B } _ { 2 } )$ fracture surfaces for finer and coarse particles with dimples [1].\n\n![](images/be1e12392f468fee27455346b64ccc315a2fa3c2419304657cd24c7aad4f62f8.jpg)  \nFigure 2. Fracture morphology at diferent energy densities (A) 104.17, (B) 125,(C) 156.25 (D) $1 7 8 . 5 7 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ [4].\n\n![](images/fc73e3f0c4749d1f55d025f78ba9389b605b4380efc4216bf4015ab0f1abf4f0.jpg)  \nFigure 3. Tensile strength at a different energy density.",
+    "summary": "",
+    "size": 1413,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 5.0,
+    "n_numeric": 72,
+    "source_folder": "SS316L_SS17",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder-chunk-25",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder.md",
+    "content": "The porosity is generally classified into two categories, namely, metallurgical pores and keyhole pores. The metallurgical pores are generated, due to the oxygen content and other inclusions, in $1 0 0 ~ { \\mu \\mathrm { m } }$ with a spherical shape. The keyhole pores occur at a higher scanning speed. Generally, keyhole pores formed irregular shapes of more than $1 0 0 \\mu \\mathrm { m }$ in size as shown in Figure 8 Metallurgical pores are not very dependent on process parameters, whereas keyhole pores can be controlled by controlling the energy density. Pagac et al. [33] explained that a process with high laser power could give lower porosity at a constant scanning speed. On the other hand, the annealing heat treatment tends to expand the pore and thus, increases porosity.\n\n![](images/44fc77199cc5a1a09e5786ae327dee31e0f107ab6b4656825435204ec148c696.jpg)  \nFigure 8. Keyhole porosity at the end of laser track.",
+    "summary": "",
+    "size": 922,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 23,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder-chunk-27",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder.md",
+    "content": "The optimum energy density is the critical parameter for the dense structure and is achieved by the essential selection of the laser power, scanning speed, hatch spacing, and layer thickness. The part produced with a lower energy density may have unmelted particles, which results in a porous structure. The higher energy density creates a steep $' \\mathrm { V } ^ { \\prime \\prime }$ shaped melt pool, which leads to micro evaporation from the melt pool; that gas is trapped below the melt pool, which again results in porosity. Tucho et al. [25] experimentally obtained the energy density levels for minimum and maximum porosity for SS316L as $8 0 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ and $5 0 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ , respectively. The SEM images of porosity shown in Figure 9 also conclude that the scanning speed directly affects the porosity level at lower energy density levels; as scanning speed increases, the porosity increases but at higher energy density, the scanning speed does not affect the porosity. The minimum porosity up to $< 0 . 0 3 \\%$ was observed at $7 5 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ energy density.",
+    "summary": "",
+    "size": 1157,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 15,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder.md",
+    "content": "Cherry et al. [26] also investigated the importance of optimum laser energy density for minimum porosity. They observed a similar trend; as the energy density increases, porosity increases up to a certain level after which it decreases. The minimum and maximum were obtained at $1 0 4 . 5 2 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ and $4 1 . 8 1 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ ,respectively. The further increment in the energy density to $2 0 9 . 0 3 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ increases the porosity, due to the evaporation of microelements as shown in Figure 10 [28]. The data of the effect of different process parameters on the relative density of SS316L are collected from literature as shown in Table 3. The overall effect of the energy density on the build part density from the collected literature is shown in Figure 11, where the process window for the better density of SS316L includes using an energy density of 80 to $\\bar { 1 } 0 5 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ ：",
+    "summary": "",
+    "size": 1014,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 29,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder-chunk-34",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2021 - Materials - Gor et al. - A critical review on effect of process parameters on mechanical and microstructural properties of powder.md",
+    "content": "![](images/31bd9ae88a35fb4dba4add22b94a42f74acdf846345803b62478eac371e58be0.jpg)  \nFigure 13. Density at a different scanning speed.\n\nAs discussed in this section, porosity is observed at higher and lower energy density levels. The optimum range for denser products is achieved in the range of $8 0 \\bar { \\mathrm { J } } / \\mathrm { m m } ^ { 3 }$ to $1 0 5 \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ . Each process parameter's efect on a denser product is discussed; the scanning speed,laser power, and layer thickness are important parameters to be considered. The denser product above $9 9 \\%$ density is observed at a 650 to $8 0 0 \\mathrm { m m }$ /sec scanning speed depending upon the energy density level. The general pore structure is still observed in powder-based AM in the range of 5 to $4 0 \\mu \\mathrm { m } ,$ even at a $9 9 \\%$ dense structure.\n\n# 3. Corrosion Behavior of SS316L in the Human Body\n\nIn this section, the corrosion behavior of SS316L bio implants in additive manufactured parts is discussed. Musculoskeletal injuries and musculoskeletal diseases are increasing day by day in the human body. The estimated general surgeries of orthopedic implants are 1 million per year and are estimated to increase by 2 million per year in 2025 [41].",
+    "summary": "",
+    "size": 1264,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 41,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence-chunk-3",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence.md",
+    "content": "Keywords Laser powder bed fusion $\\cdot$ Analytical modeling $\\cdot$ Molten pool height $\\cdot$ Contact angle $\\cdot$ Balling occurrence\n\n# 1 Introduction\n\nLaser powder bed fusion (LPBF) additive manufacturing can fabricate complex metallic products directly from digital models,which is quite superior when compared with other traditional manufacturing techniques,such as machining, casting,and rolling[1].However,defects often exist in the final products of LPBF,which will deteriorate their quality. Balling is a common process-induced defect in LPBF. It represents the phenomenon that the molten pool of a scan track breaks into plenty of individual spherical droplets [2]. It will cause high part porosity and undesired surface roughness, thus has detrimental effects on the mechanical performance of the products.As discussed in[3,4], the onset of balling phenomenon is related to the size and geometry of the molten pool in single tracks.Thus, it is necessary to have a better understanding of the molten pool geometric characteristics including height, width,and contact angle,so that to better infer the occurrence of balling and to optimize the process conditions for the fabrication of balling-free products.",
+    "summary": "",
+    "size": 1219,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 5,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence-chunk-5",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence.md",
+    "content": "Archimedean method to measure the part porosity. The sensitivity of roughness and porosity to energy density was discussed. Li et al. [9] employed scanning electron microscope (SEM) to investigate the morphology of single scan tracks and microstructure of final products under different process conditions. It was found that the balling tendency has increasing trends with the increase of scan speed and layer thickness.However, it will decrease when the laser power increases.The effects of oxygen content and surface remelting on the balling characteristics were also studied based on the experimental observations. Bertoli et al. [8] also investigated the effects of process conditions on the surface morphology and balling tendency of single scan tracks. The observed sensitivity of balling tendency to laser power and scan speed was consistent with the conclusions in [9]. Guo et al. [10] employed SEM to observe the morphology of the powder material and used optical microscope (OM) to study the surface morphology and wetting characteristics of the single tracks. The discontinuity, humping,and balling behaviors of tracks were observed. The OM was also widely used to observe the geometry of molten pool cross-sections and obtain the information of molten height, width,depth, and contact angle [1O-12]. Although experimental study can help the researchers understand the physics in LPBF process and has provided significant amount of valuable data, the high cost of experimental equipment and complex operations for measurements will hinder the further application of these experimental techniques.",
+    "summary": "",
+    "size": 1607,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 1.5,
+    "n_numeric": 6,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence.md",
+    "content": "Analytical modeling has high computational efficiency because it does not resort to iteration-based numerical computations.There have been plenty of physics-based analytical models proposed in the literature for the study of LPBF process. Ning et al. [18], Tang et al. [19], Wang et al. [20], and Promoppatum et al. [21] all employed the Rosenthal equation to calculate the temperature profile and obtain the information of molten pool size and shape in LPBF.Based on the validation against experimental measurements of molten pool size [18] and comparison with finite elementbased simulations [21], the analytical Rosenthal equation shows acceptable predictive accuracy and low computational cost.To consider the effects of heat loss at part boundaries,Ning et al. [18] combined a heat sink solution and the Rosenthal model together based on the principle of superposition.The predictions of molten pool size were better when considering the boundary effects.Vastola et al. [22] proposed a 2D model for the prediction of keyhole-induced porosity in LPBF.Wang et al.[3] presented an analytical expression of upper surface roughness for the uni-directional scan strategy in LPBF, based on the assumption of cylindrical molten pool transverse cross-section. Yadroitsev et al. [4] developed a stability condition for segmental cylinder based on the theory ofPlateau-Rayleigh instability,which could be used to determine the threshold of balling defect in LPBF.However, there have few complete analytical models proposed in the literature which can correlate the molten pool height, contact angle,and balling behavior directly with the process parameters such as laser power, scan speed and layer thickness,and material properties.",
+    "summary": "",
+    "size": 1727,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 11,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence-chunk-9",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence.md",
+    "content": "An analytical modeling strategy,followed by experimental validation, is proposed in this work for the prediction of molten pool height, contact angle,and balling occurrence in LPBF.An analytical moving point heat source model is employed for the calculation of temperature distribution in the melting process of LPBF,as shown in the top diagram of Fig.1. The heat source model was developed based on the assumptions of semi-infinite medium,temperatureindependent material properties,and steady state [23]. It can be expressed as\n\n$$\n\\theta _ { \\mathrm { p o i n t } } ( x , y , z ) = \\frac { P \\eta } { 2 \\pi K R \\big ( T _ { m } - T _ { 0 } \\big ) } \\mathrm { e x p } ( \\frac { - V ( R + x ) } { 2 \\kappa } )\n$$\n\n![](images/ff158dcf00eb29b5edc22666826c40e3eb0525a930951dfec2f3c2da993bf1cd.jpg)  \nFig.1 Schematic of the molten pool in melting process (top) and after solidification (bottom). $W _ { 0 }$ represents the width of powder consumed band.W denotes the molten pool width. $d$ represents the molten pool depth (also called re-melted depth). $h$ is the molten pool height. $L$ represents the layer thickness. $\\Phi = \\Phi _ { 1 } = \\Phi _ { 2 }$ represents the contact angle.The portion of molten pool above the substrate is made of newly melted powder material, while the portion in the substrate represents the remelted zone of the substrate",
+    "summary": "",
+    "size": 1351,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 23,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence-chunk-22",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence.md",
+    "content": "Thus,the predictions of balling occurrence for Tracks 1 to 8 are consistent with the experimental observations.For Track 9, the calculated indicator value (O.O8) is positive,which means the stability condition of this track is fulfilled and thus no balling should occur. However,as shown in Fig.14,obvious balling appeared when the laser power was 11O W. This difference between prediction and experimental observation may be caused by the prediction error in the thermal modeling process,which may be induced by the ignorance of temperature-dependent material properties and assumption of a constant laser absorptivity.For Tracks 10 and 11, no balling will happen according to the small contact angles,which is consistent with experimental observations in Fig. 14.",
+    "summary": "",
+    "size": 765,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 9,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - Int. J. Advanced Manufacturing Technology - Wang, Liang - Prediction of molten pool height, contact angle, and balling occurrence.md",
+    "content": "![](images/0b51e88e3cd08d0c57bbc398d7935adb8b075f498a9e33e22b0e48d0e17038cf.jpg)  \nFig.10 Predictions of molten pool length of SS316L\n\n![](images/77e88ce73fe8fd5150c50ced3a075160971f248491d77f344a051f4544f2cd80.jpg)  \nFig.12 Predictions of diameter of cylindrical cap of SS316L\n\n![](images/b0349d04e06d4ee86c7cf0a9d3b9c1694375eca0179efe8efabc2e41bc8b209b.jpg)  \nFig.13 SEM photos of scan tracks(Tracks 1 to 8) of SS316L under different scan speeds [9]. The bottom two coordinates show the calculated contact angles and indicator values for the scan tracks\n\nThe proposed analytical modeling method has shown acceptable accuracy for the prediction of molten pool width, height, contact angle,and balling occurrence. In addition, no numerical iterations are adopted in the proposed method, which will make it computationally efficient. The computational time of the proposed method is less than $2 \\mathrm { m i n }$ when running on a personal laptop with a $3 . 4 \\mathrm { - G H z }$ Intel i5 processer and Windows operating system.In contrast, the developed numerical model in [17] for the prediction of molten pool and surface morphology needs around $1 0 0 \\mathrm { { h } }$ when running on a computer with an Intel i7-87o0 processor. Thus,the presented analytical method can be a promising tool for the study of characteristics of molten pools and balling defect in LPBF.",
+    "summary": "",
+    "size": 1375,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 71,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-3",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "A poorly chosen parameter combination may result in insufficient powder fusion, keyhole formations and balling phenomenon.An illustration in Fig.2 shows the choice of laser power and scanning speed affecting the outcome of process.A high laser speed and insufficient laser power results in insufficient melting of powder leading to lacks-offusion porosity. On the contrary,a choice of too high power for a given speed results in overheating,causing deeper laser penetration, leading to pore formations of inert gas know as keyholes [1O].The deeper penetration due to excessive laser power will also affect the microstructures of already solidified layers.Fig.2 suggests that we can increase both the power and speed within the range of safe operating window for minimum defects.However, increasing the power and speed beyond a certain limit will also lead to an unstable melt pool behavior and formation of small spherical balls known as balling phenomenon which leads to discontinuous melt tracks.\n\nHence,it is imperative to find the optimum process parameters window prior to fabrication; however,due to the vast number of many parameters (more than 1oo [1O]) considered to affect the deposition process,the task of understanding and optimizing all the parameters is extremely challenging.Numerous studies have identified critical parameters such as laser power, scanning speed, hatching spacing, layer thickness and scanning strategies having major influence on properties of the final part.",
+    "summary": "",
+    "size": 1494,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 5,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-6",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "A comprehensive investigation on interaction of the process parameters and its effect on densification is imperative to produce high quality parts.One such work carrying out full factorial permutation involving laser power, scanning speed,and hatch spacing was done by Yakout et al.[8].Using the influence of energy density on resulting densification in L-PBF, Yakout successfully established range of energy densities ilustrated in Fig.4 (a) which results in stable melting, continuous beads,and uniform melt tracks. Lower values of laser energy density showed significant porosity due to formation of voids and lack of powder fusion,and the higher energy density values beyond a certain limit resulted in decreasing densification leading to unstable melt pool, vaporization,and micro-segregation of alloying elements.This can also be well understood from the observations made from the fractography of SS316L specimens built with various laser energy density values as shown in Fig.4 (b),(i) Brittle fracture observed in specimen build with lower energy density value of $4 1 . 7 ~ \\mathrm { J / m m ^ { 3 } }$ due large number of voids present (ii) Britle-ductile failure observed in specimen built with energy density value of $6 2 . 5 ~ \\mathrm { J / m m ^ { 3 } }$ shows lesser voids present in comparison with specimen built with lower value (i) Ductile failure observed in specimen built with higher energy density value of $1 5 6 . 3 \\mathrm { J / m m } ^ { 3 }$ shows mass vaporization of the metal.Hence,the determination of appropriate energy density range becomes vital for achieving parts with minimum porosity defects.",
+    "summary": "",
+    "size": 1633,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 17,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-8",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "(i) $\\mathrm { E } = { 4 1 . 7 ~ } \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ (i) $\\mathrm { E } = 6 2 . 5 ~ \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ (iii) $\\mathrm { E } = 1 5 6 . 3 ~ \\mathrm { J } / \\mathrm { m m } ^ { 3 }$ Void formation Stable melting Vaporization Brittle fracture Brittle-ductile fracture Ductile fracture dependency on the individual values of laser power,scan speed,hatch spacing and layer thickness used.For instance,in the work reported by Tucho et al.[7],for a two parameter set with same energy density value of $8 0 \\mathrm { J / m m ^ { 3 } }$ ,the parameter set having lower hatch spacing of $0 . 0 8 \\mathrm { m m }$ showed higher densifications of $9 9 . 7 \\%$ compared with parameter set with higher hatch spacing of $0 . 1 4 \\mathrm { m m }$ with densification of $9 9 . 2 7 \\%$ This is primarily owing to tighter overlap of melt pools for bonding provided by smaller hatch spacing which reduces porosity. Tucho in his experiments also varied the laser power ( $. 1 5 0 ~ \\mathrm { W }$ to 200 W),scan speed (400 $\\mathrm { { m m } } / s$ to $1 6 0 0 \\ \\mathrm { m m } / s \\mathrm { \\Omega }$ and hatch spacing（ $\\mathrm { 0 . 0 8 \\ m m }$ to $0 . 1 4 ~ \\mathrm { m m }$ ）with constant layer thickness of $0 . 0 3 \\mathrm { m m }$ to study the influence of laser energy density in the range of $\\mathsf { 5 0 - 8 0 \\mathrm { ~ J / m m } ^ { 3 } }$ A comparison of SEM images of the specimen for the energy density range is shown in Fig.6,samples built with lower energy density value of $5 0 \\ \\mathrm { J / m m ^ { 3 } }$ results in porosity due to lacks-of-fusion while the sample built with higher energy density value of $8 0 \\ \\mathrm { J / m m ^ { 3 } }$ results in nearly defect free parts.Lower hatch spacing ( $\\mathbf { 0 . 0 8 \\ m m } )$ and relatively high scan speeds $( 8 0 0 \\ \\mathrm { m m } / s )$ is suggested as a good combination to attain density above $9 9 \\%$ for SS316L specimens.",
+    "summary": "",
+    "size": 1937,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 69,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-10",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "Cherry et al.[13] also showed similar trends about increase in energy density leading to reduction in porosity using a modulated laser system. The exposure time and overlap distance is used to vary the energy density and arrive at an optimum limit value of $1 0 5 \\mathrm { J / m m ^ { 3 } }$ for achieving densification up to $9 9 . 6 \\%$ .Cherry also observed that there is a limitup to which energy density may be increased as values above $1 0 5 \\ \\mathrm { J / m m ^ { 3 } }$ showed signs of balling effect,and increase of pores size was observed due to vaporization of low melting elements.Liverani et al.[l4] also showed that an increase in energy density up to a value of $1 0 0 \\mathrm { ~ J / m m ^ { 3 } }$ increased densification $( 9 9 . 9 \\% )$ using a combination of laser power in the range of 90-150 W and scan speed between 500 and $9 0 0 \\mathrm { m m } / s$ .The studyhighlighted the fact that of all the parameters laser power was the dominant factor in the energy density that contributed to higher densification of L-PBF samples.Zhong et al.[17] in his work on light weight lattice struts using SS316L material observed that the optimum energy density is in the similar range up to $1 1 0 \\mathrm { ~ J / m m ^ { 3 } }$ for higher densifications of parts.AlMangour et al.[l8] showed influence of laser scanning speed on densification by using lower scan speed of $5 0 \\mathrm { m m } / s$ achieved maximum densification up to $9 8 . 2 2 \\%$ .Lower scan speeds result in heat accumulation required for fully melting the powder and forming dense structures.",
+    "summary": "",
+    "size": 1578,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 39,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-11",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "L-PBF process parameters such as laser power, scanning speed, hatch spacing and layer thickness have their efects individually and may be also optimally combined to attain a higher densification.An optimum combination using higher laser power,lower scan speed, narrower hatch spacing and thinner layer thickness enables higher densification and avoid balling as suggested byLi etal.[19].It was also observed that use of gas atomized powder gave better results compared to water atomized powder due to lower oxygen content and smaller mean particle size which assists densification.The combined effect of scanning speed and layer thickness on densification was demonstrated by Kruth et al. [20].\n\n![](images/51f39f8b1b57e34c2c5c7c5a423315c99ba7a8a63f72458de5768557ba177653.jpg)  \nFig.6.SEM images of higher porosity defects due to lacks-of-fusion observed using energy density value of $5 0 \\ \\mathrm { J / m m ^ { 3 } }$ (left) compared with minimal defects witl higher energy density value of $8 0 \\ \\mathrm { J / m m ^ { 3 } }$ (right) [7].",
+    "summary": "",
+    "size": 1042,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 28,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-13",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "Although L-PBF is known to be a typically a slow additive manufacturing process and to increase the build rate by increasing parameters such as scan speed,hatch spacing and layer thickness has its limitation and affects the part quality.However,there has been attempts to attain high densification along with high build rates.In recent work by Liu et al. [6] used $2 0 0 \\mu \\mathrm { m }$ layer thickness and increased the build rate to $1 2 . 4 ~ \\mathrm { m m } ^ { 3 } / s$ (2.5-10 times higher than using lower layer thickness) achieving a densification of $9 9 . 9 9 \\%$ in SS316L samples.It was observed that for increased layer thickness,laser exposure time( $( 1 2 0 - 1 6 0 ~ { \\mu \\mathrm { s } } )$ along with laser overlap $( 4 0 \\% )$ playsa key role in removing defects such as unmelted powder and balling. Sun et al.[15] used higher range of power and speed compared to commonly used ranges reported to increase the overall build rate by ${ \\sim } 7 2 \\%$ Sun et al.in his work built $1 0 \\mathrm { m m }$ side cubes using power of $3 8 0 \\mathrm { W }$ and speed up to $2 0 0 0 \\mathrm { m m } / s$ to achieve high densification rates of $9 9 . 9 \\%$ .Kamath et al.[1O] used high laser power up to $4 0 0 \\mathrm { \\ : W }$ and found a wide range of high speeds( $\\mathrm { 1 9 0 0 ~ m m / s }$ to $2 2 0 0 \\ \\mathrm { m m } / s )$ ）achieving $9 9 . 5 \\%$ densification.An increase in layer thickness to reduce build time was demonstrated by Shi et al.[21],using $2 5 0 ~ { \\mu \\mathrm { m } }$ layerthickness and laser power of 4oo W wasable to achieve densification above $9 9 \\%$ using with various combinations of scan speed and hatch spacing.Hence,careful selection of parameters makes it possible to attain good part quality along with high build rates.",
+    "summary": "",
+    "size": 1776,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 60,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-38",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "More advanced numerical methods that capture the details on mesoscopic level have been used by Khairallah etal. [67]. Using a multiphysics numerical simulation code ALE3D,the 3D simulation model captures the details of melt pool dynamics and relevant physical phenomena such as fluid flow effects due to the recoil pressure,Marangoni effects,evaporation and radiative surface cooling while also considering the stochastic behavior of powder particles.This high-fidelity model explores in depth the physical mechanism in melt pools causing pore formations and suggested variations in laser power and appropriate hatch spacing to eliminate the pores.Ahmadi etal.[66] developed finite element frameworks using commercial code Abaqus that included both the grains and melt pools in the material. The model shown in Fig.20(a) predicted pores for predetermined melt pool sizes.The work established a correlation between melt pool,porosity and resulting mechanical properties.It was found that the increases in laser power creates bigger melt pools,and results in higher densification leading to better mechanical properties as illustrated in Fig.2O(b),whereas high scan speed\n\n![](images/5a115b36ba888a7b03fb79d558a536fe17380bf46ca70f949ca7ca8f8fe79b3a.jpg)  \nFig. 25. Comparison of grain structure from CA simulation and experiments [79].\n\n![](images/446b83488736d6e57e99121556cb226dcc71fd0fe6f144d04f9fe993c4853469.jpg)  \nFig6ufdu dendrite side arms is seen in (b)and (c).",
+    "summary": "",
+    "size": 1468,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 41,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-43",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "A sample simulation case study to predict densification for various laser power/speed combinations is represented in this section using the commercial tool ANSYS ADDITIVE (2020R1).The objective of this simulation is to investigate the optimal combinations of laser power and scanning speed required to attain higher densification (above $9 9 \\%$ in SS316L material cubic samples.The version of ANSYS used predicts “lacks-of-fusion”porosity for the given set of L-PBF process parameters on the basis that as long as the process temperature is lower than melting temperature of the metal, the material will not be printed. Currently, other types of porosities from keyhole formations and balling effects are not predicted in this FEM module. In order to filter out power/speed combinations that produce unstable melt pools and unfit for attaining high densifications,a dimensional criteria based on melt pool dimensions is adopted [68].Fig.21 shows the melt pool dimensions used in criteria, the median depth $( d )$ refers to the actual melt pool depth minus the layer thickness,or the melt pool depth starting from the bottom of the first layer.",
+    "summary": "",
+    "size": 1145,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 7,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-44",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "Similarly,the median width (w) and median length $( l )$ refer to the width and length of the melt pool at the bottom of the first layer (the start of the substrate) respectively.The median dimensions are preferred instead of the average melt pool dimensions as the average values are skewed at the beginning of track when the melt pool is not entirely stable. The suggested criteria's is based on following three conditions: (i) the median melt pool depth $( d )$ should reach at least halfway through the third solidified layer below for sufficient bonding, since our layer thickness is $4 0 ~ { \\mu \\mathrm { m } }$ $\\left( 0 . 0 4 ~ \\mathrm { m m } \\right)$ ,we need the melt pool depth of at least $0 . 1 \\mathrm { m m }$ ,which corresponds to median melt pool depth of $0 . 0 6 \\ \\mathrm { m m }$ ，(ii) median depth $( d )$ -to-width $( w )$ ratio should be below 0.95 as to avoid excessive penetration of melt pool into solidified layers which otherwise may lead to keyhole formations,(iii) median length $( l )$ to-width $( w )$ ratio should be below $4 .",
+    "summary": "",
+    "size": 1063,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 12,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai-chunk-45",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2022 - J. Manufacturing Processes - Ahmed et al. - Process parameter selection and optimization of laser powder bed fusion for 316L stai.md",
+    "content": "0 s 0$ that melt pool is not elongated too long to cause balling effect usually associated with high power and speeds.For predicting density,a build of $3 \\mathrm { m m }$ side cube is simulated for various combinations of laser power and scanning speed as indicated in Fig.22 with a hatch spacing of $1 0 0 \\mu \\mathrm { m }$ and layer thickness of $4 0 \\mu \\mathrm { m }$ The simulation approach is done in two steps,(i) First,a single-track bead deposition of length $3 \\mathrm { m m }$ is simulated to evaluate the occurring melt pool dimension for all power/speed combinations and the combinations which attain unstable melt pool are filtered out,(ii) Densification simulation is then carried out on a $3 \\ \\mathrm { m m }$ side cube using the goodcandidate power-speed combinations,hence avoiding large iterations and narrowing the input parameters window.",
+    "summary": "",
+    "size": 862,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 11,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L-chunk-6",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L.md",
+    "content": "[8] analyzed the formation,evolution and disappearance of keyhole and keyhole-induced porosities along with their initiating mechanisms,during single track laser-based powder bed fusion.Wei etal.[4] studied the formation and evolution of inter-track voids in different heat input conditions.Khairallah etal.[1] discovered new spatter-induced defect formation mechanisms that depend on the scan strategy and competition between laser shadowing and expulsion. Gu et al.[15] investigated various phenomena including balling effect, keyhole depression,and insufficient fusion between layers are investigated with different laser energy inputs.Li et al.[16] analyzed the keyhole life cycle including formation and drilling,fluctuation,and disappearance.These studies provide a new research perspective for the formation and mechanism of various behaviors in the melting process, such as internal pores,interlayer pores,molten layer morphology,and molten pool behavior,which demonstrates the necessity and significance of establishing an effective and proper numerical model in studying the powder bed melting process.",
+    "summary": "",
+    "size": 1112,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 5,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L-chunk-27",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L.md",
+    "content": "![](images/4e6d842d0e2ba549798b67285159306adda684481db7bac665f28d88b5645c30.jpg)  \nFig.3.Computational domain.\n\nThe microscopic behavior of the molten pool in Fig.6(c) is similar to that in Fig.6(b).At the initial moment $( 0 . 3 3 ~ \\mathrm { m } s )$ ,the powder bed thickness in target zone (red dashed circle) is large.During laser scanning( $0 . 3 6 { - } 0 . 4 5 \\mathrm { m s } )$ ,the powder is gradually melted from top to bottom, while the substrate is always unmelted due to the insufficient heat transfer. The unmelted substrate results in worse connection between the front and rear molten metal liquid.In addition,the melted metal tends to aggregate together to form balling due to the surface tension rather than uniformly spread on the substrate [32,44].Therefore,a discontinued structure of the molten layer appears here at $0 . 4 8 \\mathrm { m s }$ .The molten pool behavior in Fig.6(d) is similar to that in Fig.6(c).The difference lies in that the defect is caused by large particles.The target large particle is gradually melted during the laser scanning (O.54-0.63 ms).The substrate below the large particle is not melted,so the discontinuity and balling defects occur here [18,22].Additionally, pores are formed either,which is also caused by the larger upper particles and their impedance on laser penetration [45].",
+    "summary": "",
+    "size": 1339,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 38,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L-chunk-28",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L.md",
+    "content": "The right panel of Fig.6(a) shows the morphology of the molten layer when the initial temperature is $7 7 3 . 1 5 \\mathrm { K } .$ One can find that many microscopic defects (e.g.,faults,balling,pores) caused by insufficient laser energy or uneven energy input have been significantly reduced, and the values such as the depth of the molten layer have also been notably increased.Aforementioned results indicate that a high initial temperature that can increase the energy retained in the molten pool is the main reason for the quality improvement.Therefore,under current laser conditions,the thickness of the powder bed should not be too high and the number of large particles should be small to obtain better quality of the molten layer. Otherwise,microscopic defects such as edge warping,faults, balling,and pores are prone to appear in the molten layer.The high initial temperature can alleviate the generation of these defects to a certain extent.",
+    "summary": "",
+    "size": 952,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.5,
+    "n_numeric": 6,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L-chunk-29",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L.md",
+    "content": "Fig.7(a) shows the molten layer morphologies of thin powder beds (i.e.,Powder bed 5) at different initial temperatures (i.e., $3 0 0 ~ \\mathrm { K }$ and 773.15 K). Similar to Fig.6, three special positions “i-iii\"are selected and marked in Fig. 7(a). Detailed analyses are conducted for these positions,as shown in Figs.7(b)-(d).It should be noted that the white dotted line at the position “ii\"in Fig.7(a) represents the cross section, and“x\"represents the coordinate position in the X direction of the cross section.Unlike the thick powder bed, there will be obvious depression generated during the melting process of the thin powder bed,as depicted in Fig.7(b).This is mainly caused by the small thickness of the powder bed.The laser directly melts the powder in the active zone until the heat energy is transferred to the substrate,and then visible depressions appear in the molten pool under the action of vapor recoil [21].In addition,new defects (entrained bubbles) appeared in the molten pool due to the effect of molten pool depression (tiny keyhole),as shown in the black dotted circle in Fig.7(b),which is different from the porosity due to the insufficient energy in Fig.6.At O.45 ms, there is only one layer of particles in the target zone (red dashed zone).Under the action of laser energy $( 0 . 4 5 { - } 0 . 5 4 ~ \\mathrm { m s } )$ ,the particles are completely melted,and the underneath substrate is also melted and dented. $\\mathrm { \\ t { 0 . 5 7 - 0 . 6 0 } } \\mathrm { m } s$ ,the generated bubbles are mixed into the molten pool due to the influence of the recoil pressure,the Marangoni effect,and the unstable fluctuation of the molten pool. These bubbles will be retained in the molten layer because of the fast melting and solidification [7,40].",
+    "summary": "",
+    "size": 1773,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 29,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L-chunk-35",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Int. J. Heat and Mass Transfer - Yao et al. - The essential role of initial powder bed state in selective laser melting of 316 L.md",
+    "content": "4. Under the current laser process parameters,edge warping, pores, faults and balling defects caused by insufficient energy are prone to occur in the thick powder bed melting. The high initial temperature can reduce or even eliminate these defects to a certain extent. During the melting process of the thin powder bed， new defect (e.g., entrained bubbles) may appear,which can also be reduced by the high initial temperature.It should be noted that special grooves will be formed in the molten layer due to excessive energy input.During the 6-track melting process,the surface roughness,the irregularity of the molten layer,and the pores between layers due to insufficient energy are likely to occur.A high initial temperature can significantly improve the surface quality of the molten layer and reduce the pores between layers. 5.When the laser power is $2 0 0 ~ \\mathrm { W }$ ,the scanning velocity is $_ { 1 \\textrm { m } / s }$ ,and the laser size is $8 0 \\mu \\mathrm { m }$ ,the best molten layer quality can be obtained by using powder bed 4 (i.e., $H _ { \\mathrm { s p r e a d i n g } } { = } 2 D 9 0$ and $V _ { \\mathrm { s p r e a d i n g } } { = } 0 . 1 5 \\mathrm { m } /$ s)as the initial powder bed structure.The initial temperature of $7 7 3 . 1 5 \\mathrm { K }$ can significantly improve the quality of the molten layer.",
+    "summary": "",
+    "size": 1337,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 21,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-19",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "Porosity, a common defect in 3D- printed parts, significantly affects the quality of parts and repeatability. Porosity formation could be due to the keyhole effect, gas entrapment, lack of fusion, and rapid solidification of the AM part [82,63,83,84]. The porosity size and shape formed by each of these phenomena could be different, as depicted in Fig. 8. Microscopic pores are usually formed due to gas entrapment (gas is sometimes trapped and remained inside the vapor cavity, as the vapor cavity is solidified and closed up before the gas can escape) [85], while the size of process- induced pores (i.e., lack- of- fusion porosity [86,87] and shrinkage porosity [88]) varies from sub- microns to macroscopic scales [89].",
+    "summary": "",
+    "size": 724,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 11,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-20",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "When laser irradiation strikes the powder and substrate, two melting modes may occur. At low to moderate laser energy intensity, the material is locally melted without clear material vaporization. Conduction is the main mechanism of heat transfer inside the melt pool, which is expressed as conduction mode [83]. Insufficient penetration of the melt pool of a succeeding layer into the substrate or previous layer leads to lack- of- fusion and un- melted powders [90]. This un- melted particle causes high porosities and poor mechanical properties [91]. High melting rates may also cause keyhole porosity [92,25] and lack- of- fusion [27] as depicted in Fig. 9 due to Marangoni convection and recoil pressure [93]. At high laser energy intensity, the material vaporizes on the surface and forms a dense vapor plume, consisting of a cluster of molecules, atoms, ions, and electrons that creates a recoil momentum on the melt pool and forms a cavity [83] in the keyhole mode. In one definition, keyhole mode occurs when power density is higher than  $10^{6}W / cm^{2}$ , otherwise, conduction mode is dominant [94,95]. In another definition, if the aspect ratio of the melt pool is larger than unity, the melting occurs in the keyhole mode otherwise the conduction mode is dominant [96]. It is worth mentioning that the presence of keyhole mode does not necessarily lead to keyhole porosity [92].",
+    "summary": "",
+    "size": 1394,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 16,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-21",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "The effects of scan speed and beam power, which determine the dominant melting mode, on the porosity formation were evaluated in a study by Jadhav et al. [97], and an L- PBF- based process map, revealing the threshold line between these modes were plotted in\n\n![](images/dc1bb28aade1e47de1439e6c4dfe17584e19bad0c8ac16838a1eb59e6cd25f2e.jpg)  \nFig. 7. Relationship between manufacturing processing parameters, thermal history, solidification, microstructure, and mechanical behavior of AM parts.\n\n![](images/b07e18f62b813609c0beb30036521fc5c88ee99bd2fd21b6e620b4dda33ceb75.jpg)  \nFig. 8. Charachteristic pores in SLM (a) entrapped gas porosity, (b) incomplete melting-induced porosity, (c) lack of fusion with unmelted particles inside large irregular pores, and (d) cracks [104].\n\n![](images/3e9d0dc6968009de1e558aeaa6337fcd583c324d1a3d371aeec0aabed598395c.jpg)  \nFig. 9. Schematics of the relationships between surface morphology and defect formation in a powder-bed fusion type AM process [27]",
+    "summary": "",
+    "size": 995,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 53,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-23",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "Pores can also form due to balling effect, resulting in an uneven powder layer [99]. Balling effect depends on the wettability, capillary forces, and surface tension of the melt pool [100]. Balling phenomenon could also occur in high beam powers and scan speeds or in high scan speeds and low beam powers, causing weak bonding to the substrate [101]. Porosity can also be formed between grains and follow the shape of grain boundaries during solidification [102]. Predicting the nonlinear relationship between processing parameters and porosity is very difficult using conventional approaches. Density measurement and image processing methods are two common ways to identify the porosity percentage in a product. Wang et al. [103] recently reviewed the role of porosity defect in the 3D- printed parts, including the defect characterizations, formation and migration mechanisms, and their effects on the quality of 3D- printed parts. To evaluate the porosity percentage in the 3D- printed parts and develop a predictive model, data- driven techniques are employed due to the previously mentioned benefits of these techniques compared to other techniques.\n\n![](images/bfeabdf2915cda38209e502fe4795057ee3a72e37a5a3b4b193577d1887343f1.jpg)  \nFig. 10. (a) Morphology of melt tracks present on the top surface of the sample built, (b) L-PBF process map of pure copper, indicating a threshold line between the conduction and keyhole mode melting regimes [97].\n\n# 2.2. Dimensional inaccuracies",
+    "summary": "",
+    "size": 1486,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 24,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-26",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "One significant response parameter in the processing stage, which has been heavily employed to analyze the quality of the 3D- printed parts, is the melt pool dimensions. Melt pools are mainly defined as deposited, remelted, and heat- affected zones[83]. Melt pool geometry is indirect evidence of interactions between the processing parameters and microstructure of the materials (i.e., intrinsic materials properties) [122]. Keyhole formation, balling effect, and lack of fusion can be distinguished based on the melt pool geometry [123]. More importantly, melt pool depth has been measured and analyzed in many studies [124- 126,122], as the melt pool depth is of great interest compared to melt width and length. Melt pool depth reveals if the energy is sufficient to melt through the powder and substrate at a certain beam power and speed [29]. High energy deposition on powder layers causes metals to vaporize [91]. The reaction force of evaporation of liquid metals causes the formation of a vapor cavity in the melted region and causes a deeper melt pool. Several physics- based models have also been developed to predict the melt pool depth and width [127- 131], however, more physical phenomena should be considered in these models to make the model more reliable.",
+    "summary": "",
+    "size": 1273,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 11,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-30",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "Another way to evaluate the microstructure of the AD- fabricated parts is to evaluate the real- time melt pool temperature distribution. Analyzing the heat transfer mechanisms, thermal accumulation, transient temperature distribution, and their relationship helps reduce residual stresses, distortion [147], micro- voids, and cracks formation in 3D- printed parts [148,149]. This thermal distribution in the material is related to scan strategies [150]. A small melt pool at low temperature implies insufficient overlaps between the current melt pool with the next melt pool and lack- of- fusion porosity in the built part [151]. In a melt pool, the cooling rate increases with the increase of the beam power and scan speed [152]. The creation of large thermal gradients is more probable at high cooling rates, which result in an increase of residual stresses, cracking [152], instability, and porosity formation [111,153]. On the other hand, low cooling rates and high temperatures may negatively affect the microstructure refinement and mechanical properties of the 3D- printed parts [152]. The desired uniform operating temperature helps melted material to flow within the melt pool moderately. However, non- uniform temperature gradients and repeated thermal cycles, occurring mainly in the DED process lead to porous and anisotropic microstructures [154] within the 3D- printed parts due to the rapid solidification [155]. This heterogeneous behavior in the microstructure due to the variation in the thermal history affects the mechanical properties, such as fatigue resistance and tensile strength [156]. To homogenize temperature distribution and reduce local heat accumulation, the scanning pattern, one influential parameter on the temperature distribution, needs to be optimized, which leads to minimum distortion [157]. The relationship between the processing parameters and the temperature of the melt pool has been analyzed by Hua et al. [158]. Balling can also be detected via observation of the temperature distribution of the melt pool and its surrounding area [159]. Non- uniform grains and porosity observed",
+    "summary": "",
+    "size": 2126,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 19,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-64",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "In another attempt [234], the layerwise optical images of the powder bed fusion were obtained during manufacturing. Theoretical and multifractal features were extracted during layer- by- layer deposition from each image and linked to the process parameters using several ML classifiers (i.e., SVM, complex tree, LDA, KNN, bagged trees, and ANN) to identify the effect of these parameters on the porosity formation. Also, the ANNs approach was used to find the relationship between the beam power, melt pool shapes, and flaws [235]. Similar to regression problems, linking processing parameters to the parameters, determining the quality of the 3D- printed parts requires a large dataset. Preparing a large dataset mined from a large number of publications is one solution, which was employed by Hertlein et al. [236]. They employed a Bayesian network to link laser power, scan speed, hatch space, and layer thickness to relative\n\n![](images/7958a31e0814f5348458efd194b8d8934051dc3ebb9471096725326e16960367.jpg)  \nFig. 25. Flowchart of the steps taken for discontinuity detection in a study by Gobert et al. [228].\n\n![](images/543de2ae34a28353b04b321a7a710852abc9ac27d4736dd978991d52c2663fe7.jpg)  \nFig. 26. Demonstration of porosity prediction procedure using supervised ML [16].",
+    "summary": "",
+    "size": 1279,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 33,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103-chunk-86",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2023 - Progress in Materials Science - Parsazadeh, Sharma, Dahotre - Towards the next generation of machine learning models in additive.pdf-2f2e54b7-f56a-4971-a084-b5efd419d103.md",
+    "content": "suitable to analyze the 2D pore data. Although a fair starting point for 2D pore data clustering was established, more information is needed to reliably classify the data. KMC was found suitable more for analyzing 3D pores (i.e., lack- of- fusion and keyhole pores), as 3D pore data provided more information than 2D pores. KMC was also employed to automatically detect defect onset and spatially identify defects during the in- situ SLM process by identifying the molten areas with different behavior from other sections of the same layer [273]. The proposed approach considered the defects formed due to overheating and could be further extended by considering other defect scenarios. SOM, a neural network- based model (Fig. 34), was employed in a study by Gracia- Moreno [274] to develop an automatic porosity classification method based on the size, distribution, and origin of pores. Porosity formation was also predicted by Khanzadeh et al. [275,62] in the parts using the thermal profile of the melt pools. The authors basically identified pores from thermal profile images by categorizing melt pools into normal and porosity (abnormal) clusters. Porosity cluster includes the melt pools with low or high temperature and irregular shapes, as indicated in Fig. 35. They also compared the results with their previous study [276] considering morphological features of melt pools (e.g., length, width, area, etc.).",
+    "summary": "",
+    "size": 1418,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 12,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - Composites Part B Engineering - Zhang et al. - Powder sheet additive manufacturing of multi-material structures Experimental and-chunk-34",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - Composites Part B Engineering - Zhang et al. - Powder sheet additive manufacturing of multi-material structures Experimental and.md",
+    "content": "Based on the above analysis regarding the formations of LOF and balling,it is possible to prevent their occurrence by improving the metallurgical sintering during the MAPS process. One strategy is to utilize a relatively higher energy density to increase both the size and the wettability of the melt-pool.However,this may cause higher residual stresses and potential warping and cracking.This is explained by the fact that,the larger the melt-pool dimensions are,the more significant are the thermal deformations [67].An alternative feasible solution is to optimize the scanning strategy by shortening the length of scan-vector, as used in MAPS of the small MMS part (Case-1).According to this, the MAPS fabrication of a large-scale $( 2 0 \\times 2 0 \\times 1 . 2 ~ \\mathrm { m m } ^ { 3 } )$ MMS part is accompanied by adopting an optimized island scanning strategy,as shown in Fig.5b.The metallurgical quality of both the single-phase matrices and CGZ is remarkable (Fig.9d), thanks to achieving sufficient heat accumulation during the MAPS printing (see Fig.14d).\n\n# 5.2.Formation mechanism of cracks in MMS",
+    "summary": "",
+    "size": 1111,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 13,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - Composites Part B Engineering - Zhang et al. - Powder sheet additive manufacturing of multi-material structures Experimental and-chunk-37",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - Composites Part B Engineering - Zhang et al. - Powder sheet additive manufacturing of multi-material structures Experimental and.md",
+    "content": "![](images/3242ca8fb553598656e561395942ba459dd4510e7c95e2f547c5f4847b7c3e1b.jpg)  \nFig.16.Residual von Mises stresses of different MMS parts: (a) Case-l; (b) Case-2; (c) Case-3;(d) Case-4.\n\n![](images/77dea88b5f344cfc8f59795de6c867c8653db48ac5ef08490b8b9734fa2d2ef3.jpg)  \nFig.17.Residual Von Mises stresses along the building direction in the center of the MMS builds (Fig.16a).\n\nThe successful production of large-scale defect-free MMS using the MAPS method can be primarily attributed to the careful control of the thermal history and the resulting residual stress.As the scanning length increases, issues such as LOF and balling occur due to insufficient energy input resulting from reduced energy accumulation.This study also delves into the formation mechanisms of cracks,which are influenced by longer inter-hatch cooling times leading to a higher residual stress and, consequently,the formation of cracks.Details have been presented in Sections 5.1 and 5.2. The insights gained from this study hold the potential to optimize the printing configurations for large-scale functional MMS.\n\n# 6．Conclusions",
+    "summary": "",
+    "size": 1109,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 41,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Alloys and Compounds - Jeyaprakash et al. - Effect of microstructural evolution during melt pool formation on nano-mechanical-chunk-7",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Alloys and Compounds - Jeyaprakash et al. - Effect of microstructural evolution during melt pool formation on nano-mechanical.md",
+    "content": "Pawel et al.emphasized the influence of relative density on the mechanical attributes of different lattice structures made from Ss316L.They have adopted different stud diameters to change the relative density which had a predominant influence on the deformation movements of the printed parts.However, they have concluded that the latice structure with high relative density displayed more performance in stretching， while the lattice structure with lower relative density showed increased performance in bending [2O]. Binqi et al. predicted the porosity during the melt pool formation during SS316L and Ti-6Al-4 V. Many defects such as lack of fusion,keyhole formations and pore formation were analysed using the CFD simulations.They compared the analytical model with the experimentally observed data，conforming that analytical modelling was the effective tool for producing defect-free components [3]. Philipp et al. focused on the process interruption in the static tensile properties of the SS316L and hybrid parts.They have stated that process interruption occurred at the weakened zone of the printed parts.However,it is not possble for the occurrence of failure exactly in the interruption zone all the time,which was proven by testing on the hybrid parts [21]. According to Abbasi etal., the existence of fine grains $( < 2 0 ~ \\mu \\mathrm { m } )$ across the printed microstructure was taken into account as proof that dynamic recrystallization occurred during the SLM process [22].",
+    "summary": "",
+    "size": 1492,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 11,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Alloys and Compounds - Jeyaprakash et al. - Effect of microstructural evolution during melt pool formation on nano-mechanical-chunk-31",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Alloys and Compounds - Jeyaprakash et al. - Effect of microstructural evolution during melt pool formation on nano-mechanical.md",
+    "content": "Therefore, by adopting a reduced strain rate,this quasi-static situation induced the elastic nature.Furthermore,the dislocation motions were limited by the grains’cellular structure.Similarly,these cellular structured grains acted as the hindrance for the cracks propagation by arresting the interruptions. Subsequently,the higher SR led to the early failure in which the crack propagation reached the various stress-concentrated regions especially in the fusion lines [47]. It was clear that localization and necking followed softening.However,as the strain rate increased, the behaviour changed from ductile to brittle,which in turn caused the elongation to drop.This resulted from the faster dislocation speed. During the higher strain rates,the stress concentration was higher in the defect region such as the balling effect and pores formation.So the propagation of cracks follows the defects formation which appears to be a brittle zone.The similar crack propagation along the stress field was experience by Fu et al.[48].The formation of dimples was visible when the strain rate was slow and constant,as seen in Fig.l2(a), because localization and necking both of which were brought on by the $4 . 1 \\times 1 0 { - } 5 \\ { s } ^ { - 1 }$ slow and steady strain rate caused the progressive dislocation movement.",
+    "summary": "",
+    "size": 1317,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 9,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har-chunk-32",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har.md",
+    "content": "In response to laser scanning, particularly the temperature gradient, the cellular structure predominantly aligns along the building direction, with its longitudinal direction parallel to the building direction [47]. These cellular structures accumulate dislocations and residual stresses due to segregating heavy alloying elements such as Mo and Cr.The SLM process typically involves rapid melting and solidification far from equilibrium [51].\n\n# 3.5. Defects\n\nOptical and scanning electron microscopy were used to examine the solidification defects in SS316L-SLM samples.Substrate porosity is significantly influenced by parameters associated with energy density, including laser power,scanning speed, hatch spacing,and layer thickness.These parameters substantially impact the temperature evolution and flow dynamics within the processed area [39].\n\nTo minimize porosity in SS316L-SLM,adjustments to laser power and scanning speed are crucial. Fig. 9(a) displays a perpendicular crosssection of sample C-6,exhibiting a density of $9 9 . 5 ~ \\%$ and a Volumetric Energy Density (VED) of $1 2 5 \\ \\mathrm { J / m m } ^ { 3 }$ ：\n\nThe micrographs in Fig.9 (b),(c),and (d) showcase perpendicular cross-sections of sample C-4,characterized by the lowest VED and density at $9 6 . 3 0 \\%$ .Lastly,Fig.9 (e) and (f) present SEM images of the sample with the highest VED of $1 5 6 \\mathrm { ~ J / m m } ^ { 3 }$ ,resulting in a density of $9 8 . 6 0 \\%$ ：",
+    "summary": "",
+    "size": 1449,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 30,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har-chunk-35",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har.md",
+    "content": "These observations reinforce the critical role of nitrogen content and its interaction with the SLM process,substantiating the link between nitrogen,porosity variation,and outgassing during solidification in additive manufacturing processes like SLM.\n\nMicrostructure images of the sample with the lowest Volumetric Energy Density (VED) of $3 1 \\mathrm { ~ J } / \\mathrm { m m } ^ { 3 }$ (achieved with 150 W, $2 0 0 0 \\ \\mathrm { m m } / s$ scanning speeds, and $0 . 0 6 \\ \\mathrm { m m }$ layer thickness) displayed in Fig.9 (b), (c),and (d) vividly illustrate that the voids exhibit irregular shapes and sizes.There are also irregular cavities along the borders of melt pools, indicating incomplete fusion [58]. Small triangular voids may form at the intersection of three melt pools if the top two melt pools fail to melt the bottom layer fully.Pores with irregular shapes and sizes are primarily near fusion lines,suggesting inadequate energy density.Additionally,due to the propensity of austenitic stainless steel to develop porosity when exposed to argon gas,gas holes induced by this gas are noticeable in the microstructure of these samples [59-61].",
+    "summary": "",
+    "size": 1158,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.5,
+    "n_numeric": 15,
+    "source_folder": "SS316L_SS17",
+    "gate": "quant1_with_ved"
+  },
+  {
+    "name": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har-chunk-36",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har.md",
+    "content": "In Fig.9(e),the microstructure of a sample subjected to the highest Volumetric Energy Density (VED) ( $1 5 0 ~ \\mathrm { W }$ power, $8 0 0 \\ \\mathrm { m m } / s$ scanning speed,and $0 . 0 3 \\mathrm { m m }$ layer thickness) is depicted.Neither the powder bed nor the powder itself appear to have entrapped gas.At this elevated level of VED,which creates intense thermal conditions,powder particles undergo melting both within and between layers.\n\nWith increased VED,molten pools develop keyhole cavities due to the growing ratio between their depth and width [62].Fig.9(e) provides an electron microscope image of a keyhole.When high laser energy is applied to a melt pool,gas bubbles form,resulting in near-spherical defects ranging from 40 to $7 0 ~ \\mu \\mathrm { m }$ .Due to the keyhole effect, low melting point constituents in the alloy may vaporize and accumulate gas bubbles in the melt pools.The downward conduction of thermal energy during solidification gives rise to temperature gradients.It is important to note that these gas bubbles form well below the surface of the melt pool.Due to the high solidification rate,gas bubbles cannot escape from the surface of the melt pool [63-66].\n\n# 3.6.Mechanical properties\n\nComponents produced through Selective Laser Melting (SLM) were tested using the parameters outlined in Table 1O. Subsequently，a comparison was made between these results and those obtained from conventionally annealed bars,evaluating the efficacy of the two methods.",
+    "summary": "",
+    "size": 1495,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 6.0,
+    "n_numeric": 19,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har-chunk-42",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Materials Research and Technology - Bakhtiarian et al. - The effects of SLM process parameters on the relative density and har.md",
+    "content": "1 Ferrite phases were not detected in the powder,nor at the highest and lowest energy densities of $3 1 \\mathrm { ~ J / m m ^ { 3 } }$ and $1 5 6 \\mathrm { ~ J / m m } ^ { 3 }$   \n2 With a laser power of $1 8 0 \\mathrm { W }$ ,a scan speed of $1 2 0 0 \\mathrm { m m } / s$ ,and alayer thickness of $0 . 0 3 \\mathrm { m m }$ ,the best results were achieved,which equated to an energy density of $1 2 5 \\mathrm { ~ J } / \\mathrm { m m } ^ { 3 }$ .A peak density of $9 9 . 5 ~ \\%$ and a hardness of $2 2 0 \\ \\mathrm { H V }$ were obtained from this configuration.   \n3 As energy density was reduced,narrow and shallow melt pools resulted,as did unmelted powders with micro-cracks at the matrix interface. In contrast, the $1 2 5 \\mathrm { J / m m ^ { 3 } }$ energy density produced large, deep melt pools without unmelted powders or cracks. Keyhole pores were formed as energy density increased.   \n4 The ANOVA results indicate that scanning speed is the most significant for affecting density,followed by layer thickness and power.   \n5 The porosity and microstructure of the as-built part have a major impact on its hardness.Scan speed is the most critical parameter affecting hardness,followed by power，while layer thickness is comparativelylessimportant.   \n6 The yield and tensile strength of the parts range from $6 2 4 \\pm 8$ MPa to $6 4 9 \\pm 4$ MPa.The grain size and the defects directly affect these",
+    "summary": "",
+    "size": 1407,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 5.0,
+    "n_numeric": 45,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Materials Research and Technology - Mazlan et al. - Effect of laser speed on neck formation in SS316L powder joining for LPBF-chunk-14",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Materials Research and Technology - Mazlan et al. - Effect of laser speed on neck formation in SS316L powder joining for LPBF.md",
+    "content": "The observation of single-track formations via SEM (Fig.2) revealed that the sizes of the tracks increased with decreasing scanning speed (from $1 5 0 \\ \\mathrm { m m } / s$ to $2 5 \\ \\mathrm { m m } / s$ ).The right side of Fig.2 shows the magnified view of each image in Fig. 2(a), (b),(c),(d), (e),and (f). In Fig.2(a),the scanning track was indistinct and lacked uniformity, indicating insuficient melting because of inadequate heat energy. This observation aligns with the findings of D.Wang et al.[37]，who demonstrated that high scanning speeds resulting from low energy input led to the partial melting of particles.Meanwhile,Yadroitsev etal. [38] showed that an inconsistent single track formed because of the formation of droplets. Fig.2(d) and (e) showcase a notably consistent scanning track,indicating successful melting as the scanning speed decreased. This decrease in scanning speed enabled powder particles to absorb more heat energy provided by the laser beam.Hence, extended exposure to heat energy allowed for controlled and stable melting,ensuring uniform and effective melting of powder particles and resulting in well-defined and consistent scanning tracks.The relationship between scanning speed and heat energy absorption plays a crucial role in selective laser melting,influencing the quality and uniformity of tracks produced [38,39].As the scanning speed decreased to $2 5 \\ \\mathrm { m m } / s$ ，the scanning track lost stability and issues,such as balling,manifested.The slow speed caused excessive heating,resulting in a balling effect and considerable increase in track thickness.Kempen etal.[4O] highlighted that low scanning speeds with high energy inputs can distort scanning tracks because of increased recoil pressure,demonstrating the critical role of scanning speed in track continuity and occurrence of discontinuities at speeds below $5 0 \\ \\mathrm { m m } / s$ .These interruptions may stem from poor bonding or balling,leading to inferior surface quality and the formation of pores between particles and ultimately affecting the mechanical performance of parts produced through SLM.",
+    "summary": "",
+    "size": 2124,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 2.0,
+    "n_numeric": 19,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - J. Materials Research and Technology - Mazlan et al. - Effect of laser speed on neck formation in SS316L powder joining for LPBF-chunk-20",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - J. Materials Research and Technology - Mazlan et al. - Effect of laser speed on neck formation in SS316L powder joining for LPBF.md",
+    "content": "melting and reheating of nearby particles, which could cause the balling effect due to excessive molten material forming droplets [42].This phenomenon might cause in poor thermal stability,which could lead to the entrapment of gas bubbles at grain boundaries.High laser power led to fast neck growth in conformity with Laplace law because pressure difference considerably increases when powder particles radius between the neck and particle was large.High pressure difference eventually resulted in fast and inefficient liquid flow that might cause vapor bubbles to form,which were trapped between grain boundaries.According to Randall [43], pore coarsening occurs through the Ostwald ripening effect,in which small bubbles diffuse with large bubbles and increase porosity. This mode of heat transfer can lead to the remelting of particles,adversely affecting final products.Consequently,issues,such as porosity and poor surface finish,may arise,compromising the quality and integrity of materials.According to Mazlan et al.'s study in 2023 [22],a high porosity value results in poor neck formation, leading to reduced mechanical strength and weakened planar interfaces between the layers.",
+    "summary": "",
+    "size": 1189,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 4,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - Materials Today Communications - Tyagi, Manjaiah - Printability, post-processing and mechanical behaviour of sub-millimetre sized-chunk-11",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - Materials Today Communications - Tyagi, Manjaiah - Printability, post-processing and mechanical behaviour of sub-millimetre sized.md",
+    "content": "Additionally,compared to a solid specimen,AMof lattice structures is known to have morphological deviations and micro-defects inherent to the fabrication process due to the presence of overhang features and a greater number of down-skin surfaces depending on the lattice design. Defects like strut waviness (offset of the cross-section centres from designed strut axis) is shown to adversely impact the elastic modulus of the lattice.The down-skin surfaces are the ones facing the build platform and while printing these features the powder present in the layers below gets agglomerated at the down-skin region due to diffusion of heat and causes dimensional inaccuracies [28-3O].Apart from these defects,for thin lattice structures with struts of ${ \\sim } 2 0 0 \\ \\mu \\mathrm { m }$ Mahmoud et al.[31] also observed uneven bulging melt tracks on the struts due to balling effect which occurs due to insuficient wetting of previous track by the molten metal which solidifies as spherical beads pertaining to surface tension. The presence of internal defects like porosity,lack of fusion is mitigated by optimizing the LPBF process parameters but the elimination of surface irregularities caused due to differential cooling rates,powder attachment,undercuts over the lattice elements are less addressed.For these defects,post-processing techniques like electropolishing provide great advantages as it has the capacity to evenly remove material throughout the intricacies of the lattice structure.",
+    "summary": "",
+    "size": 1496,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.0,
+    "n_numeric": 6,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2024 - Materials Today Communications - Tyagi, Manjaiah - Printability, post-processing and mechanical behaviour of sub-millimetre sized-chunk-17",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2024 - Materials Today Communications - Tyagi, Manjaiah - Printability, post-processing and mechanical behaviour of sub-millimetre sized.md",
+    "content": "![](images/34666ce61b194213c21d9bf805137996ba255d5a5424cf20bc586ff649cd48f0.jpg)  \nFig.4.SEM micrograph of SS 17-4Ph powder particles showing the presence of satellite particles.\n\nTable 2 Manufacturing parameters used for L-PBF process.\n\n<table><tr><td>Process Parameters</td><td>Value</td></tr><tr><td>Layer thickness</td><td>30 μm</td></tr><tr><td>Scanning speed</td><td>1200 mm/s</td></tr><tr><td>Laser power</td><td>100 W</td></tr><tr><td>Hatch spacing</td><td>45μm</td></tr><tr><td>Laser spot diameter</td><td>60um</td></tr></table>\n\nTable 3 Sample naming strategy followed for each processing condition.\n\n<table><tr><td>Lattice type- orientation</td><td>As-Built</td><td>Electropolished</td><td>Heat treated</td></tr><tr><td>Gyroid-Horizontal (G-Hz)</td><td>G-Hz-AB</td><td>G-Hz-EP</td><td>G-Hz-HT</td></tr><tr><td>Gyroid-Vertical (G-V)</td><td>G-V-AB</td><td>G-V-EP</td><td>G-V-HT</td></tr><tr><td>Diamond-Horizontal (D-Hz)</td><td>D-Hz-AB</td><td>D-Hz-EP</td><td>D-Hz-HT</td></tr><tr><td>Diamond-Vertical (D-V)</td><td>D-V-AB</td><td>D-V-EP</td><td>D-V-HT</td></tr><tr><td>Schwarz-Horizontal (S-Hz)</td><td>S-Hz-AB</td><td>S-Hz-EP</td><td>S-Hz-HT</td></tr><tr><td>Schwarz-Vertical (S-V)</td><td>S-V-AB</td><td>S-V-EP</td><td>S-V-HT</td></tr></table>\n\n![](images/11dfc7c6db97bb7b1e4607e23008b08603d386b8f1738cc5ed878db00092f08c.jpg)  \nFig. 5.Illustration of electropolishing technique used.",
+    "summary": "",
+    "size": 1397,
+    "materials": [
+      "SS17-4PH"
+    ],
+    "info_score": 3.5,
+    "n_numeric": 41,
+    "source_folder": "SS316L_SS17",
+    "gate": "quant_2plus"
+  },
+  {
+    "name": "2025 - Int. J. Advanced Manufacturing Technology - Erman et al. - Diode area melting of SS316L using low power 450 nm lasers-chunk-27",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2025 - Int. J. Advanced Manufacturing Technology - Erman et al. - Diode area melting of SS316L using low power 450 nm lasers.md",
+    "content": "The presence of minor spherical pores is indicated by red circles in samples treated with HD200 (see Figs. 6(a), (d),(g),(j)). In contrast, the number of spherical pores observed in samples treated with HD30O is relatively low in comparison to the number of pores present in HD200 samples.These pores are represented by blue circles in Figs.6(b),and (e)).Furthermore,a slight decrease in porosity is observed with an increase in scanning speed at samples with HD2OO (see the first column of Fig. 6). The porosity of the samples containing HD2Oo is found to be greater at slower scanning speeds.Porosity in LPBF samples can be classfied into three main categories: gas porosity, lack of fusion,and delamination between subsequent layers [51]. Pores that originated in samples with HD200 can be identified as gas porosity, given their spherical shape and the conditions under which they occurred (single-layer formation). An excessive degree of overlap in the melt track can result in a notable rise in temperature within the melt pool, which may subsequently give rise to several thermal issues [52].It is hypothesized that the elevated temperature in the melt pool at slow scanning speeds results in vaporization.The spherical shape of the gas porosity is the result of the entrapped gas caused by the vapour pressure [53]. It is also stated that too low hatch distance at slow scanning leads to a decrease in relative density [54]. As the scanning speed is increased, the porosity of the samples with HD3oO shows a slight increase (see the second column in Fig.6) like the literature work in LPBF SS316L [55]. Additionally, some discontinuities are observed at the base of the sample (see the blue rectangles in Figs. 6(h) and (k)).An additional increase in hatch distance results in the formation of distinct cross-sectional divisions within the samples (as illustrated by the green rectangles in Figs. 6(f),(i),and (l)).The hypothesis that an increase in hatch distance will increase porosity has been previously validated [56].",
+    "summary": "",
+    "size": 2031,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 4.5,
+    "n_numeric": 20,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2025 - Int. J. Advanced Manufacturing Technology - Erman et al. - Diode area melting of SS316L using low power 450 nm lasers-chunk-30",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2025 - Int. J. Advanced Manufacturing Technology - Erman et al. - Diode area melting of SS316L using low power 450 nm lasers.md",
+    "content": "The surface quality of the specimens deteriorates for lowspeed specimens such as SS100HD300, SS150HD300,and S150HD4OO thanks to multiple spatters on the top surface of the samples are shown in Figs.7(e),(h),and (i). Spatter are represented by dotted white circles in Figs.7(e), (h),and (i).After Fig.7(l) to (s),the surface roughness increases due to poor top surface morphology, including balling problems. Figure 7(l) to (s) shows top surface porosity defects as dotted white rectangles.Melt traces become entangled when the scanning speed exceeds $2 0 0 \\mathrm { m m / m i n }$ ,and this degrades the integrity of the samples.Balling is also observed on the top surfaces of samples at scanning speeds above $4 0 0 \\mathrm { m m } /$ min, shown as dotted yellow squares in Fig.7(o),(r),and (s). The utilisation of high scanning speeds has been identified as a contributing factor to the formation of discontinuities and voids between tracks, which are commonly attributed to balling defects [58].",
+    "summary": "",
+    "size": 999,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 18,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  },
+  {
+    "name": "2025 - Int. J. Advanced Manufacturing Technology - Erman et al. - Diode area melting of SS316L using low power 450 nm lasers-chunk-40",
+    "projectId": "AMagent-kb-v2",
+    "fileName": "2025 - Int. J. Advanced Manufacturing Technology - Erman et al. - Diode area melting of SS316L using low power 450 nm lasers.md",
+    "content": "The surface roughness increases significantly when the NED value is below 1.30. The surface roughness of samples increases to $4 6 . 8 1 0 ~ \\mu \\mathrm { m }$ and $5 3 . 6 6 5 ~ { \\mu \\mathrm { m } }$ while NED equals 1.22 and 0.57 respectively (see Fig. 11 and Table 5). This is due to the presence of numerous small and large particles on the top surface,as illustrated in Figs.7(i) to (s) with white dotted circles and yellow dotted rectangles.A further factor contributing to the decline in surface quality is the presence of porosity and discontinuity along the melt track,as illustrated in Figs.7(l) to (s) by white dotted rectangles. A literature review reveals that as decrease in surface roughness and relative density is a primary cause of low energy density [38].\n\n# 3.6 Phase determination\n\nFigure 12(a) depicts the XRD profile of SS316L austenitic stainless-steel samples with varying scanning speeds (SS50, SS200,and SS5oo,which are selected to represent low, medium,and high scanning speeds) at HD2Oo.Figure 12 illustrates the existence of two distinct phases: face-centered cubic austenite (γ phase) and body-centered cubic ferrite (δ phase). The $\\gamma$ phase is corroborated by the presence of apparent diffraction peaks in the (111),(200),(220), (311), and (222) crystallographic planes,as observed in the LPBF SS316L sample referenced in the literature [6O-63].",
+    "summary": "",
+    "size": 1383,
+    "materials": [
+      "SS316L",
+      "SS17-4PH"
+    ],
+    "info_score": 3.0,
+    "n_numeric": 34,
+    "source_folder": "SS316L_SS17",
+    "gate": "causal"
+  }
+]
