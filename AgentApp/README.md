@@ -66,3 +66,19 @@ After running the command, the application should be accessible in your browser 
 - **Chat Interface**: Interact with the agent using natural language.
 - **Tool Use**: The agent can utilize various tools defined in `app/tool/` to perform tasks (e.g., literature retrieval, data processing).
 - **ML Integration**: Integrated machine learning models for AM-specific predictions and analysis.
+
+## License
+
+**Non-commercial research use only. Commercial use is prohibited.**
+
+Original contributions controlled by the project licensors are offered under
+the [Dachuan Shi Non-Commercial Research License 1.0](LICENSE)
+(`LicenseRef-Dachuan-Shi-NC-1.0`). This includes a prohibition on commercial products,
+paid services, customer projects, internal business use, commercial R&D and
+commercial model training. A separate prior written authorization is required
+for commercial use; this license grants none.
+
+Third-party software, assets, datasets and previously granted rights retain
+their applicable terms. See the repository's `LICENSING.md` for scope and
+licensing history. This is source-available software, not OSI-approved
+open-source software.

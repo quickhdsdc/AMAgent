@@ -1,4 +1,5 @@
 [project]
+license = { text = "LicenseRef-Dachuan-Shi-NC-1.0" }
 name = "amtraineval"
 version = "0.1.0"
 description = "AM defect classification — LLM fine-tuning experiments (C7 / C10)"
